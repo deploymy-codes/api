@@ -6,8 +6,14 @@ class User < ActiveRecord::Base
   validates :email, email: true
   validates :email, uniqueness: { case_sensitive: false }
 
-  def has_github?
-    accounts.where(provider: 'github').any?
+  delegate :github, :bitbucket, to: :accounts
+
+  def github?
+    github.any?
+  end
+
+  def bitbucket?
+    bitbucket.any?
   end
 
 end

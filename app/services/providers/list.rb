@@ -6,7 +6,7 @@ module Providers
     end
 
     def call
-      ['github']
+      Account::PROVIDER
     end
   end
 end
