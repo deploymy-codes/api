@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'mysql2'
+gem 'octokit'
 gem 'puma'
 gem 'rails', '4.1.6'
 gem 'rails-api'
@@ -15,6 +16,7 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'vcr'
   gem 'simplecov', require: false
 end
 

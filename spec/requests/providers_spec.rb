@@ -13,4 +13,11 @@ RSpec.describe 'Providers' do
     end
   end
 
+  describe '#index' do
+    it 'shows all projects for one provider' do
+      get 'providers/github'
+
+      json = JSON.parse(response.body)
+    end
+  end
 end
