@@ -2,7 +2,7 @@ module Providers
   class List < DeployMyCodes::Service
 
     def call
-      Account::PROVIDER
+      Constants.providers
     end
 
   end
