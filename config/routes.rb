@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
-  resources :providers, only: :index
-
+  scope format: true, constraints: { format: 'json' } do
+    resources :providers, only: :index
+  end
 end
