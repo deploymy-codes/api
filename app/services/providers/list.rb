@@ -1,12 +1,9 @@
 module Providers
-  class List
-
-    def self.call
-      self.new.call
-    end
+  class List < DeployMyCodes::Service
 
     def call
       Account::PROVIDER
     end
+
   end
 end

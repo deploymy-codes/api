@@ -12,6 +12,7 @@ gem 'decent_exposure'
 gem 'omniauth-github'
 gem 'omniauth-bitbucket'
 gem 'high_voltage'
+gem 'rails_config', '0.5.0beta1'
 
 group :development do
   gem 'spring'
