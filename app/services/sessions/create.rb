@@ -12,10 +12,10 @@ module Sessions
       user = params[:user]
 
       if user.present?
-        create_new_account
+        repository.add_or_update_account_to(user)
       else
         user = login
-        create_new_account
+        repository.add_or_update_account_to(user)
       end
     end
 
