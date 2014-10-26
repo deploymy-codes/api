@@ -1,9 +1,5 @@
-module Sessions
-  class Create < Struct.new(:params)
-
-    def self.call(params)
-      new(params).call
-    end
+module Accounts
+  class Create < DeployMyCodes::Service
 
     def call
       oauth = params[:oauth]
