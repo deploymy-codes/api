@@ -1,7 +1,7 @@
 class ProvidersController < ApplicationController
 
   def index
-    Providers::List.call
+    render json: Providers::List.call
   end
 
 end

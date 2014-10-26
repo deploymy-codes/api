@@ -6,9 +6,10 @@ RSpec.describe 'Providers' do
     it 'lists all providers' do
       get 'providers'
 
-      expect(response).to be_success
       json = JSON.parse(response.body)
-      expect(json['messages'].length).to eq(10)
+      expect(json.length).to eq(2)
+      expect(json['github']).to eq(Constants.account.providers.github)
+      expect(json['bitbucket']).to eq(Constants.account.providers.bitbucket)
     end
   end
 

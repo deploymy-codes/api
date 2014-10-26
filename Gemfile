@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.6'
 gem 'mysql2'
 gem 'puma'
-gem 'omniauth-github'
-gem 'omniauth-bitbucket'
+gem 'rails', '4.1.6'
+gem 'rails-api'
 gem 'rails_config', '0.5.0beta1'
 
 group :development do
@@ -16,7 +15,6 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'database_cleaner'
   gem 'simplecov', require: false
 end
 
