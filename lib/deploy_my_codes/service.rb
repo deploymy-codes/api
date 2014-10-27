@@ -5,5 +5,9 @@ module DeployMyCodes
       new(params).call
     end
 
+    def repository
+      @repository ||= ActiveRecordRepository.new
+    end
+
   end
 end
