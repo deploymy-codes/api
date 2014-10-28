@@ -4,16 +4,16 @@ class ActiveRecordRepository
     klass(name).new params
   end
 
-  def find_by(name, params)
-    klass(name).find_by params
+  def find_by(name, params, associations: [])
+    ::DeployMyCodes::Biz.wrap klass(name).includes(associations).find_by(params), associations
   end
 
   def save(object)
-    object.save
+    object.data.save
   end
 
   def update_attributes_of(object, params)
-    object.update_attributes params
+    object.data.update_attributes params
   end
 
   private

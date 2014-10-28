@@ -8,7 +8,7 @@ module Accounts
         user = repository.build :user, user_params
       end
 
-      account = user.accounts.find { |account| account.provider == params[:provider] }
+      account = user.accounts.find { |account| account.is?(params[:provider]) }
 
       if account.nil?
         account = repository.build :account, account_params
