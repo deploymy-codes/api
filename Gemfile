@@ -16,12 +16,15 @@ group :development do
 end
 
 group :test do
+  gem 'shoulda-matchers', require: false
   gem 'rspec-rails'
+  gem 'database_cleaner'
   gem 'vcr'
   gem 'simplecov', require: false
 end
 
 group :development, :test do
+  gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'pry-stack_explorer'
   gem 'pry-byebug'

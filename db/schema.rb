@@ -15,12 +15,8 @@ ActiveRecord::Schema.define(version: 20141022193349) do
 
   create_table "accounts", force: true do |t|
     t.integer  "user_id"
-    t.string   "uid"
     t.string   "provider"
-    t.string   "username"
     t.string   "oauth_token"
-    t.string   "oauth_secret"
-    t.datetime "oauth_expires"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,6 +27,7 @@ ActiveRecord::Schema.define(version: 20141022193349) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
+    t.string   "api_key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
