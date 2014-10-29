@@ -25,11 +25,7 @@ RSpec.describe 'Accounts' do
       let!(:user) { create(:user, email: 'foo@bar.com') }
 
       context 'When the user already has this provider' do
-        let!(:account) { create(:account, :github, user_id: user.id) }
-
-        it 'updates the provider' do
-          post 'accounts', email: 'foo@bar.com', provider: 'github', oauth_token: 'token', first_name: 'foo', last_name: 'bar'
-        end
+        it 'updates the provider'
       end
 
       context 'When the user does not have this provider' do
