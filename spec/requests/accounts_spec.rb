@@ -5,10 +5,10 @@ RSpec.describe 'Accounts' do
   describe '#create' do
     context 'When the user does not exists' do
       it 'creates a new user and new account' do
-        post 'accounts', email: 'foo@bar.com', provider: 'github', oauth_token: 'token', first_name: 'foo', last_name: 'bar'
+        expect {
+          post 'accounts', email: 'foo@bar.com', provider: 'github', oauth_token: 'token', first_name: 'foo', last_name: 'bar'
+        }.to change { User.count }.to(1)
 
-        expect(User.count).to be 1
-        expect(Account.count).to be 1
 
         user = User.last
         expect(user.email).to be_eql 'foo@bar.com'
@@ -29,18 +29,15 @@ RSpec.describe 'Accounts' do
 
         it 'updates the provider' do
           post 'accounts', email: 'foo@bar.com', provider: 'github', oauth_token: 'token', first_name: 'foo', last_name: 'bar'
-
-          expect(User.count).to be 1
-          expect(Account.count).to be 1
         end
       end
 
       context 'When the user does not have this provider' do
         it 'create the provider' do
-          post 'accounts', email: 'foo@bar.com', provider: 'github', oauth_token: 'token', first_name: 'foo', last_name: 'bar'
+          expect {
+            post 'accounts', email: 'foo@bar.com', provider: 'github', oauth_token: 'token', first_name: 'foo', last_name: 'bar'
+          }.to change { Account.count }.to(1)
 
-          expect(User.count).to be 1
-          expect(Account.count).to be 1
         end
       end
     end
