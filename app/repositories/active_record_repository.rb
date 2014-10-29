@@ -1,19 +1,19 @@
 class ActiveRecordRepository
 
-  def build(name, params)
-    klass(name).new(params)
+  def build(name, attributes)
+    klass(name).new(attributes)
   end
 
-  def find_by(name, params)
-    klass(name).find_by(params)
+  def find_by(name, attributes)
+    klass(name).find_by(attributes)
   end
 
   def save(object)
     object.save
   end
 
-  def update_attributes_of(object, params)
-    object.update_attributes params
+  def update_attributes_of(object, attributes)
+    object.update_attributes attributes
   end
 
   private
