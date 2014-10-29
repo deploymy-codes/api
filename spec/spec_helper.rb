@@ -3,6 +3,16 @@ if ENV["COVERAGE"]
   SimpleCov.start 'rails'
 end
 
+required_file_patterns = [
+  "#{File.dirname(__FILE__)}/../lib/deploy_my_codes/*.rb",
+  "#{File.dirname(__FILE__)}/../app/models/biz/*.rb",
+  "#{File.dirname(__FILE__)}/../app/services/**/*.rb",
+]
+
+required_file_patterns.each do |fp|
+  Dir[fp].each { |f| require f }
+end
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
