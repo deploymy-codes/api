@@ -19,6 +19,7 @@ group :test do
   gem 'shoulda-matchers', require: false
   gem 'rspec-rails'
   gem 'database_cleaner'
+  gem 'forgery'
   gem 'vcr'
   gem 'simplecov', require: false
 end
