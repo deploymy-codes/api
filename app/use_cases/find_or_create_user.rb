@@ -17,7 +17,7 @@ class FindOrCreateUser < Struct.new(:provider, :form)
         account.user = User.new do |user|
           user.name  = user_provider.name
           user.email = user_provider.email
-          user.api_key
+          user.api_key = SecureRandom.uuid
         end
       end
     end
