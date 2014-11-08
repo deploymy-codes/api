@@ -6,8 +6,8 @@ class Serializer < Struct.new(:object)
     end
   end
 
-  def serialize
-    create_attributes_hash
+  def as_json
+    create_attributes_hash.to_json
   end
 
   private
