@@ -6,6 +6,7 @@ gem 'octokit'
 gem 'puma'
 gem 'rake'
 gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'virtus'
 
 group :test do
