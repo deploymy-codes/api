@@ -21,6 +21,28 @@ class Web < Sinatra::Base
         raise ParameterMissingError, key
       end
     end
+
+    def halt_json_error(code, errors = {})
+      json_error env.fetch('sinatra.error'), code, errors
+    end
+
+    def json_error(ex, code, errors = {})
+      halt code, { 'Content-Type' => 'application/json' }, JSON.dump({
+        error: { message: ex.message }
+      }.merge(errors))
+    end
+  end
+
+  error ParameterMissingError do
+    halt_json_error 400
+  end
+
+  error UnknownFormFieldError do
+    halt_json_error 400
+  end
+
+  error RecordNotFoundError do
+    halt_json_error 404
   end
 
 end
