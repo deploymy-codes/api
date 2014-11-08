@@ -1,8 +1,7 @@
-require 'sinatra'
-
 root = File.dirname __FILE__
 
 require "#{root}/../app/dmc"
+require "#{root}/lib/web"
 
 map '/auth' do
   require "#{root}/endpoints/auth"

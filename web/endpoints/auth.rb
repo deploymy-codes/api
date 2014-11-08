@@ -1,7 +1,4 @@
-class Auth < Chassis::WebService
-  use Chassis::Rack::Ping
-  use Chassis::Rack::Instrumentation
-
+class Auth < Web
   helpers do
     def serialize(object)
       klass = "#{object.class.name}Serializer".constantize

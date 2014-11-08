@@ -1,4 +1,2 @@
-class Users < Chassis::WebService
-  use Chassis::Rack::Ping
-  use Chassis::Rack::Instrumentation
+class Users < Web
 end

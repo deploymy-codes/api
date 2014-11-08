@@ -1,6 +1,7 @@
+require 'virtus'
+
 class Form
-  include Chassis.form
-  include ActiveModel::Validations
+  include Virtus.model
 
   def validate!
     raise ValidationError, errors if !valid?
