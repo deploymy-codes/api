@@ -1,3 +1,3 @@
-class GithubService
+class Repo
   include Facade
 end

@@ -8,7 +8,7 @@ class FindOrCreateUser < Struct.new(:provider, :form)
     oauth_token = provider_service.fetch_token form.code
 
     account = begin
-      AccountRepo.find_by oauth_token: oauth_token
+      Repo.query :account, oauth_token: oauth_token
     rescue
       user_provider = provider_service.user(oauth_token)
 
