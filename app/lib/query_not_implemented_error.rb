@@ -1,0 +1,3 @@
+class QueryNotImplementedError
+
+end

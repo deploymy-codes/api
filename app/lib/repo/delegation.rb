@@ -12,8 +12,12 @@ class Repo
       backend.find object_class, id
     end
 
-    def save(record)
-      backend.save(record)
+    def create(record)
+      backend.create(record)
+    end
+
+    def update(record)
+      backend.update(record)
     end
 
     def delete(record)
@@ -40,9 +44,7 @@ class Repo
       backend.empty? object_class
     end
 
-    def graph_query(selector)
-      backend.graph_query object_class, selector
-    end
+    private
 
     def object_class
       @object_class ||= self.to_s.match(/^(.+)Repo/)[1].constantize
