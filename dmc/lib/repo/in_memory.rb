@@ -17,7 +17,8 @@ class Repo
     def find(klass, id)
       record = map_for_class(klass)[id]
 
-      raise RecordNotFoundError.new(klass, id) unless record
+      #raise RecordNotFoundError.new(klass, id) unless record
+      raise '' unless record
 
       record
     end

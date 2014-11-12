@@ -1,17 +1,17 @@
 require 'sinatra'
-require "sinatra/reloader"
-require "sinatra/json"
+require 'sinatra/reloader'
+require 'sinatra/json'
+
+require_relative './parameter_missing_error'
 
 class Web < Sinatra::Base
   helpers Sinatra::JSON
 
-  configure :development do
-    register Sinatra::Reloader
-  end
+  register Sinatra::Reloader
 
   helpers do
     def serialize(object)
-      serializer_klass = "#{object.class.name}Serializer".constantize
+      serializer_klass = Customer::UserSerializer
       serializer       = serializer_klass.new(object)
       serializer.as_json
     end

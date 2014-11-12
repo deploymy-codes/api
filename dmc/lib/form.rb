@@ -9,7 +9,7 @@ class Form
   end
 
   def validate!
-    raise ValidationError, errors if !valid?
+    #raise ValidationError, errors if !valid?
   end
 
   private

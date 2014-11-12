@@ -1,3 +1,5 @@
+require 'json/ext'
+
 class Serializer < Struct.new(:object)
 
   class << self
@@ -14,7 +16,7 @@ class Serializer < Struct.new(:object)
   attr_reader :object
 
   def create_attributes_hash
-    self.class.attributes.object_with_index({}) do |hash, attribute|
+    self.class.attributes.each_with_object({}) do |hash, attribute|
       hash[attribute] = object.public_send(attribute)
     end
   end

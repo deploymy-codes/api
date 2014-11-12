@@ -1,6 +1,6 @@
 root = File.dirname __FILE__
 
-require "#{root}/../app/dmc"
+require "#{root}/../dmc/dmc"
 require "#{root}/lib/web"
 
 map '/auth' do
