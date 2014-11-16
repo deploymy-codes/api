@@ -12,13 +12,7 @@ class Serializer < Struct.new(:object)
     end
   end
 
-  def as_json
-    hash_object.to_json
-  end
-
-  private
-
-  def hash_object
+  def run
     object.attributes.slice(*attributes)
   end
 
