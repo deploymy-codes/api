@@ -1,10 +1,14 @@
 require 'active_support/core_ext/hash'
+require 'active_support/core_ext/module'
+require 'json/ext'
 
 class Serializer < Struct.new(:object)
 
+  mattr_accessor :attributes
+
   class << self
     def attributes(*attributes)
-      @attributes = attributes
+      self.attributes = attributes
     end
   end
 
@@ -13,10 +17,9 @@ class Serializer < Struct.new(:object)
   end
 
   private
-  attr_reader :object
 
   def hash_object
-    object.attributes.slice(@attributes)
+    object.attributes.slice(*attributes)
   end
 
 end
