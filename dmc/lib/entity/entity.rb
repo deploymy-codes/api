@@ -1,7 +1,11 @@
 require 'virtus'
-require_relative './persistence'
 
-module Entity
+class Entity
   include Virtus.model
-  include Persistence
+
+  attribute :id, Integer
+
+  def persisted?
+    id.present?
+  end
 end

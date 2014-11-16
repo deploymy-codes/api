@@ -3,8 +3,7 @@ class Repo
     class InMemory
 
       def initialize
-        @counter = 0
-        @map = {}
+        clear
       end
 
       def all(klass)
@@ -54,12 +53,16 @@ class Repo
       end
 
       def query(klass, selector)
-        puts query_method(klass, selector)
         if query_implemented? klass, selector
           send query_method(klass, selector), klass, selector
         else
           raise QueryNotImplementedError, selector
         end
+      end
+
+      def clear
+        @counter = 0
+        @map = {}
       end
 
       private

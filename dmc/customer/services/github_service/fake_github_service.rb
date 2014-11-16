@@ -2,8 +2,13 @@ module Customer
   class FakeGithubService
     FakeUser = Struct.new(:name, :email)
 
+    def initialize
+      @counter = 0
+    end
+
     def fetch_token(code)
-      'github-token'
+      @counter += 1
+      "github-token-#{@counter}"
     end
 
     def user(oauth_token)
