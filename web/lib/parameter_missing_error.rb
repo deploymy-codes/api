@@ -1,3 +1,3 @@
-class ParameterMissingError
+class ParameterMissingError < StandardError
 
 end
