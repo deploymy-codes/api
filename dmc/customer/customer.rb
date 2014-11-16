@@ -5,13 +5,14 @@ module Customer
   PROVIDERS = [:github]
 end
 
-require_relative 'models/account'
-require_relative 'models/user'
+require_relative 'entities/account'
+require_relative 'entities/user'
 
 require_relative 'serializers/user_serializer'
 
 require_relative 'repos/user_repo'
 require_relative 'repos/adapter/in_memory'
+require_relative 'repos/adapter/active_record'
 
 require_relative 'forms/code_form'
 require_relative 'forms/api_key_form'
