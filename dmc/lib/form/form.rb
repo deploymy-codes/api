@@ -1,7 +1,13 @@
 require 'virtus'
+require 'active_model'
+
+require_relative './validation_error'
+require_relative './unknown_form_field_error'
+require_relative './permission_denied_error'
 
 class Form
   include Virtus.model
+  include ActiveModel::Validations
 
   def initialize(hash = {})
     assert_valid_keys! hash
@@ -9,7 +15,7 @@ class Form
   end
 
   def validate!
-    #raise ValidationError, errors if !valid?
+    raise ValidationError, errors if !valid?
   end
 
   private

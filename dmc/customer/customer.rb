@@ -1,4 +1,5 @@
 require 'octokit'
+require 'interchange'
 
 module Customer
   PROVIDERS = [:github]

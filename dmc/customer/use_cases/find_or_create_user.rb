@@ -6,7 +6,7 @@ module Customer
 
       authorize!
 
-      find_or_create_account.user
+      find_or_create_user
     end
 
     private
@@ -17,26 +17,26 @@ module Customer
       end
     end
 
-    def find_or_create_account
-      find_account
-    rescue
-      create_account
+    def find_or_create_user
+      find_user
+    rescue RecordNotFoundError
+      create_user
     end
 
-    def find_account
-      Repo.find :account, oauth_token
+    def find_user
+      UserRepo.find_by_oauth_token oauth_token
     end
 
-    def create_account
-      account = build_account
+    def create_user
+      user = build_user
 
-      Repo.save account
+      UserRepo.save user
 
-      account
+      user
     end
 
     def build_account
-      Account.new.tap do |account|
+      User.new.tap do |user|
         account.oauth_token = oauth_token
         account.user = User.new.tap do |user|
           user.name  = user_details.name

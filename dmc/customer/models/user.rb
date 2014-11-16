@@ -1,6 +1,6 @@
 module Customer
   class User
-    include Persistence
+    include Entity
 
     attr_accessor :name, :email, :api_key, :accounts
   end

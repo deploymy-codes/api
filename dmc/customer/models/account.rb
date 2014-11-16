@@ -1,7 +1,7 @@
 module Customer
   class Account
-    include Persistence
+    include Entity
 
-    attr_accessor :id, :oauth_token, :user
+    attr_accessor :oauth_token, :provider, :user
   end
 end

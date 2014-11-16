@@ -2,6 +2,8 @@ ruby '2.1.2'
 
 source 'https://rubygems.org'
 
+gem 'activemodel'
+gem 'activesupport'
 gem 'interchange'
 gem 'octokit'
 gem 'puma'
