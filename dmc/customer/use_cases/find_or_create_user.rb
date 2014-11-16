@@ -18,13 +18,15 @@ module Customer
     end
 
     def find_or_create_user
-      find_user
-    rescue RecordNotFoundError
-      create_user
+      find_user_by_oauth_token!
+    rescue UserRepo::UnknownOauthTokenError
+      build_user
+
+      user
     end
 
-    def find_user
-      UserRepo.find_by_oauth_token oauth_token
+    def find_user_by_oauth_token!
+      UserRepo.find_by_oauth_token!(oauth_token)
     end
 
     def create_user
@@ -35,19 +37,12 @@ module Customer
       user
     end
 
-    def build_account
-      User.new.tap do |user|
-        account.oauth_token = oauth_token
-        account.user = User.new.tap do |user|
-          user.name  = user_details.name
-          user.email = user_details.email
-          user.api_key = SecureRandom.uuid
-        end
-      end
+    def build_user
+      User.build_from_provider_user(provider_user)
     end
 
-    def user_details
-      @user_provider ||= provider_service.user(oauth_token)
+    def provider_user
+      @provider_user ||= provider_service.user(oauth_token)
     end
 
     def oauth_token

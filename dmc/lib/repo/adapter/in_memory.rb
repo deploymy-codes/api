@@ -54,6 +54,7 @@ class Repo
       end
 
       def query(klass, selector)
+        puts query_method(klass, selector)
         if query_implemented? klass, selector
           send query_method(klass, selector), klass, selector
         else

@@ -1,5 +1,7 @@
-Repo.register :in_memory, Repo::Adapter::InMemory.new
-Repo.use :in_memory
+require 'pry'
+
+Customer::UserRepo.register :in_memory, Customer::Repo::Adapter::InMemory.new
+Customer::UserRepo.use :in_memory
 
 Customer::GithubService.register :fake, Customer::FakeGithubService.new
 Customer::GithubService.use :fake

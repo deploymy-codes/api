@@ -10,6 +10,9 @@ require_relative 'models/user'
 
 require_relative 'serializers/user_serializer'
 
+require_relative 'repos/user_repo'
+require_relative 'repos/adapter/in_memory'
+
 require_relative 'forms/code_form'
 
 require_relative 'services/github_service'

@@ -9,7 +9,6 @@ module Dmc
 end
 
 require_relative 'lib/framework'
-
 require_relative 'customer/customer'
 
 root = File.dirname __FILE__

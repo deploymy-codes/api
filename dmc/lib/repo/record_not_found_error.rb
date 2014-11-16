@@ -5,7 +5,7 @@ class RecordNotFoundError < StandardError
     @id    = id
   end
 
-  def message
+  def to_s
     "Could not locate #{@klass} with id #{@id}"
   end
 end
