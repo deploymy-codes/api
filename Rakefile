@@ -1,11 +1,9 @@
 require 'bundler/setup'
-require 'rake/testtask'
+require 'rspec/core/rake_task'
 
-namespace :test do
-  desc "Run tests in quick mode"
-  Rake::TestTask.new :all do |t|
-    t.test_files = Rake::FileList['test/**/*_test.rb']
-  end
+namespace :spec do
+  desc "Run tests with fake service"
+  RSpec::Core::RakeTask.new(:all)
 
   desc "Run tests against real services"
   task ci: ['ci_env', 'all']
@@ -15,11 +13,9 @@ namespace :test do
   end
 end
 
-task default: 'test:all'
-
 task :environment do
   root = File.dirname __FILE__
-  require "#{root}/app"
+  require "#{root}/dmc/dmc"
 end
 
 namespace :sidekiq do
@@ -31,10 +27,9 @@ namespace :sidekiq do
   end
 end
 
-namespace :repo do
-  desc "Empty all sidekiq jobs"
+namespace :repository do
+  desc "Empty all Repositories"
   task clear: :environment do
-    Chassis::Repo.instance.clear
-    ImageService.clear
+    Customer::UserRepository.clear
   end
 end

@@ -1,4 +1,2 @@
-class Projects < Chassis::WebService
-  use Chassis::Rack::Ping
-  use Chassis::Rack::Instrumentation
+class Projects < Web
 end
