@@ -27,9 +27,9 @@ namespace :sidekiq do
   end
 end
 
-namespace :repo do
-  desc "Empty all repos"
+namespace :repository do
+  desc "Empty all Repositories"
   task clear: :environment do
-    Customer::UserRepo.clear
+    Customer::UserRepository.clear
   end
 end

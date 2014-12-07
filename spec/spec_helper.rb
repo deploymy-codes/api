@@ -92,6 +92,6 @@ RSpec.configure do |config|
 =end
 
   config.before(:each) do
-    Customer::UserRepo.clear
+    Customer::UserRepository.clear
   end
 end

@@ -1,5 +1,5 @@
 module Customer
-  class UserRepo < Repo
+  class UserRepository < Repository
 
     class UnknownOauthTokenError < StandardError
       def initialize(oauth_token)
@@ -40,7 +40,7 @@ module Customer
     end
 
   end
+
   UserWithOauthToken = Struct.new :oauth_token
   UserWithEmail = Struct.new :email
 end
-

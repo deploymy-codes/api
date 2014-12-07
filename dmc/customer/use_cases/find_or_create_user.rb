@@ -7,7 +7,7 @@ module Customer
       authorize!
 
       find_user_by_oauth_token!
-    rescue UserRepo::UnknownOauthTokenError
+    rescue UserRepository::UnknownOauthTokenError
       find_or_create_user_by_provider_user
     end
 
@@ -20,12 +20,12 @@ module Customer
     end
 
     def find_user_by_oauth_token!
-      UserRepo.find_by_oauth_token!(oauth_token)
+      UserRepository.find_by_oauth_token!(oauth_token)
     end
 
     def find_or_build_user_by_provider_user
-      UserRepo.find_by_email!(provider_user.email)
-    rescue UserRepo::UnknownEmailError
+      UserRepository.find_by_email!(provider_user.email)
+    rescue UserRepository::UnknownEmailError
       User.build_from_provider_user(provider_user)
     end
 
@@ -33,7 +33,7 @@ module Customer
       user = find_or_build_user_by_provider_user
       user.add_or_update_account(provider, oauth_token)
 
-      UserRepo.save user
+      UserRepository.save user
       user
     end
 

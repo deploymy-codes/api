@@ -5,7 +5,7 @@ class ValidationError < StandardError
     @errors = errors
   end
 
-  def to_s
+  def message
     errors.full_messages
   end
 

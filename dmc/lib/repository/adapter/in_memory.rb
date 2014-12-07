@@ -1,4 +1,4 @@
-class Repo
+class Repository
   module Adapter
     class InMemory
 
@@ -34,18 +34,6 @@ class Repo
 
       def delete(record)
         map_for(record).delete record.id
-      end
-
-      def first(klass)
-        all(klass).first
-      end
-
-      def last(klass)
-        all(klass).last
-      end
-
-      def sample(klass)
-        all(klass).sample
       end
 
       def empty?(klass)

@@ -4,7 +4,7 @@ class QueryNotImplementedError < StandardError
     @selector = selector
   end
 
-  def to_s
+  def message
     "Adapter does not support #{@selector.class}!"
   end
 

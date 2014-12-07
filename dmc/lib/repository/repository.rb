@@ -4,7 +4,7 @@ require_relative './query_not_implemented_error'
 require_relative './record_not_found_error'
 require_relative './adapter/in_memory'
 
-class Repo
+class Repository
   extend Interchange.new(*[
     :all, :find, :create, :update, :delete,
     :first, :last, :query, :sample, :empty?,
