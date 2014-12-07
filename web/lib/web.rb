@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 require 'sinatra/json'
 
 require_relative './parameter_missing_error'
+require_relative './api_key_header_missing_error'
 
 class Web < Sinatra::Base
   helpers Sinatra::JSON
@@ -13,7 +14,7 @@ class Web < Sinatra::Base
     def serialize(object)
       serializer_klass = Customer::UserSerializer
       serializer       = serializer_klass.new(object)
-      serializer.as_json
+      serializer.run
     end
 
     def extract!(key)
@@ -45,4 +46,7 @@ class Web < Sinatra::Base
     halt_json_error 404
   end
 
+  error APIKeyHeaderMissingError do
+    halt_json_error 412
+  end
 end
