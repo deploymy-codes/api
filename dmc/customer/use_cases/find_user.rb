@@ -4,7 +4,7 @@ module Customer
     def run!
       form.validate!
 
-      UserRepo.find_by_api_key!(form.api_key)
+      UserRepository.find_by_api_key!(form.api_key)
     end
 
   end

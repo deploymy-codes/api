@@ -5,11 +5,11 @@ module Customer
 
     context 'When user is not found' do
       it 'raise a record not found error' do
-        form = ApiKeyForm.new(api_key: 'api-key')
+        form = APIKeyForm.new(api_key: 'api-key')
 
         expect {
           FindUser.new(form).run!
-        }.to raise_error UserRepo::UnknownApiKeyError
+        }.to raise_error UserRepository::UnknownApiKeyError
       end
     end
 
@@ -20,7 +20,7 @@ module Customer
       end
 
       it 'returns the user' do
-        form        = ApiKeyForm.new(api_key: user.api_key)
+        form        = APIKeyForm.new(api_key: user.api_key)
         result_user = FindUser.new(form).run!
 
         expect(result_user.email).to be_eql user.email

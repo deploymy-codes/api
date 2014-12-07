@@ -1,5 +1,5 @@
 module Customer
-  class ApiKeyForm < Form
+  class APIKeyForm < Form
 
     attribute :api_key, String
 

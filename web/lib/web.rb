@@ -46,7 +46,7 @@ class Web < Sinatra::Base
     halt_json_error 404
   end
 
-  error ApiKeyHeaderMissingError do
+  error APIKeyHeaderMissingError do
     halt_json_error 412
   end
 end
