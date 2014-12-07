@@ -15,6 +15,13 @@ module Customer
       FakeUser.new('Aaron Patterson', 'aaron@tenderlove.org')
     end
 
+    def repositories(oauth_token)
+      [
+        { name: 'rails',      url: 'https://github.com/rails/rails' },
+        { name: 'activeform', url: 'https://github.com/rails/activeform' },
+        { name: 'turbolinks', url: 'https://github.com/rails/turbolinks' }
+      ]
+    end
+
   end
 end
-

@@ -15,6 +15,13 @@ class Users < Web
     json serialize(current_user)
   end
 
+  get '/repositories' do
+    use_case     = Customer::ListRepositories.new current_user
+    repositories = use_case.run!
+
+    json serialize(repositories)
+  end
+
   error Customer::UserRepository::UnknownApiKeyError do
     halt_json_error 403
   end

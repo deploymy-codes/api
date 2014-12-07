@@ -12,9 +12,14 @@ class Web < Sinatra::Base
 
   helpers do
     def serialize(object)
-      serializer_klass = Customer::UserSerializer
-      serializer       = serializer_klass.new(object)
-      serializer.run
+      if object.is_a?(Array)
+        serializer_klass = "#{object.first.class.name}Serializer".constantize
+        object.map { |entity| serializer_klass.new(entity).run }
+      else
+        serializer_klass = "#{object.class.name}Serializer".constantize
+        serializer       = serializer_klass.new(object)
+        serializer.run
+      end
     end
 
     def extract!(key)
