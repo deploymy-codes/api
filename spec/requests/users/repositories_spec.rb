@@ -18,7 +18,7 @@ describe 'Repositories' do
 
   context 'When user corresponding to the api key does not exist' do
     it 'returns a 403' do
-      get '/self', {}, { 'API_KEY' => 'random' }
+      get '/repositories', {}, { 'API_KEY' => 'random' }
 
       expect(last_response.status).to be_eql 403
     end

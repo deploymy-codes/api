@@ -1,5 +1,5 @@
 module Customer
-  class RepositoryProviderSerializer < Serializer
+  class RemoteProjectSerializer < Serializer
     attributes :name, :url
   end
 end

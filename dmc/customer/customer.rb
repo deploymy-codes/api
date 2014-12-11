@@ -3,10 +3,10 @@ require 'interchange'
 
 require_relative 'entities/account'
 require_relative 'entities/user'
-require_relative 'entities/repository_provider'
+require_relative 'entities/remote_project'
 
 require_relative 'serializers/user_serializer'
-require_relative 'serializers/repository_provider_serializer'
+require_relative 'serializers/remote_project_serializer'
 
 require_relative 'repositories/user_repository'
 require_relative 'repositories/adapter/in_memory'

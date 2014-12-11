@@ -5,7 +5,7 @@ module Customer
       account     = user.find_account 'github'
       repositories = GithubService.repositories account.oauth_token
 
-      repositories.map { |repository| RepositoryProvider.new(repository) }
+      repositories.map { |repository| RemoteProject.new(repository.to_hash) }
     end
 
   end

@@ -17,9 +17,9 @@ module Customer
 
     def repositories(oauth_token)
       [
-        { name: 'rails',      url: 'https://github.com/rails/rails' },
-        { name: 'activeform', url: 'https://github.com/rails/activeform' },
-        { name: 'turbolinks', url: 'https://github.com/rails/turbolinks' }
+        GithubService::Repository.new(name: 'rails',      url: 'https://github.com/rails/rails'),
+        GithubService::Repository.new(name: 'activeform', url: 'https://github.com/rails/activeform'),
+        GithubService::Repository.new(name: 'turbolinks', url: 'https://github.com/rails/turbolinks')
       ]
     end
 
