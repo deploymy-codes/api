@@ -18,18 +18,14 @@ require_relative 'services/github_service'
 require_relative 'services/github_service/octokit_github_service'
 require_relative 'services/github_service/fake_github_service'
 
-require_relative 'services/git_service'
-require_relative 'services/git_service/rugged_git_service'
-require_relative 'services/git_service/fake_git_service'
-
 require_relative 'use_cases/find_or_create_user'
 require_relative 'use_cases/find_user'
-require_relative 'use_cases/list_repositories'
+require_relative 'use_cases/list_remote_project'
+require_relative 'use_cases/get_remote_project'
 
 module Customer
   PROVIDERS = [:github]
 
   UserRepository.register :in_memory, Repository::Adapter::InMemory.new
   GithubService.register  :fake,      FakeGithubService.new
-  GitService.register     :fake,      FakeGitService.new
 end

@@ -1,4 +1,4 @@
-module Customer
+module Deploy
   class FakeGitService
 
     def clone

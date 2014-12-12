@@ -2,7 +2,7 @@ require 'spec_helper'
 require_relative "./../../../web/lib/web"
 require_relative "./../../../web/endpoints/users"
 
-describe 'Repositories' do
+describe 'Remote projects' do
 
   def app
     Users
@@ -10,7 +10,7 @@ describe 'Repositories' do
 
   context 'When api key is not present' do
     it 'returns a 412' do
-      get '/repositories'
+      get '/remote_projects'
 
       expect(last_response.status).to be_eql 412
     end
@@ -18,7 +18,7 @@ describe 'Repositories' do
 
   context 'When user corresponding to the api key does not exist' do
     it 'returns a 403' do
-      get '/repositories', {}, { 'API_KEY' => 'random' }
+      get '/remote_projects', {}, { 'API_KEY' => 'random' }
 
       expect(last_response.status).to be_eql 403
     end
@@ -31,7 +31,7 @@ describe 'Repositories' do
     end
 
     it 'lists the available repositories for this user' do
-      get '/repositories', {}, { 'API_KEY' => user.api_key }
+      get '/remote_projects', {}, { 'API_KEY' => user.api_key }
 
       expect(last_response.status).to be_eql 200
       json = JSON.parse(last_response.body)

@@ -1,5 +1,5 @@
 module Customer
-  class ListRepositories < Struct.new(:user)
+  class ListRemoteProject < Struct.new(:user)
 
     def run!
       account     = user.find_account 'github'
