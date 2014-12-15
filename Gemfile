@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gem 'activemodel'
 gem 'activesupport'
+gem 'activerecord'
 gem 'interchange'
 gem 'octokit'
 gem 'puma'
@@ -19,4 +20,5 @@ end
 group :test, :development do
   gem 'pry'
   gem 'pry-byebug'
+  gem 'sqlite3'
 end

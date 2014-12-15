@@ -1,0 +1,2 @@
+dmc/active_record/db/*.sqlite3
+dmc/active_record/logs/*.log

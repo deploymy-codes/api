@@ -3,6 +3,7 @@ require 'interchange'
 require_relative './query_not_implemented_error'
 require_relative './record_not_found_error'
 require_relative './adapter/in_memory'
+require_relative './adapter/active_record'
 
 class Repository
   extend Interchange.new(*[

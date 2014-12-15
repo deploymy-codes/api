@@ -33,3 +33,10 @@ namespace :repository do
     Customer::UserRepository.clear
   end
 end
+
+namespace :db do
+  desc "Run migrations"
+  task migrate: :environment do
+    ::ActiveRecord.migrate
+  end
+end

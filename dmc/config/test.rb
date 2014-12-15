@@ -1,5 +1,5 @@
 require 'pry'
 
-Customer::UserRepository.use :in_memory
+Customer::UserRepository.use :active_record
 
 Customer::GithubService.use :fake
