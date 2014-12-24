@@ -25,7 +25,9 @@ class Repository
       end
 
       def create(entity)
-        to_active_record(entity).save
+        record = to_active_record(entity)
+        record.save
+        entity.id = record.id
       end
 
       def update(entity)
@@ -42,7 +44,7 @@ class Repository
 
       def query(klass, selector)
         if query_implemented? klass, selector
-          to_entities(send query_method(klass, selector), klass, selector)
+          send query_method(klass, selector), klass, selector
         else
           raise QueryNotImplementedError, selector
         end
@@ -63,11 +65,11 @@ class Repository
       end
 
       def to_active_record(entity)
-        Mapper::ActiveRecord.new(entity).map
+        raise MapperNotImplementedError
       end
 
       def to_entity(record)
-        Mapper::Entity.new(record).map
+        raise MapperNotImplementedError
       end
 
       def to_entities(records)

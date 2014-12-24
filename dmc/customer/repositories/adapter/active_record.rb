@@ -17,6 +17,19 @@ module Customer
 
         def clear
           ::ActiveRecord::User.destroy_all
+          ::ActiveRecord::Account.destroy_all
+        end
+
+        def to_active_record(entity)
+          return unless entity
+
+          Mapper::ActiveRecord.new(entity).map
+        end
+
+        def to_entity(record)
+          return unless record
+
+          Mapper::Entity.new(record).map
         end
 
       end

@@ -13,7 +13,7 @@ require_relative 'serializers/user_serializer'
 require_relative 'repositories/user_repository'
 require_relative 'repositories/adapter/in_memory'
 require_relative 'repositories/adapter/active_record'
-
+require_relative 'repositories/adapter/active_record/mapper'
 
 require_relative 'forms/code_form'
 require_relative 'forms/api_key_form'

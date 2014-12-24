@@ -8,6 +8,9 @@ class Repository
             raise MapperNotImplementedError
           end
 
+          def to_entity_klass
+            "Customer::#{record.class.name.demodulize}".constantize
+          end
         end
 
         class ActiveRecord < Struct.new(:entity)
