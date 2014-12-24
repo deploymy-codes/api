@@ -9,31 +9,31 @@ class Repository
       end
 
       def all(klass)
-        models_for_class(klass).all
+        to_entities to_active_record_klass(klass).all
       end
 
       def count(klass)
-        models_for_class(klass).count
+        to_active_record_klass(klass).count
       end
 
       def find(klass, id)
-        record = models_for_class(klass).find id
+        record = to_active_record_klass(klass).find id
 
         raise RecordNotFoundError.new(klass, id) unless record
 
-        record
+        to_entity record
       end
 
-      def create(record)
-        to_model(record).save
+      def create(entity)
+        to_active_record(entity).save
       end
 
-      def update(record)
-        record.save
+      def update(entity)
+        to_active_record(entity).save
       end
 
-      def delete(record)
-        record.destroy
+      def delete(entity)
+        to_active_record(entity).destroy
       end
 
       def empty?(klass)
@@ -42,7 +42,7 @@ class Repository
 
       def query(klass, selector)
         if query_implemented? klass, selector
-          send query_method(klass, selector), klass, selector
+          to_entities(send query_method(klass, selector), klass, selector)
         else
           raise QueryNotImplementedError, selector
         end
@@ -58,14 +58,21 @@ class Repository
         respond_to? query_method(klass, selector)
       end
 
-      def to_model(record)
-        model_for_class(record.class).new record.attributes
-      end
-
-      def model_for_class(klass)
+      def to_active_record_klass(klass)
         "ActiveRecord::#{klass.name.demodulize}".constantize
       end
 
+      def to_active_record(entity)
+        Mapper::ActiveRecord.new(entity).map
+      end
+
+      def to_entity(record)
+        Mapper::Entity.new(record).map
+      end
+
+      def to_entities(records)
+        Array(records).map { |record| to_entity record }
+      end
     end
   end
 end
