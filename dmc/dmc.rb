@@ -17,11 +17,11 @@ module DMC
 end
 
 require_relative 'lib/framework'
-require_relative 'active_record/active_record'
 require_relative 'customer/customer'
+require_relative 'orm/perpetuity'
 
 Customer::UserRepository.register :in_memory, Customer::Repository::Adapter::InMemory.new
-Customer::UserRepository.register :active_record, Customer::Repository::Adapter::ActiveRecord.new
+Customer::UserRepository.register :perpetuity, Customer::Repository::Adapter::Perpetuity.new
 Customer::GithubService.register :fake, Customer::FakeGithubService.new
 
 
