@@ -4,10 +4,6 @@ GEM
     activemodel (4.1.8)
       activesupport (= 4.1.8)
       builder (~> 3.1)
-    activerecord (4.1.8)
-      activemodel (= 4.1.8)
-      activesupport (= 4.1.8)
-      arel (~> 5.0.0)
     activesupport (4.1.8)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
@@ -15,7 +11,6 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
-    arel (5.0.1.20140414130214)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -47,6 +42,11 @@ GEM
     multipart-post (2.0.0)
     octokit (3.7.0)
       sawyer (~> 0.6.0, >= 0.5.3)
+    perpetuity (1.0.0)
+    perpetuity-postgres (0.0.8)
+      perpetuity (~> 1.0.0)
+      pg
+    pg (0.17.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -105,10 +105,10 @@ PLATFORMS
 
 DEPENDENCIES
   activemodel
-  activerecord
   activesupport
   interchange
   octokit
+  perpetuity-postgres
   pry
   pry-byebug
   puma

@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 gem 'activemodel'
 gem 'activesupport'
-gem 'activerecord'
+gem 'perpetuity-postgres'
 gem 'interchange'
 gem 'octokit'
 gem 'puma'
