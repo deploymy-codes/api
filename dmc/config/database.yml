@@ -1,20 +1,20 @@
 development:
-  host:
-  post:
-  username:
+  host: localhost
+  port: 5432
+  username: deploy_my_codes
   password:
-  database:
+  database: deploy_my_codes_development
 
 test:
-  host:
-  post:
-  username:
+  host: localhost
+  port: 5432
+  username: deploy_my_codes
   password:
-  database:
+  database: deploy_my_codes_test
 
 production:
   host:
-  post:
+  port:
   username:
   password:
   database:

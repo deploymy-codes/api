@@ -1,9 +1,9 @@
 require 'perpetuity/postgres'
+require 'yaml'
 
-Perpetuity.data_source :postgres, '',
-  host: '',
-  port: ,
-  username: '',
-  password: ''
+config   = YAML.load_file("#{DMC.root}/config/database.yml")[DMC.env]
+database = config.delete('database')
+
+Perpetuity.data_source :postgres, database, config
 
 require_relative './mapper/customer'
