@@ -1,4 +1,4 @@
-class RecordNotFoundError < StandardError
+class EntityNotFoundError < StandardError
 
   def initialize(klass, id)
     @klass = klass

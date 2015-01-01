@@ -17,7 +17,7 @@ class Repository
       def find(klass, id)
         entity = map_for_class(klass)[id]
 
-        raise entityNotFoundError.new(klass, id) unless entity
+        raise EntityNotFoundError.new(klass, id) unless entity
 
         entity
       end
@@ -34,10 +34,6 @@ class Repository
 
       def delete(entity)
         map_for(entity).delete entity.id
-      end
-
-      def empty?(klass)
-        all(klass).empty?
       end
 
       def query(klass, selector)
