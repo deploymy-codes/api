@@ -2,7 +2,7 @@ Perpetuity.generate_mapper_for Customer::User do
   attribute :name, type: String
   attribute :email, type: String
   attribute :api_key, type: String
-  attribute :accounts, embedded: true
+  attribute :accounts
 
   index :api_key
 end

@@ -14,7 +14,7 @@ module Customer
 
     context 'When user does not exists' do
       it 'returns a new user' do
-        user = FindOrCreateUser.new(:github, form).run!
+        user = FindOrCreateUser.new('github', form).run!
 
         expect(user.persisted?).to be true
         expect(user.accounts.first.provider).to be_eql 'github'
@@ -22,9 +22,9 @@ module Customer
     end
 
     context 'When user exists' do
-      let!(:user) { FindOrCreateUser.new(:github, form).run! }
+      let!(:user) { FindOrCreateUser.new('github', form).run! }
 
-      subject { FindOrCreateUser.new(:github, form).run! }
+      subject { FindOrCreateUser.new('github', form).run! }
 
       it 'returns the same user' do
         expect(subject.id).to be_eql user.id

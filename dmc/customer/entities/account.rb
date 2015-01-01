@@ -1,8 +1,7 @@
 module Customer
   class Account < Entity
 
-    attribute :oauth_token, String
-    attribute :provider, String
+    attr_accessor :oauth_token, :provider, :user
 
     def self.build(provider, oauth_token)
       new.tap do |account|
