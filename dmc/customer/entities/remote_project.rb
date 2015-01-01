@@ -3,6 +3,5 @@ module Customer
 
     attr_accessor :name, :url
 
-
   end
 end

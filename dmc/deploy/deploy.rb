@@ -13,6 +13,7 @@ require_relative 'services/git_service/rugged_git_service'
 require_relative 'services/git_service/fake_git_service'
 
 require_relative 'use_cases/create_project'
+require_relative 'use_cases/list_project'
 
 module Deploy
   ProjectRepository.register :in_memory, Repository::Adapter::InMemory.new
