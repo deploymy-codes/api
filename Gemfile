@@ -19,6 +19,7 @@ group :test do
 end
 
 group :test, :development do
+  gem 'sqlite3'
   gem 'pry'
   gem 'pry-byebug'
 end

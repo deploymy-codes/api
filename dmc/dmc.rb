@@ -19,9 +19,11 @@ end
 require_relative 'lib/framework'
 require_relative 'customer/customer'
 require_relative 'orm/perpetuity'
+require_relative 'orm/rom'
 
 Customer::UserRepository.register :in_memory, Customer::Repository::Adapter::InMemory.new
 Customer::UserRepository.register :perpetuity, Customer::Repository::Adapter::Perpetuity.new
+Customer::UserRepository.register :rom, Customer::Repository::Adapter::Rom.new
 Customer::GithubService.register :fake, Customer::FakeGithubService.new
 
 

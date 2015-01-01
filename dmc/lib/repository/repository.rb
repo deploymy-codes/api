@@ -4,6 +4,7 @@ require_relative './query_not_implemented_error'
 require_relative './entity_not_found_error'
 require_relative './adapter/in_memory'
 require_relative './adapter/perpetuity'
+require_relative './adapter/rom'
 
 class Repository
   extend Interchange.new(*[
