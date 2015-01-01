@@ -16,7 +16,7 @@ module Customer
     context 'When user is found' do
       let!(:user) do
         code_form = CodeForm.new code: 'code'
-        FindOrCreateUser.new(:github, code_form).run!
+        FindOrCreateUser.new('github', code_form).run!
       end
 
       it 'returns the user' do

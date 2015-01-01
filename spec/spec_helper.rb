@@ -95,5 +95,6 @@ RSpec.configure do |config|
 
   config.before(:each) do
     Customer::UserRepository.clear
+    Deploy::ProjectRepository.clear
   end
 end

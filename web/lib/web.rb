@@ -47,7 +47,7 @@ class Web < Sinatra::Base
     halt_json_error 400
   end
 
-  error RecordNotFoundError do
+  error EntityNotFoundError do
     halt_json_error 404
   end
 

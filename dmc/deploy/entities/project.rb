@@ -1,10 +1,7 @@
 module Deploy
   class Project < Entity
 
-    attribute :name, String
-    attribute :remote_name, String
-    attribute :url, String
-    attribute :user_id, Integer
+    attr_accessor :name, :remote_name, :url, :user_id
 
     def self.build_from(user: nil, remote_project: nil)
       new.tap do |project|

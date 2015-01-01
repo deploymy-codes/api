@@ -10,6 +10,7 @@ require_relative 'serializers/remote_project_serializer'
 
 require_relative 'repositories/user_repository'
 require_relative 'repositories/adapter/in_memory'
+require_relative 'repositories/adapter/perpetuity'
 
 require_relative 'forms/code_form'
 require_relative 'forms/api_key_form'
@@ -27,5 +28,6 @@ module Customer
   PROVIDERS = [:github]
 
   UserRepository.register :in_memory, Repository::Adapter::InMemory.new
+  UserRepository.register :perpetuity, Repository::Adapter::Perpetuity.new
   GithubService.register  :fake,      FakeGithubService.new
 end

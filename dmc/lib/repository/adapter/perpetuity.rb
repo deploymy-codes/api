@@ -1,21 +1,19 @@
+require 'perpetuity'
+
 class Repository
   module Adapter
-    class InMemory
-
-      def initialize
-        clear
-      end
+    class Perpetuity
 
       def all(klass)
-        map_for_class(klass).values
+        mapper_for(klass).all.to_a
       end
 
       def count(klass)
-        map_for_class(klass).count
+        mapper_for(klass).count
       end
 
       def find(klass, id)
-        entity = map_for_class(klass)[id]
+        entity = mapper_for(klass).find id
 
         raise EntityNotFoundError.new(klass, id) unless entity
 
@@ -23,17 +21,15 @@ class Repository
       end
 
       def create(entity)
-        @counter = @counter + 1
-        entity.id ||= @counter
-        map_for(entity)[entity.id] = entity
+        mapper_for(entity.class).insert entity
       end
 
       def update(entity)
-        map_for(entity)[entity.id] = entity
+        mapper_for(entity.class).save entity
       end
 
       def delete(entity)
-        map_for(entity).delete entity.id
+        mapper_for(entity.class).delete entity
       end
 
       def query(klass, selector)
@@ -42,11 +38,6 @@ class Repository
         else
           raise QueryNotImplementedError, selector
         end
-      end
-
-      def clear
-        @counter = 0
-        @map = {}
       end
 
       private
@@ -59,12 +50,8 @@ class Repository
         respond_to? query_method(klass, selector)
       end
 
-      def map_for_class(klass)
-        @map[klass.to_s.to_sym] ||= {}
-      end
-
-      def map_for(entity)
-        map_for_class(entity.class)
+      def mapper_for(klass)
+        ::Perpetuity[klass]
       end
 
     end

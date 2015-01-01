@@ -5,7 +5,7 @@ module Customer
 
     let(:user) do
       code_form = CodeForm.new code: 'code'
-      FindOrCreateUser.new(:github, code_form).run!
+      FindOrCreateUser.new('github', code_form).run!
     end
 
     it 'returns the list' do

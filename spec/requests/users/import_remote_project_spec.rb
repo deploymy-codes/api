@@ -27,7 +27,7 @@ describe 'Import remote projects' do
   context 'When user is found' do
     let!(:user) do
       code_form = Customer::CodeForm.new code: 'code'
-      Customer::FindOrCreateUser.new(:github, code_form).run!
+      Customer::FindOrCreateUser.new('github', code_form).run!
     end
 
     it 'return the project' do

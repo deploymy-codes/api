@@ -1,10 +1,11 @@
 module Customer
   class User < Entity
 
-    attribute :name, String
-    attribute :email, String
-    attribute :api_key, String
-    attribute :accounts, Array[Account]
+    attr_accessor :name, :email, :api_key, :accounts
+
+    def initialize
+      @accounts = []
+    end
 
     def self.build_from_provider_user(provider_user)
       new.tap do |user|
