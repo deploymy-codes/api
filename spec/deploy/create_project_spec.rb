@@ -4,8 +4,7 @@ module Deploy
   describe 'Create project' do
 
     it 'create the project based on the user and the remote project' do
-      form = Customer::CodeForm.new code: 'code'
-      user = Customer::FindOrCreateUser.new('github', form).run!
+      user = create_user
 
       remote_projects = Customer::ListRemoteProject.new(user).run!
 

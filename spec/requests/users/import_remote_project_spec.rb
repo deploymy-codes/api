@@ -9,10 +9,7 @@ describe 'Import remote projects' do
     Users
   end
 
-  let!(:user) do
-    code_form = Customer::CodeForm.new code: 'code'
-    Customer::FindOrCreateUser.new('github', code_form).run!
-  end
+  let!(:user) { create_user }
 
   it 'return the project' do
     post '/remote_projects/rails/import', {}, { 'API_KEY' => user.api_key }

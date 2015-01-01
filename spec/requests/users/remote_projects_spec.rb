@@ -9,10 +9,7 @@ describe 'Remote projects' do
     Users
   end
 
-  let!(:user) do
-    code_form = Customer::CodeForm.new code: 'code'
-    Customer::FindOrCreateUser.new('github', code_form).run!
-  end
+  let!(:user) { create_user }
 
   it 'lists the available repositories for this user' do
     get '/remote_projects', {}, { 'API_KEY' => user.api_key }
