@@ -5,15 +5,15 @@ class Repository
     class Perpetuity
 
       def all(klass)
-        ::Perpetuity[klass].all
+        mapper_for(klass).all.to_a
       end
 
       def count(klass)
-        ::Perpetuity[klass].count
+        mapper_for(klass).count
       end
 
       def find(klass, id)
-        entity = ::Perpetuity[klass].find id
+        entity = mapper_for(klass).find id
 
         raise EntityNotFoundError.new(klass, id) unless entity
 
@@ -21,15 +21,15 @@ class Repository
       end
 
       def create(entity)
-        ::Perpetuity[entity.class].insert entity
+        mapper_for(entity.class).insert entity
       end
 
       def update(entity)
-        ::Perpetuity[entity.class].save entity
+        mapper_for(entity.class).save entity
       end
 
       def delete(entity)
-        ::Perpetuity[entity.class].delete entity
+        mapper_for(entity.class).delete entity
       end
 
       def query(klass, selector)
@@ -48,6 +48,10 @@ class Repository
 
       def query_implemented?(klass, selector)
         respond_to? query_method(klass, selector)
+      end
+
+      def mapper_for(klass)
+        ::Perpetuity[klass]
       end
 
     end
