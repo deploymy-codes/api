@@ -18,11 +18,12 @@ module Deploy
           mapper = mapper_for klass
           mapper.load_association! selector.project, :environments
 
-          selector.project.environments || []
+          selector.project.environments
         end
 
         def clear
           mapper_for(Deploy::Project).delete_all
+          mapper_for(Deploy::Environment).delete_all
         end
       end
     end

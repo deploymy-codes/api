@@ -7,8 +7,8 @@ describe 'List environment' do
     Projects
   end
 
-  let(:user)        { create_user }
-  let(:project)     { create_project name: 'rails', user: user }
+  let(:user)         { create_user }
+  let(:project)      { create_project name: 'rails', user: user }
   let!(:environment) { create_environment project: project }
 
   it_behaves_like 'Authenticated', '/rails'
