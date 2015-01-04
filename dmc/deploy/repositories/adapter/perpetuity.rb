@@ -14,6 +14,13 @@ module Deploy
           end
         end
 
+        def query_environments_with_project(klass, selector)
+          mapper = mapper_for klass
+          mapper.load_association! selector.project, :environments
+
+          selector.project.environments || []
+        end
+
         def clear
           mapper_for(Deploy::Project).delete_all
         end

@@ -16,7 +16,7 @@ class Projects < Web
     json serialize(current_project)
   end
 
-  get '/:project_name/environmens' do |project_name|
+  get '/:project_name/environments' do |project_name|
     use_case     = Deploy::ListEnvironment.new current_project
     environments = use_case.run!
 

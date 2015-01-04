@@ -16,6 +16,7 @@ require_relative 'services/git_service/fake_git_service'
 require_relative 'use_cases/create_project'
 require_relative 'use_cases/list_project'
 require_relative 'use_cases/find_project'
+require_relative 'use_cases/list_environment'
 
 module Deploy
   ProjectRepository.register :in_memory, Repository::Adapter::InMemory.new

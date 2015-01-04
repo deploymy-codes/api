@@ -12,6 +12,10 @@ module Deploy
             project.user_id.to_s == selector.user_id.to_s && project.name == selector.name
           end
         end
+
+        def query_environments_with_project(klass, selector)
+          selector.project.environments
+        end
       end
     end
   end
