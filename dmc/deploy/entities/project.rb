@@ -5,6 +5,7 @@ module Deploy
     attribute :remote_name, String
     attribute :url, String
     attribute :user_id, String
+    attribute :environments, Array[Environment]
 
     def self.build_from(user: nil, remote_project: nil)
       new.tap do |project|

@@ -4,3 +4,8 @@ Perpetuity.generate_mapper_for Deploy::Project do
   attribute :url, type: String
   attribute :user_id, type: String
 end
+
+Perpetuity.generate_mapper_for Deploy::Environment do
+  attribute :name, type: String
+  attribute :strategy, type: String
+end
