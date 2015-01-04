@@ -23,6 +23,14 @@ class Projects < Web
     json serialize(environments)
   end
 
+  post '/:project_name/environments' do |project_name|
+    form         = Deploy::EnvironmentForm.new extract!(:environment)
+    use_case     = Deploy::CreateEnvironment.new current_project, form
+    environment = use_case.run!
+
+    json serialize(environment)
+  end
+
   error Deploy::ProjectRepository::UnknownProjectNameError do
     halt_json_error 404
   end
