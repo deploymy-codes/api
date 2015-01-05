@@ -19,6 +19,8 @@ ENV['RACK_ENV'] = 'test'
 require_relative './../dmc/dmc'
 require 'rack/test'
 
+Dir["./spec/support/**/*.rb"].sort.each { |f| require f}
+
 RSpec.configure do |config|
   include Rack::Test::Methods
   # rspec-expectations config goes here. You can use an alternate

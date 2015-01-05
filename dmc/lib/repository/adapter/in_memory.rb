@@ -24,7 +24,7 @@ class Repository
 
       def create(entity)
         @counter = @counter + 1
-        entity.id ||= @counter
+        entity.instance_variable_set :@id, @counter
         map_for(entity)[entity.id] = entity
       end
 

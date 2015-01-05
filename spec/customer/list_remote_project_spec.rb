@@ -3,10 +3,7 @@ require 'spec_helper'
 module Customer
   describe 'List remote project' do
 
-    let(:user) do
-      code_form = CodeForm.new code: 'code'
-      FindOrCreateUser.new('github', code_form).run!
-    end
+    let(:user) { create_user }
 
     it 'returns the list' do
       remote_projects = ListRemoteProject.new(user).run!

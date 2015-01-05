@@ -1,7 +1,8 @@
 module Customer
   class RemoteProject < Entity
 
-    attr_accessor :name, :url
+    attribute :name, String
+    attribute :url, String
 
   end
 end
