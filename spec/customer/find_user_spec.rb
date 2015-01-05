@@ -14,10 +14,7 @@ module Customer
     end
 
     context 'When user is found' do
-      let!(:user) do
-        code_form = CodeForm.new code: 'code'
-        FindOrCreateUser.new('github', code_form).run!
-      end
+      let!(:user) { create_user }
 
       it 'returns the user' do
         form        = APIKeyForm.new(api_key: user.api_key)

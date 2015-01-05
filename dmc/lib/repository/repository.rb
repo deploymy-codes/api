@@ -20,7 +20,11 @@ class Repository
     end
 
     def save(record)
-      create record
+      if record.persisted?
+        update record
+      else
+        create record
+      end
     end
 
   end

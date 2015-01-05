@@ -13,8 +13,10 @@ class Web < Sinatra::Base
   helpers do
     def serialize(object)
       if object.is_a?(Array)
-        serializer_klass = "#{object.first.class.name}Serializer".constantize
-        object.map { |entity| serializer_klass.new(entity).run }
+        object.map do |entity|
+          serializer_klass = "#{entity.class.name}Serializer".constantize
+          serializer_klass.new(entity).run
+        end
       else
         serializer_klass = "#{object.class.name}Serializer".constantize
         serializer       = serializer_klass.new(object)
@@ -53,5 +55,9 @@ class Web < Sinatra::Base
 
   error APIKeyHeaderMissingError do
     halt_json_error 412
+  end
+
+  error Customer::UserRepository::UnknownApiKeyError do
+    halt_json_error 403
   end
 end
