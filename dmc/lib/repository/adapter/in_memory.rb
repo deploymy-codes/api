@@ -15,29 +15,25 @@ class Repository
       end
 
       def find(klass, id)
-        record = map_for_class(klass)[id]
+        entity = map_for_class(klass)[id]
 
-        raise RecordNotFoundError.new(klass, id) unless record
+        raise EntityNotFoundError.new(klass, id) unless entity
 
-        record
+        entity
       end
 
-      def create(record)
+      def create(entity)
         @counter = @counter + 1
-        record.id ||= @counter
-        map_for(record)[record.id] = record
+        entity.instance_variable_set :@id, @counter
+        map_for(entity)[entity.id] = entity
       end
 
-      def update(record)
-        map_for(record)[record.id] = record
+      def update(entity)
+        map_for(entity)[entity.id] = entity
       end
 
-      def delete(record)
-        map_for(record).delete record.id
-      end
-
-      def empty?(klass)
-        all(klass).empty?
+      def delete(entity)
+        map_for(entity).delete entity.id
       end
 
       def query(klass, selector)
@@ -67,8 +63,8 @@ class Repository
         @map[klass.to_s.to_sym] ||= {}
       end
 
-      def map_for(record)
-        map_for_class(record.class)
+      def map_for(entity)
+        map_for_class(entity.class)
       end
 
     end

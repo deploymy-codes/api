@@ -6,6 +6,10 @@ module Customer
     attribute :api_key, String
     attribute :accounts, Array[Account]
 
+    def initialize
+      @accounts = []
+    end
+
     def self.build_from_provider_user(provider_user)
       new.tap do |user|
         user.name    = provider_user.name

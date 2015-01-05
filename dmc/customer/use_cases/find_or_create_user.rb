@@ -38,15 +38,11 @@ module Customer
     end
 
     def provider_user
-      @provider_user ||= provider_service.user(oauth_token)
+      @provider_user ||= GithubService.user(oauth_token)
     end
 
     def oauth_token
-      @oauth_token ||= provider_service.fetch_token form.code
-    end
-
-    def provider_service
-      @provider_service ||= GithubService
+      @oauth_token ||= GithubService.fetch_token form.code
     end
   end
 end

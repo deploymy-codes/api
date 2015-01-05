@@ -12,9 +12,16 @@ class Web < Sinatra::Base
 
   helpers do
     def serialize(object)
-      serializer_klass = Customer::UserSerializer
-      serializer       = serializer_klass.new(object)
-      serializer.run
+      if object.is_a?(Array)
+        object.map do |entity|
+          serializer_klass = "#{entity.class.name}Serializer".constantize
+          serializer_klass.new(entity).run
+        end
+      else
+        serializer_klass = "#{object.class.name}Serializer".constantize
+        serializer       = serializer_klass.new(object)
+        serializer.run
+      end
     end
 
     def extract!(key)
@@ -42,11 +49,15 @@ class Web < Sinatra::Base
     halt_json_error 400
   end
 
-  error RecordNotFoundError do
+  error EntityNotFoundError do
     halt_json_error 404
   end
 
   error APIKeyHeaderMissingError do
     halt_json_error 412
+  end
+
+  error Customer::UserRepository::UnknownApiKeyError do
+    halt_json_error 403
   end
 end

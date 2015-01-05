@@ -1,21 +1,27 @@
+require_relative "../helpers/user_helper"
+
 class Users < Web
-
-  helpers do
-    def current_user
-      api_key = env.fetch 'API_KEY' do
-        raise APIKeyHeaderMissingError
-      end
-
-      form = Customer::APIKeyForm.new(api_key: api_key)
-      Customer::FindUser.new(form).run!
-    end
-  end
+  helpers UserHelper
 
   get '/self' do
     json serialize(current_user)
   end
 
-  error Customer::UserRepository::UnknownApiKeyError do
-    halt_json_error 403
+  get '/remote_projects' do
+    use_case     = Customer::ListRemoteProject.new current_user
+    remote_projects = use_case.run!
+
+    json serialize(remote_projects)
   end
+
+  post '/remote_projects/:name/import' do |name|
+    use_case     = Customer::GetRemoteProject.new current_user, name
+    remote_project = use_case.run!
+
+    use_case = Deploy::CreateProject.new current_user, remote_project
+    project = use_case.run!
+    status 201
+    json serialize(project)
+  end
+
 end

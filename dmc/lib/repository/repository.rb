@@ -1,8 +1,9 @@
 require 'interchange'
 
 require_relative './query_not_implemented_error'
-require_relative './record_not_found_error'
+require_relative './entity_not_found_error'
 require_relative './adapter/in_memory'
+require_relative './adapter/perpetuity'
 
 class Repository
   extend Interchange.new(*[
@@ -19,7 +20,7 @@ class Repository
     end
 
     def save(record)
-      if record.id
+      if record.persisted?
         update record
       else
         create record

@@ -31,5 +31,6 @@ namespace :repository do
   desc "Empty all Repositories"
   task clear: :environment do
     Customer::UserRepository.clear
+    Deploy::ProjectRepository.clear
   end
 end

@@ -1,19 +1,20 @@
 require 'active_support/core_ext/hash'
-require 'active_support/core_ext/module'
 require 'json/ext'
 
 class Serializer < Struct.new(:object)
 
-  mattr_accessor :attributes
-
   class << self
     def attributes(*attributes)
-      self.attributes = attributes
+      @attributes = attributes
+    end
+
+    def keys
+      @attributes
     end
   end
 
   def run
-    object.attributes.slice(*attributes)
+    object.attributes.slice(*self.class.keys)
   end
 
 end
