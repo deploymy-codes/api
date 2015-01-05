@@ -1,7 +1,10 @@
 module Customer
   class User < Entity
 
-    attr_accessor :name, :email, :api_key, :accounts
+    attribute :name, String
+    attribute :email, String
+    attribute :api_key, String
+    attribute :accounts, Array[Account]
 
     def initialize
       @accounts = []

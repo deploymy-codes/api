@@ -9,10 +9,7 @@ describe 'Root' do
     Projects
   end
 
-  let(:user) do
-    code_form = Customer::CodeForm.new code: 'code'
-    Customer::FindOrCreateUser.new('github', code_form).run!
-  end
+  let(:user) { create_user }
 
   let(:remote_project) { Customer::RemoteProject.new(name: 'rails', url: 'http://www.google.com') }
 

@@ -4,8 +4,7 @@ module Deploy
   describe 'List project' do
 
     it 'list project which belongs to the user' do
-      form = Customer::CodeForm.new code: 'code'
-      user = Customer::FindOrCreateUser.new('github', form).run!
+      user = create_user
 
       remote_project = Customer::RemoteProject.new(name: 'rails', url: 'http://www.google.com')
       project = CreateProject.new(user, remote_project).run!
