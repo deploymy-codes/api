@@ -12,7 +12,17 @@ module Deploy
 
       expect(project.id).to_not be_nil
       expect(project.name).to be_eql 'rails'
-      expect(project.user_id).to be_eql user.id
+      expect(project.user_id).to be_eql user.id.to_s
+    end
+
+    it 'create a default environment' do
+      user = create_user
+
+      remote_projects = Customer::ListRemoteProject.new(user).run!
+
+      project = CreateProject.new(user, remote_projects.first).run!
+
+      expect(project.environments.count).to be 1
     end
   end
 end
