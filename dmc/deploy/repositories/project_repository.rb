@@ -32,5 +32,5 @@ module Deploy
 
   ProjectWithUserId        = Struct.new :user_id
   ProjectWithNameAndUserId = Struct.new :name, :user_id
-  EnvironmentsWithProject    = Struct.new :project
+  EnvironmentsWithProject  = Struct.new :project
 end

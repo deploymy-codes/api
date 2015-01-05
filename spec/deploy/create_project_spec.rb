@@ -12,7 +12,7 @@ module Deploy
 
       expect(project.id).to_not be_nil
       expect(project.name).to be_eql 'rails'
-      expect(project.user_id).to be_eql user.id.to_s
+      expect(project.user_id).to be_eql user.id
     end
 
     it 'create a default environment' do
