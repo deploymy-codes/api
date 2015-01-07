@@ -1,6 +1,6 @@
 class Auth < Web
 
-  get '/:provider' do |provider|
+  post '/:provider' do |provider|
     form     = Customer::CodeForm.from_params params
     use_case = Customer::FindOrCreateUser.new provider, form
 

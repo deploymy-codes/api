@@ -9,7 +9,7 @@ describe 'Auth provider' do
   end
 
   it 'returns the user corresponding to the code and provider with an api key' do
-    get '/github', code: 'code'
+    post '/github', code: 'code'
 
     expect(last_response.status).to be_eql 201
     json = JSON.parse(last_response.body)

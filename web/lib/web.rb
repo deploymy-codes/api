@@ -39,6 +39,20 @@ class Web < Sinatra::Base
         error: { message: ex.message }
       }.merge(errors))
     end
+
+    def json_body_params
+      MultiJson.load(request.body.read.to_s, symbolize_keys: true)
+    rescue MultiJson::ParseError
+      {}
+    end
+  end
+
+  before do
+    headers 'Access-Control-Allow-Origin' => '*', 'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST']
+  end
+
+  before do
+    params.merge! json_body_params
   end
 
   error ParameterMissingError do
