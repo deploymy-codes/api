@@ -1,4 +1,6 @@
 Perpetuity.generate_mapper_for Customer::User do
+  collection 'users'
+
   attribute :name, type: String
   attribute :email, type: String
   attribute :api_key, type: String
@@ -8,6 +10,8 @@ Perpetuity.generate_mapper_for Customer::User do
 end
 
 Perpetuity.generate_mapper_for Customer::Account do
+  collection 'accounts'
+
   attribute :oauth_token, type: String
   attribute :provider, type: String
 

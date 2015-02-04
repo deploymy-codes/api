@@ -1,4 +1,6 @@
 Perpetuity.generate_mapper_for Deploy::Project do
+  collection 'projects'
+
   attribute :name, type: String
   attribute :remote_name, type: String
   attribute :url, type: String
@@ -7,6 +9,8 @@ Perpetuity.generate_mapper_for Deploy::Project do
 end
 
 Perpetuity.generate_mapper_for Deploy::Environment do
+  collection 'environments'
+
   attribute :name, type: String
   attribute :strategy, type: String
 end
