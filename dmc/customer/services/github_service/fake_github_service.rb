@@ -16,7 +16,7 @@ module Customer
     end
 
     def user(oauth_token)
-      FakeUser.new('Aaron Patterson', 'aaron@tenderlove.org', '')
+      FakeUser.new('Aaron Patterson', 'aaron@tenderlove.org', 'https://avatars0.githubusercontent.com/u/3124?v=3')
     end
 
     def repositories(oauth_token)
