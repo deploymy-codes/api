@@ -22,4 +22,16 @@ describe 'Create environment' do
     expect(json['name']).to be_eql 'master'
     expect(json['strategy']).to be_eql 'heroku'
   end
+
+  context 'When environment name is already taken' do
+    it 'returns a 403 errors' do
+      post "/#{project.name}/environments", { environment: { name: 'master' , strategy: 'heroku'}}, { 'API_KEY' => user.api_key }
+
+      post "/#{project.name}/environments", { environment: { name: 'master' , strategy: 'heroku'}}, { 'API_KEY' => user.api_key }
+
+      expect(last_response.status).to be_eql 403
+      json = JSON.parse(last_response.body)
+      expect(json['error']['message']).to be_eql 'Environment name master is already taken'
+    end
+  end
 end

@@ -24,4 +24,7 @@ class Users < Web
     json serialize(project)
   end
 
+  error Deploy::ProjectNameTakenError do
+    halt_json_error 403
+  end
 end

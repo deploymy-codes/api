@@ -34,4 +34,9 @@ class Projects < Web
   error Deploy::ProjectRepository::UnknownProjectNameError do
     halt_json_error 404
   end
+
+  error Deploy::EnvironmentNameTakenError do
+    halt_json_error 403
+  end
+
 end
