@@ -20,4 +20,15 @@ describe 'Import remote projects' do
     expect(json['remote_name']).to be_eql 'rails'
     expect(json['name']).to be_eql 'rails'
   end
+
+  context 'when the project has already been imported' do
+    it 'returns a 403 errors' do
+      post '/remote_projects/rails/import', {}, { 'API_KEY' => user.api_key }
+      post '/remote_projects/rails/import', {}, { 'API_KEY' => user.api_key }
+
+      expect(last_response.status).to be_eql 403
+      json = JSON.parse(last_response.body)
+      expect(json['error']['message']).to be_eql 'Project name rails is already taken'
+    end
+  end
 end
