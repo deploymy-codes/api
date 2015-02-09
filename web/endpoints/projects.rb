@@ -26,6 +26,13 @@ class Projects < Web
   post '/:project_name/environments' do |project_name|
     form         = Deploy::EnvironmentForm.new extract!(:environment)
     use_case     = Deploy::CreateEnvironment.new current_project, form
+    environment  = use_case.run!
+
+    json serialize(environment)
+  end
+
+  post '/:project_name/environments/:environment_name' do |project_name, environment_name|
+    use_case    = Deploy::FindEnvironment.new environment_name, project
     environment = use_case.run!
 
     json serialize(environment)

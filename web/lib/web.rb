@@ -10,6 +10,8 @@ class Web < Sinatra::Base
 
   register Sinatra::Reloader
 
+  set :server, :thin
+
   helpers do
     def serialize(object)
       if object.is_a?(Array)

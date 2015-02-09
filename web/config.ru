@@ -17,3 +17,8 @@ map '/projects' do
   require "#{root}/endpoints/projects"
   run Projects
 end
+
+map '/streams' do
+  require "#{root}/endpoints/streams"
+  run Streams
+end
