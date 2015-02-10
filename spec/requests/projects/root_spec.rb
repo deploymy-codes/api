@@ -13,7 +13,7 @@ describe 'Root' do
 
   let(:remote_project) { Customers::RemoteProject.new(name: 'rails', url: 'http://www.google.com') }
 
-  let!(:project) { Projects::CreateProject.new(user, remote_project).run! }
+  let!(:project) { Projects::Create.new(user, remote_project).run! }
 
   it 'returns the list of projects associated to this user' do
     get '/', {}, { 'API_KEY' => user.api_key }

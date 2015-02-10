@@ -1,5 +1,5 @@
 module Projects
-  class ProjectNameTakenError < StandardError
+  class NameTakenError < StandardError
     def initialize(name)
       @name = name
     end
@@ -9,7 +9,7 @@ module Projects
     end
   end
 
-  class CreateProject < Struct.new(:user, :remote_project)
+  class Create < Struct.new(:user, :remote_project)
 
     def run!
       validate_project_uniqueness!
@@ -25,13 +25,13 @@ module Projects
     private
 
     def add_environment!(project)
-      form = Environments::EnvironmentForm.new name: 'default', strategy: ''
-      Environments::CreateEnvironment.new(project, form).run!
+      form = Environments::CreateForm.new name: 'default', strategy: ''
+      Environments::Create.new(project, form).run!
     end
 
     def validate_project_uniqueness!
-      if ListProject.new(user).run!.map(&:name).include? remote_project.name
-        raise ProjectNameTakenError, remote_project.name
+      if List.new(user).run!.map(&:name).include? remote_project.name
+        raise NameTakenError, remote_project.name
       end
     end
   end

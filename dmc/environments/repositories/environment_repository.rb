@@ -1,7 +1,7 @@
 module Environments
   class EnvironmentRepository < Repository
 
-    class UnknownEnvironmentNameError < StandardError
+    class UnknownNameError < StandardError
       def initialize(name)
         @name = name
       end
@@ -18,13 +18,11 @@ module Environments
 
       def find_by_name_and_project_id!(name, project_id)
         environment = query Environment, EnvironmentWithNameAndProjectId.new(name, project_id)
-        raise UnknownEnvironmentNameError, name if environment.nil?
+        raise UnknownNameError, name if environment.nil?
 
         environment
       end
-
     end
-
   end
 
   EnvironmentWithNameAndProjectId = Struct.new :name, :project_id

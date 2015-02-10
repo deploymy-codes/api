@@ -12,9 +12,9 @@ require_relative 'projects/services/git_service'
 require_relative 'projects/services/git_service/rugged_git_service'
 require_relative 'projects/services/git_service/fake_git_service'
 
-require_relative 'projects/use_cases/create_project'
-require_relative 'projects/use_cases/list_project'
-require_relative 'projects/use_cases/find_project'
+require_relative 'projects/use_cases/create'
+require_relative 'projects/use_cases/list'
+require_relative 'projects/use_cases/find'
 
 module Projects
   ProjectRepository.register :in_memory,  Repository::Adapter::InMemory.new

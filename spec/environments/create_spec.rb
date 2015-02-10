@@ -6,8 +6,8 @@ module Environments
       user         = create_user
       @project     = create_project name: 'rails', user: user
 
-      @form        = EnvironmentForm.new name: 'foo', strategy: 'heroku'
-      @environment = CreateEnvironment.new(@project, @form).run!
+      @form        = CreateForm.new name: 'foo', strategy: 'heroku'
+      @environment = Create.new(@project, @form).run!
     end
 
     it 'create an environment' do
@@ -17,7 +17,7 @@ module Environments
 
     context 'When environment name is taken' do
       it 'raise an environment name taken error' do
-        expect { CreateEnvironment.new(@project, @form).run! }.to raise_error EnvironmentNameTakenError
+        expect { Create.new(@project, @form).run! }.to raise_error NameTakenError
       end
     end
 

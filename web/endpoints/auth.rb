@@ -3,7 +3,7 @@ module Endpoint
 
     post '/:provider' do |provider|
       form     = Customers::CodeForm.from_params params
-      use_case = Customers::FindOrCreateUser.new provider, form
+      use_case = Customers::FindOrCreate.new provider, form
 
       user     = use_case.run!
 

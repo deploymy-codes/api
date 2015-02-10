@@ -5,7 +5,7 @@ module Projects
     before do
       @user            = create_user
       @remote_projects = Customers::ListRemoteProject.new(@user).run!
-      @project         = CreateProject.new(@user, @remote_projects.first).run!
+      @project         = Create.new(@user, @remote_projects.first).run!
     end
 
     it 'create the project based on the user and the remote project' do
@@ -15,13 +15,13 @@ module Projects
     end
 
     it 'create a default environment' do
-      environments = Environments::ListEnvironment.new(@project).run!
+      environments = Environments::List.new(@project).run!
       expect(environments.length).to be 1
     end
 
     context 'When project name is taken' do
       it 'raise a project name taken error' do
-        expect { CreateProject.new(@user, @remote_projects.first).run! }.to raise_error ProjectNameTakenError
+        expect { Create.new(@user, @remote_projects.first).run! }.to raise_error NameTakenError
       end
     end
   end

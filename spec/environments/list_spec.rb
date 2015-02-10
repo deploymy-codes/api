@@ -8,7 +8,7 @@ module Environments
       project     = create_project name: 'rails', user: user
       environment = create_environment project: project
 
-      environments = ListEnvironment.new(project).run!
+      environments = List.new(project).run!
 
       expect(environments.length).to be 2
       expect(environments.last.name).to be_eql environment.name

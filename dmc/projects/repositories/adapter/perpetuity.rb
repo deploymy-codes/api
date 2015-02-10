@@ -15,7 +15,7 @@ module Projects
         end
 
         def clear
-          mapper_for(Deploy::Project).delete_all
+          mapper_for(Projects::Project).delete_all
         end
       end
     end

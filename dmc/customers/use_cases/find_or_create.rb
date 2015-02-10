@@ -1,5 +1,5 @@
 module Customers
-  class FindOrCreateUser < Struct.new(:provider, :form)
+  class FindOrCreate < Struct.new(:provider, :form)
 
     def run!
       form.validate!
@@ -31,9 +31,10 @@ module Customers
 
     def find_or_create_user_by_provider_user
       user = find_or_build_user_by_provider_user
-      user.add_or_update_account(provider, oauth_token)
-
       UserRepository.save user
+
+      UpdateOrCreateAccount.new(user, provider, oauth_token).run!
+
       user
     end
 

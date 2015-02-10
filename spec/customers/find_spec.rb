@@ -8,7 +8,7 @@ module Customers
         form = APIKeyForm.new(api_key: 'api-key')
 
         expect {
-          FindUser.new(form).run!
+          Find.new(form).run!
         }.to raise_error UserRepository::UnknownApiKeyError
       end
     end
@@ -18,7 +18,7 @@ module Customers
 
       it 'returns the user' do
         form        = APIKeyForm.new(api_key: user.api_key)
-        result_user = FindUser.new(form).run!
+        result_user = Find.new(form).run!
 
         expect(result_user.email).to be_eql user.email
       end

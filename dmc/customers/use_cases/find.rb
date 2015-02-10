@@ -1,5 +1,5 @@
 module Customers
-  class FindUser < Struct.new(:form)
+  class Find < Struct.new(:form)
 
     def run!
       form.validate!

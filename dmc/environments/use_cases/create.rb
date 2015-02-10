@@ -1,5 +1,5 @@
 module Environments
-  class EnvironmentNameTakenError < StandardError
+  class NameTakenError < StandardError
     def initialize(name)
       @name = name
     end
@@ -9,7 +9,7 @@ module Environments
     end
   end
 
-  class CreateEnvironment < Struct.new(:project, :form)
+  class Create < Struct.new(:project, :form)
 
     def run!
       form.validate!
@@ -26,8 +26,8 @@ module Environments
     private
 
     def validate_environment_uniqueness!
-      if ListEnvironment.new(project).run!.map(&:name).include? form.name
-        raise EnvironmentNameTakenError, form.name
+      if List.new(project).run!.map(&:name).include? form.name
+        raise NameTakenError, form.name
       end
     end
 

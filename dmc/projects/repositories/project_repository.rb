@@ -1,7 +1,7 @@
 module Projects
   class ProjectRepository < Repository
 
-    class UnknownProjectNameError < StandardError
+    class UnknownNameError < StandardError
       def initialize(name)
         @name = name
       end
@@ -18,7 +18,7 @@ module Projects
 
       def find_by_name_and_user_id!(name, user_id)
         project = query Project, ProjectWithNameAndUserId.new(name, user_id)
-        raise UnknownProjectNameError, name if project.nil?
+        raise UnknownNameError, name if project.nil?
 
         project
       end

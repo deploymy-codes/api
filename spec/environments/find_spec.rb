@@ -8,8 +8,8 @@ module Environments
     context 'When environment is not found' do
       it 'raise a record not found error' do
         expect {
-          FindEnvironment.new(nil, project).run!
-        }.to raise_error EnvironmentRepository::UnknownEnvironmentNameError
+          Find.new(nil, project).run!
+        }.to raise_error EnvironmentRepository::UnknownNameError
       end
     end
 
@@ -17,7 +17,7 @@ module Environments
       let!(:environment) { create_environment project: project}
 
       it 'returns the environment' do
-        result_environment = FindEnvironment.new('master', project).run!
+        result_environment = Find.new('master', project).run!
 
         expect(result_environment.name).to be_eql 'master'
       end

@@ -5,6 +5,6 @@ module UserHelper
     end
 
     form = Customers::APIKeyForm.new(api_key: api_key)
-    Customers::FindUser.new(form).run!
+    Customers::Find.new(form).run!
   end
 end

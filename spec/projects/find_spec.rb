@@ -7,8 +7,8 @@ module Projects
     context 'When project is not found' do
       it 'raise a record not found error' do
         expect {
-          FindProject.new(nil, user).run!
-        }.to raise_error ProjectRepository::UnknownProjectNameError
+          Find.new(nil, user).run!
+        }.to raise_error ProjectRepository::UnknownNameError
       end
     end
 
@@ -16,7 +16,7 @@ module Projects
       let!(:project) { create_project name: 'rails', user: user}
 
       it 'returns the project' do
-        result_project = FindProject.new('rails', user).run!
+        result_project = Find.new('rails', user).run!
 
         expect(result_project.name).to be_eql 'rails'
       end

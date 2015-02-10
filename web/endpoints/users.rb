@@ -19,13 +19,13 @@ module Endpoint
       use_case     = Customers::GetRemoteProject.new current_user, name
       remote_project = use_case.run!
 
-      use_case = ::Projects::CreateProject.new current_user, remote_project
+      use_case = ::Projects::Create.new current_user, remote_project
       project = use_case.run!
       status 201
       json serialize(project)
     end
 
-    error ::Projects::ProjectNameTakenError do
+    error ::Projects::NameTakenError do
       halt_json_error 403
     end
   end

@@ -3,6 +3,7 @@ module Customers
 
     attribute :oauth_token, String
     attribute :provider, String
+    attribute :user_id, String
 
     def self.build(provider, oauth_token)
       new.tap do |account|

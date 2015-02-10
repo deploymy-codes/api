@@ -1,5 +1,5 @@
 module Environments
-  class EnvironmentForm < Form
+  class CreateForm < Form
 
     attribute :name, String
     attribute :strategy, String
