@@ -7,6 +7,7 @@ if mode == 'ci'
 else
   Customer::UserRepository.use :in_memory
   Deploy::ProjectRepository.use :in_memory
+  Deploy::EnvironmentRepository.use :in_memory
 end
 
 Customer::GithubService.use :fake

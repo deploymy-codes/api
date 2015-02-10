@@ -38,6 +38,10 @@ class Projects < Web
     json serialize(environment)
   end
 
+  error Deploy::EnvironmentRepository::UnknownEnvironmentNameError do
+    halt_json_error 404
+  end
+
   error Deploy::ProjectRepository::UnknownProjectNameError do
     halt_json_error 404
   end

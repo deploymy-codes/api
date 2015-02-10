@@ -12,7 +12,7 @@ module Deploy
       end
     end
 
-    context 'When user is found' do
+    context 'When project is found' do
       let!(:project) { create_project name: 'rails', user: user}
 
       it 'returns the project' do
