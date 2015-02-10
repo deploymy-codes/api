@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Customer
+module Customers
   describe 'Find Or Create User' do
     let(:form)  { CodeForm.new code: 'code' }
 

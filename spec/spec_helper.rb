@@ -16,7 +16,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 ENV['RACK_ENV'] = 'test'
-require_relative './../dmc/dmc'
+require_relative './../dmc'
 require 'rack/test'
 
 Dir["./spec/support/**/*.rb"].sort.each { |f| require f}
@@ -96,7 +96,8 @@ RSpec.configure do |config|
 =end
 
   config.before(:each) do
-    Customer::UserRepository.clear
-    Deploy::ProjectRepository.clear
+    Customers::UserRepository.clear
+    Projects::ProjectRepository.clear
+    Environments::EnvironmentRepository.clear
   end
 end

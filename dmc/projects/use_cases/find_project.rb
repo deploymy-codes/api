@@ -1,4 +1,4 @@
-module Deploy
+module Projects
   class FindProject < Struct.new(:project_name, :user)
 
     def run!

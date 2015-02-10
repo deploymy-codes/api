@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-module Deploy
+module Projects
   describe 'List project' do
 
     it 'list project which belongs to the user' do
       user = create_user
 
-      remote_project = Customer::RemoteProject.new(name: 'rails', url: 'http://www.google.com')
+      remote_project = Customers::RemoteProject.new(name: 'rails', url: 'http://www.google.com')
       project = CreateProject.new(user, remote_project).run!
 
       projects = ListProject.new(user).run!

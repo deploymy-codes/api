@@ -1,4 +1,4 @@
-module Deploy
+module Projects
   class ListProject < Struct.new(:user)
 
     def run!

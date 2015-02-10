@@ -1,4 +1,4 @@
-module Deploy
+module Environments
   class EnvironmentNameTakenError < StandardError
     def initialize(name)
       @name = name
@@ -16,9 +16,9 @@ module Deploy
       validate_environment_uniqueness!
 
       environment = Environment.new form.attributes
-      project.environments << environment
+      environment.project_id = project.id
 
-      ProjectRepository.save project
+      EnvironmentRepository.save environment
 
       environment
     end

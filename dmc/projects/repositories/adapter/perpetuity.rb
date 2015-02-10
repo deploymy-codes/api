@@ -1,4 +1,4 @@
-module Deploy
+module Projects
   module Repository
     module Adapter
       class Perpetuity < ::Repository::Adapter::Perpetuity
@@ -14,16 +14,8 @@ module Deploy
           end
         end
 
-        def query_environments_with_project(klass, selector)
-          mapper = mapper_for klass
-          mapper.load_association! selector.project, :environments
-
-          selector.project.environments
-        end
-
         def clear
           mapper_for(Deploy::Project).delete_all
-          mapper_for(Deploy::Environment).delete_all
         end
       end
     end

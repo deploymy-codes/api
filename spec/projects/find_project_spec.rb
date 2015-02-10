@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Deploy
+module Projects
   describe 'Find Project' do
     let(:user) { create_user }
 

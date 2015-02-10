@@ -1,4 +1,4 @@
-module Deploy
+module Projects
   class ProjectNameTakenError < StandardError
     def initialize(name)
       @name = name
@@ -25,8 +25,8 @@ module Deploy
     private
 
     def add_environment!(project)
-      form = EnvironmentForm.new name: 'default', strategy: ''
-      CreateEnvironment.new(project, form).run!
+      form = Environments::EnvironmentForm.new name: 'default', strategy: ''
+      Environments::CreateEnvironment.new(project, form).run!
     end
 
     def validate_project_uniqueness!

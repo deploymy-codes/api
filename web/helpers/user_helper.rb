@@ -4,7 +4,7 @@ module UserHelper
       raise APIKeyHeaderMissingError
     end
 
-    form = Customer::APIKeyForm.new(api_key: api_key)
-    Customer::FindUser.new(form).run!
+    form = Customers::APIKeyForm.new(api_key: api_key)
+    Customers::FindUser.new(form).run!
   end
 end

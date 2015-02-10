@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Customer
+module Customers
   describe 'Find User' do
 
     context 'When user is not found' do

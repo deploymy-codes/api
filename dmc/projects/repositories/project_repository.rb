@@ -1,4 +1,4 @@
-module Deploy
+module Projects
   class ProjectRepository < Repository
 
     class UnknownProjectNameError < StandardError
@@ -22,15 +22,10 @@ module Deploy
 
         project
       end
-
-      def all_environments_of!(project)
-        query Project, EnvironmentsWithProject.new(project)
-      end
     end
 
   end
 
   ProjectWithUserId        = Struct.new :user_id
   ProjectWithNameAndUserId = Struct.new :name, :user_id
-  EnvironmentsWithProject  = Struct.new :project
 end

@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-module Deploy
+module Projects
   describe 'Create project' do
     before do
       @user            = create_user
-      @remote_projects = Customer::ListRemoteProject.new(@user).run!
+      @remote_projects = Customers::ListRemoteProject.new(@user).run!
       @project         = CreateProject.new(@user, @remote_projects.first).run!
     end
 
@@ -15,7 +15,8 @@ module Deploy
     end
 
     it 'create a default environment' do
-      expect(@project.environments.count).to be 1
+      environments = Environments::ListEnvironment.new(@project).run!
+      expect(environments.length).to be 1
     end
 
     context 'When project name is taken' do

@@ -1,4 +1,4 @@
-module Deploy
+module Environments
   class EnvironmentForm < Form
 
     attribute :name, String

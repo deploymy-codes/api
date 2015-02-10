@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Deploy
+module Environments
   describe 'List environment' do
 
     it 'list environment which belongs to the project' do

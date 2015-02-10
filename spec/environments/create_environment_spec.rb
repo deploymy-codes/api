@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Deploy
+module Environments
   describe 'Create environment' do
     before do
       user         = create_user

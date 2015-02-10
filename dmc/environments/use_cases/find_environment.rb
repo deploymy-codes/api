@@ -1,4 +1,4 @@
-module Deploy
+module Environments
   class FindEnvironment < Struct.new(:environment_name, :project)
 
     def run!

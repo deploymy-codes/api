@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Customer
+module Customers
   describe 'List remote project' do
 
     let(:user) { create_user }

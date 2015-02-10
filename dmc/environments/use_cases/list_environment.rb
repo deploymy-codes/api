@@ -1,8 +1,8 @@
-module Deploy
+module Environments
   class ListEnvironment < Struct.new(:project)
 
     def run!
-      ProjectRepository.all_environments_of!(project)
+      EnvironmentRepository.all_for_project!(project.id)
     end
 
   end

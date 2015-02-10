@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Deploy
+module Environments
   describe 'Find Environment' do
     let(:user) { create_user }
     let(:project) { create_project name: 'rails', user: user}
