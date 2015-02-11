@@ -23,7 +23,7 @@ module Customers
       end
 
       def clear
-        mapper_for(Customers::User).delete_all
+        mapper_for(User).delete_all
       end
 
     end

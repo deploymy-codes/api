@@ -28,7 +28,7 @@ module Customers
       end
 
       def clear
-        mapper_for(Customers::Account).delete_all
+        mapper_for(Account).delete_all
       end
 
     end
