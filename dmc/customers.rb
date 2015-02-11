@@ -9,9 +9,12 @@ require_relative 'customers/serializers/user_serializer'
 require_relative 'customers/serializers/remote_project_serializer'
 
 require_relative 'customers/repositories/user_repository'
+require_relative 'customers/repositories/user_repository/in_memory'
+require_relative 'customers/repositories/user_repository/perpetuity'
+
 require_relative 'customers/repositories/account_repository'
-require_relative 'customers/repositories/adapter/in_memory'
-require_relative 'customers/repositories/adapter/perpetuity'
+require_relative 'customers/repositories/account_repository/in_memory'
+require_relative 'customers/repositories/account_repository/perpetuity'
 
 require_relative 'customers/forms/code_form'
 require_relative 'customers/forms/api_key_form'
@@ -29,11 +32,11 @@ require_relative 'customers/use_cases/get_remote_project'
 module Customers
   PROVIDERS = [:github]
 
-  UserRepository.register :in_memory,  Repository::Adapter::InMemory.new
-  UserRepository.register :perpetuity, Repository::Adapter::Perpetuity.new
+  UserRepository.register :in_memory,  UserRepository::InMemory.new
+  UserRepository.register :perpetuity, UserRepository::Perpetuity.new
 
-  AccountRepository.register :in_memory,  Repository::Adapter::InMemory.new
-  AccountRepository.register :perpetuity, Repository::Adapter::Perpetuity.new
+  AccountRepository.register :in_memory,  AccountRepository::InMemory.new
+  AccountRepository.register :perpetuity, AccountRepository::Perpetuity.new
 
-  GithubService.register  :fake,       FakeGithubService.new
+  GithubService.register :fake, FakeGithubService.new
 end
