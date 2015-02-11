@@ -1,7 +1,6 @@
 require 'perpetuity/postgres'
 require 'yaml'
 
-require 'pry'
 config   = YAML.load_file("#{DMC.root}/config/database.yml")[DMC.env]
 database = config.delete('database')
 
