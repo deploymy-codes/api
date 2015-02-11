@@ -32,8 +32,8 @@ module Endpoint
       json serialize(environment)
     end
 
-    post '/:project_name/environments/:environment_name' do |project_name, environment_name|
-      use_case    = Environments::Find.new environment_name, project
+    get '/:project_name/environments/:environment_name' do |project_name, environment_name|
+      use_case    = Environments::Find.new environment_name, current_project
       environment = use_case.run!
 
       json serialize(environment)
