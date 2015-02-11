@@ -12,6 +12,7 @@ gem 'rake'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'virtus'
+gem 'thin'
 
 group :test do
   gem 'rspec'

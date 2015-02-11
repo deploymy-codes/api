@@ -2,11 +2,19 @@ require 'pry'
 
 mode = ENV.fetch 'MODE', 'fast'
 if mode == 'ci'
-  Customer::UserRepository.use :perpetuity
-  Deploy::ProjectRepository.use :perpetuity
+  Customers::UserRepository.use :perpetuity
+  Customers::AccountRepository.use :perpetuity
+
+  Projects::ProjectRepository.use :perpetuity
+
+  Environments::EnvironmentRepository.use :in_memory
 else
-  Customer::UserRepository.use :in_memory
-  Deploy::ProjectRepository.use :in_memory
+  Customers::UserRepository.use :in_memory
+  Customers::AccountRepository.use :in_memory
+
+  Projects::ProjectRepository.use :in_memory
+
+  Environments::EnvironmentRepository.use :in_memory
 end
 
-Customer::GithubService.use :fake
+Customers::GithubService.use :fake

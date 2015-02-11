@@ -6,7 +6,7 @@ describe 'Self' do
   it_behaves_like 'Authenticated', '/self'
 
   def app
-    Users
+    Endpoint::Users
   end
 
   let!(:user) { create_user }

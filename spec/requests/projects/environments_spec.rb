@@ -4,7 +4,7 @@ require_relative "./../../../web/endpoints/projects"
 
 describe 'List environment' do
   def app
-    Projects
+    Endpoint::Projects
   end
 
   let(:user)     { create_user }

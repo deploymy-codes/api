@@ -10,6 +10,8 @@ class Web < Sinatra::Base
 
   register Sinatra::Reloader
 
+  set :server, :thin
+
   helpers do
     def serialize(object)
       if object.is_a?(Array)
@@ -71,7 +73,7 @@ class Web < Sinatra::Base
     halt_json_error 412
   end
 
-  error Customer::UserRepository::UnknownApiKeyError do
+  error Customers::UserRepository::UnknownApiKeyError do
     halt_json_error 403
   end
 end

@@ -6,6 +6,10 @@ class Repository
         clear
       end
 
+      def first(klass)
+        all(klass).first
+      end
+
       def all(klass)
         map_for_class(klass).values
       end

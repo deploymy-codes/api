@@ -5,7 +5,7 @@ require_relative "./../../../web/endpoints/auth"
 describe 'Auth provider' do
 
   def app
-    Auth
+    Endpoint::Auth
   end
 
   it 'returns the user corresponding to the code and provider with an api key' do

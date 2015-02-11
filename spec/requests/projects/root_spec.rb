@@ -6,14 +6,14 @@ describe 'Root' do
   it_behaves_like 'Authenticated', '/'
 
   def app
-    Projects
+    Endpoint::Projects
   end
 
   let(:user) { create_user }
 
-  let(:remote_project) { Customer::RemoteProject.new(name: 'rails', url: 'http://www.google.com') }
+  let(:remote_project) { Customers::RemoteProject.new(name: 'rails', url: 'http://www.google.com') }
 
-  let!(:project) { Deploy::CreateProject.new(user, remote_project).run! }
+  let!(:project) { Projects::Create.new(user, remote_project).run! }
 
   it 'returns the list of projects associated to this user' do
     get '/', {}, { 'API_KEY' => user.api_key }

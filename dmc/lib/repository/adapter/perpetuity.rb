@@ -4,6 +4,10 @@ class Repository
   module Adapter
     class Perpetuity
 
+      def first(klass)
+        mapper_for(klass).first
+      end
+
       def all(klass)
         mapper_for(klass).all.to_a
       end

@@ -6,7 +6,7 @@ describe 'Remote projects' do
   it_behaves_like 'Authenticated', '/remote_projects'
 
   def app
-    Users
+    Endpoint::Users
   end
 
   let!(:user) { create_user }
