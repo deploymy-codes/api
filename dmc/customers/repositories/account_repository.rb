@@ -1,13 +1,14 @@
 module Customers
   class AccountRepository < Repository
 
-    class UnknownProviderError < StandardError
-      def initialize(provider)
+    class UnknownProviderForUserError < StandardError
+      def initialize(provider, user_id)
         @provider = provider
+        @user_id  = user_id
       end
 
       def to_s
-        "Could not identifiy account with provider: #{@provider} for current user"
+        "Could not identifiy account with provider: #{@provider} for user: #{@user_id}"
       end
     end
 
@@ -15,7 +16,7 @@ module Customers
       def find_by_provider_and_user_id!(provider, user_id)
         account = query Account, AccountWithProviderAndUserId.new(provider, user_id)
 
-        raise UnknownProviderError, provider if account.nil?
+        raise UnknownProviderForUserError.new(provider, user_id) if account.nil?
 
         account
       end
