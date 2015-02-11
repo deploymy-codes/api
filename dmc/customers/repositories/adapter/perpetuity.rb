@@ -3,14 +3,19 @@ module Customers
     module Adapter
       class Perpetuity < ::Repository::Adapter::Perpetuity
 
+        def query_account_with_provider_and_user_id(klass, selector)
+          account_mapper = mapper_for Customers::Account
+          account_mapper.find { |account| account.provider == selector.provider && account.user_id == selector.user_id }
+        end
+
         def query_user_with_oauth_token(klass, selector)
           account_mapper = mapper_for Customers::Account
           account = account_mapper.find { |a| a.oauth_token == selector.oauth_token }
 
           return unless account.present?
 
-          mapper = mapper_for klass
-          mapper.find { |user| account.user_id == user.id }
+          user_mapper = mapper_for klass
+          user_mapper.find { |user| user.id == account.user_id }
         end
 
         def query_user_with_email(klass, selector)
