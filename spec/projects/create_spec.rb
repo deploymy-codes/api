@@ -10,7 +10,7 @@ module Projects
 
     it 'create the project based on the user and the remote project' do
       expect(@project.id).to_not be_nil
-      expect(@project.name).to be_eql 'rails'
+      expect(@project.name).to be_eql 'deploymy-codes/api'
       expect(@project.user_id).to be_eql @user.id
     end
 

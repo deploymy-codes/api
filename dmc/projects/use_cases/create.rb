@@ -25,7 +25,11 @@ module Projects
     private
 
     def add_environment!(project)
-      form = Environments::CreateForm.new name: 'default', strategy: ''
+      form = Environments::CreateForm.new({
+        name:     Environments::DEFAULT_NAME,
+        strategy: Environments::DEFAULT_STRATEGY
+      })
+
       Environments::Create.new(project, form).run!
     end
 

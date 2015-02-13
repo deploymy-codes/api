@@ -1,6 +1,6 @@
 module UserHelper
   def current_user
-    api_key = env.fetch 'API_KEY' do
+    api_key = env.fetch 'HTTP_AUTHORIZATION' do
       raise APIKeyHeaderMissingError
     end
 

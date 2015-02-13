@@ -1,5 +1,5 @@
 module Projects
   class ProjectSerializer < Serializer
-    attributes :name, :remote_name, :url
+    attributes :name, :remote_id, :url
   end
 end

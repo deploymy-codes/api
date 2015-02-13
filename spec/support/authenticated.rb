@@ -10,7 +10,7 @@ shared_examples "Authenticated" do |path, method = 'get'|
 
   context 'When user corresponding to the api key does not exist' do
     it 'returns a 403' do
-      send method, path, {}, { 'API_KEY' => 'random' }
+      send method, path, {}, { 'HTTP_AUTHORIZATION' => 'random' }
 
       expect(last_response.status).to be_eql 403
     end

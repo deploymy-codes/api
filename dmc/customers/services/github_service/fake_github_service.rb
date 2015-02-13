@@ -4,10 +4,10 @@ module Customers
 
     def initialize
       @counter = 0
-      reset_tokens
+      reset_tokens ''
     end
 
-    def reset_tokens
+    def reset_tokens(_)
       @tokens = {}
     end
 
@@ -16,14 +16,20 @@ module Customers
     end
 
     def user(oauth_token)
-      FakeUser.new('Aaron Patterson', 'aaron@tenderlove.org', 'https://avatars0.githubusercontent.com/u/3124?v=3')
+      FakeUser.new('Robots', 'coders@deploymy.codes', 'https://avatars.githubusercontent.com/u/10991964?v=3')
+    end
+
+    def repository(oauth_token, owner, repo)
+      repositories(oauth_token).find do |repository|
+        repository.name == [owner, repo].join('/')
+      end
     end
 
     def repositories(oauth_token)
       [
-        GithubService::Repository.new('rails',      'https://github.com/rails/rails'),
-        GithubService::Repository.new('activeform', 'https://github.com/rails/activeform'),
-        GithubService::Repository.new('turbolinks', 'https://github.com/rails/turbolinks')
+        GithubService::Repository.new('deploymy-codes/api', 'https://github.com/deploymy-codes/api.git', 25465783),
+        GithubService::Repository.new('deploymy-codes/frontend', 'https://github.com/deploymy-codes/frontend.git', 25839116),
+        GithubService::Repository.new('deploymy-codes/native', 'https://github.com/deploymy-codes/native.git', 30321370),
       ]
     end
 

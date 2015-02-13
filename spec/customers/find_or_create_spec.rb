@@ -43,14 +43,13 @@ module Customers
       end
 
       context 'When the tokens has change' do
-        before do
-          GithubService.reset_tokens
-        end
+        let(:new_form) { CodeForm.new code: 'new-code' }
 
         it 'updates the oauth token' do
           first_token = AccountRepository.first(Account).oauth_token
+          GithubService.reset_tokens(first_token)
 
-          subject
+          FindOrCreate.new('github', new_form).run!
 
           account = AccountRepository.first(Account)
           expect(account.oauth_token).to_not be_eql first_token

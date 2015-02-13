@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://GITHUB_CLIENT_ID:GITHUB_SECRET_ID@api.github.com/applications/GITHUB_CLIENT_ID/tokens/467b5f4a493560c986f5a9da344734ce6fb8a218
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.7.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Fri, 13 Feb 2015 12:18:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4999'
+      X-Ratelimit-Reset:
+      - '1423833483'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Etag:
+      - W/"c02c9377df86d5d2de9155b789ab06fc"
+      Vary:
+      - Accept
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - C33C1B1B:72C9:27678384:54DDEB7B
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - 8a5c38021a5cd7cef7b8f49a296fee40
+    body:
+      encoding: UTF-8
+      string: '{"id":15189214,"url":"https://api.github.com/authorizations/15189214","app":{"name":"Website
+        - Development","url":"http://localhost:3000","client_id":"da3c2c42130e5391041f"},"token":"cfcb74e01f475a8727d466f0ecbb171e38a1dee8","note":null,"note_url":null,"created_at":"2015-02-13T11:37:48Z","updated_at":"2015-02-13T12:18:03Z","scopes":["repo","user:email"],"user":{"login":"deploymycodes","id":10991964,"avatar_url":"https://avatars.githubusercontent.com/u/10991964?v=3","gravatar_id":"","url":"https://api.github.com/users/deploymycodes","html_url":"https://github.com/deploymycodes","followers_url":"https://api.github.com/users/deploymycodes/followers","following_url":"https://api.github.com/users/deploymycodes/following{/other_user}","gists_url":"https://api.github.com/users/deploymycodes/gists{/gist_id}","starred_url":"https://api.github.com/users/deploymycodes/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/deploymycodes/subscriptions","organizations_url":"https://api.github.com/users/deploymycodes/orgs","repos_url":"https://api.github.com/users/deploymycodes/repos","events_url":"https://api.github.com/users/deploymycodes/events{/privacy}","received_events_url":"https://api.github.com/users/deploymycodes/received_events","type":"User","site_admin":false}}'
+    http_version: 
+  recorded_at: Fri, 13 Feb 2015 12:18:03 GMT
+recorded_with: VCR 2.9.3

@@ -12,7 +12,7 @@ describe 'Remote projects' do
   let!(:user) { create_user }
 
   it 'lists the available repositories for this user' do
-    get '/remote_projects', {}, { 'API_KEY' => user.api_key }
+    get '/remote_projects', {}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
     expect(last_response.status).to be_eql 200
     json = JSON.parse(last_response.body)

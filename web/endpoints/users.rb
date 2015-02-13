@@ -15,8 +15,8 @@ module Endpoint
       json serialize(remote_projects)
     end
 
-    post '/remote_projects/:name/import' do |name|
-      use_case     = Customers::GetRemoteProject.new current_user, name
+    post '/remote_projects/:owner/:repo/import' do |owner, repo|
+      use_case = Customers::GetRemoteProject.new current_user, owner, repo
       remote_project = use_case.run!
 
       use_case = ::Projects::Create.new current_user, remote_project

@@ -38,5 +38,6 @@ module Customers
   AccountRepository.register :in_memory,  AccountRepository::InMemory.new
   AccountRepository.register :perpetuity, AccountRepository::Perpetuity.new
 
-  GithubService.register :fake, FakeGithubService.new
+  GithubService.register :fake,    FakeGithubService.new
+  GithubService.register :octokit, OctokitGithubService.new(ENV['OCTOKIT_CLIENT_ID'], ENV['OCTOKIT_CLIENT_SECRET'])
 end

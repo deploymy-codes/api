@@ -1,13 +1,19 @@
 module Customers
-  class GetRemoteProject < Struct.new(:user, :name)
+  class GetRemoteProject < Struct.new(:user, :owner, :repo)
 
     def run!
-      remote_projects = Customers::ListRemoteProject.new(user).run!
-      remote_project  = remote_projects.find { |element| element.name == name }
+      account        = AccountRepository.find_by_provider_and_user_id! 'github', user.id
+      remote_project = GithubService.repository(account.oauth_token, owner, repo)
 
       raise RemoteProjectNotFound, name unless remote_project
 
       remote_project
+    end
+
+    private
+
+    def full_name
+      @full_name ||= [organisation, name] * '/'
     end
 
   end
