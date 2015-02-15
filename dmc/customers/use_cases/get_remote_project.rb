@@ -10,11 +10,5 @@ module Customers
       remote_project
     end
 
-    private
-
-    def full_name
-      @full_name ||= [organisation, name] * '/'
-    end
-
   end
 end
