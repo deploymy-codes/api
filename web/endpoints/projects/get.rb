@@ -3,7 +3,7 @@ module Endpoint
     module Get
 
       def self.registered(app)
-        app.get '/:project_name' do |project_name|
+        app.get '/:owner/:repo' do
           json serialize(current_project)
         end
 

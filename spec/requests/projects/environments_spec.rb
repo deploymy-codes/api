@@ -8,9 +8,9 @@ describe 'List environment' do
   end
 
   let(:user)     { create_user }
-  let!(:project) { create_project name: 'rails', user: user }
+  let!(:project) { create_project user: user }
 
-  it_behaves_like 'Authenticated', '/rails'
+  it_behaves_like 'Authenticated', '/rails/rails/environments'
   it_behaves_like 'HasCurrentProject'
 
   it 'returns the list of environment of the project' do

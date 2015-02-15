@@ -3,7 +3,7 @@ module Endpoint
     module CreateEnvironment
 
       def self.registered(app)
-        app.post '/:project_name/environments' do |project_name|
+        app.post '/:owner/:repo/environments' do
           form         = Environments::CreateForm.new extract!(:environment)
           use_case     = Environments::Create.new current_project, form
           environment  = use_case.run!

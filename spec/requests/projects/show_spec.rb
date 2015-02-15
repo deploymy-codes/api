@@ -8,9 +8,9 @@ describe 'Show' do
   end
 
   let(:user)    { create_user }
-  let(:project) { create_project name: 'rails', user: user }
+  let(:project) { create_project user: user }
 
-  it_behaves_like 'Authenticated', '/rails'
+  it_behaves_like 'Authenticated', '/rails/rails'
   it_behaves_like 'HasCurrentProject'
 
   it 'returns it' do

@@ -3,7 +3,7 @@ module Endpoint
     module CreateDeployment
 
       def self.registered(app)
-        app.post '/:project_name/environments/:environment_name/deployments' do |project_name, environment_name|
+        app.post '/:owner/:repo/environments/:environment_name/deployments' do
           form     = Deployments::CreateForm.new extract!(:deployment)
           use_case = Deployments::Create.new current_environment, form
 
