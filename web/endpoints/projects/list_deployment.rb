@@ -3,7 +3,7 @@ module Endpoint
     module ListDeployment
 
       def self.registered(app)
-        app.get '/:project_name/environments/:environment_name/deployments' do |_, environment_name|
+        app.get '/:owner/:repo/environments/:environment_name/deployments' do
           use_case     = Deployments::List.new current_environment
           deployments  = use_case.run!
 

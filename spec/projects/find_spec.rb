@@ -7,18 +7,19 @@ module Projects
     context 'When project is not found' do
       it 'raise a record not found error' do
         expect {
-          Find.new(nil, user).run!
+          Find.new(nil, nil, user).run!
         }.to raise_error ProjectRepository::UnknownNameError
       end
     end
 
     context 'When project is found' do
-      let!(:project) { create_project name: 'rails', user: user}
+      let!(:project) { create_project user: user}
 
       it 'returns the project' do
-        result_project = Find.new('rails', user).run!
+        owner, repo = project.name.split '/'
+        result_project = Find.new(owner, repo, user).run!
 
-        expect(result_project.name).to be_eql 'rails'
+        expect(result_project.name).to be_eql project.name
       end
     end
 

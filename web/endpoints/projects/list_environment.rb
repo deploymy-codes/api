@@ -3,7 +3,7 @@ module Endpoint
     module ListEnvironment
 
       def self.registered(app)
-        app.get '/:project_name/environments' do |project_name|
+        app.get '/:owner/:repo/environments' do
           use_case     = Environments::List.new current_project
           environments = use_case.run!
 

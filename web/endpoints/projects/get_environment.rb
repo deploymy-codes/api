@@ -3,7 +3,7 @@ module Endpoint
     module GetEnvironment
 
       def self.registered(app)
-        app.get '/:project_name/environments/:environment_name' do |_, _|
+        app.get '/:owner/:repo/environments/:environment_name' do
           json serialize(current_environment)
         end
 

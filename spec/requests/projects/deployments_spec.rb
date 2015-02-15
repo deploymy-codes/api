@@ -8,11 +8,11 @@ describe 'List deployment' do
   end
 
   let(:user)         { create_user }
-  let(:project)      { create_project name: 'rails', user: user }
+  let(:project)      { create_project user: user }
   let(:environment)  { create_environment name: 'master', project: project }
   let!(:deployment)   { create_deployment commit: 'idf', environment: environment }
 
-  it_behaves_like 'Authenticated', '/rails'
+  it_behaves_like 'Authenticated', '/rails/rails'
   it_behaves_like 'HasCurrentProject'
   it_behaves_like 'HasCurrentEnvironment'
 
