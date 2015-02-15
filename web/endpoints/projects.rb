@@ -10,6 +10,7 @@ require_relative './projects/list_deployment'
 require_relative './projects/create_deployment'
 
 require_relative './projects/list_branch'
+require_relative './projects/list_tag'
 
 module Endpoint
   class Projects < Web
@@ -25,5 +26,6 @@ module Endpoint
     register CreateDeployment
 
     register ListBranch
+    register ListTag
   end
 end

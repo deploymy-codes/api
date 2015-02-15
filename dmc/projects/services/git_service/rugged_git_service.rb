@@ -9,6 +9,10 @@ module Projects
       repo(dir).branches
     end
 
+    def tags(dir)
+      repo(dir).tags
+    end
+
     private
 
     def repo(dir)
