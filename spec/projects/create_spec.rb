@@ -14,6 +14,10 @@ module Projects
       expect(@project.user_id).to be_eql @user.id
     end
 
+    it 'clone the project' do
+      expect(File.directory?(@project.dir)).to be true
+    end
+
     it 'create a default environment' do
       environments = Environments::List.new(@project).run!
       expect(environments.length).to be 1

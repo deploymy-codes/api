@@ -15,5 +15,9 @@ module Projects
       end
     end
 
+    def dir
+      "#{DMC.root}/../tmp/#{id}"
+    end
+
   end
 end

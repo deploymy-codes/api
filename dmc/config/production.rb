@@ -12,4 +12,6 @@ Deployments::DeploymentRepository.use :perpetuity
 
 Customers::GithubService.use :octokit
 
+Projects::GitService.use :rugged
+
 JobRunner.use :async
