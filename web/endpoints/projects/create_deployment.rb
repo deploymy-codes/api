@@ -9,6 +9,7 @@ module Endpoint
 
           deployment = use_case.run!
 
+          status 201
           json serialize(deployment)
         end
       end
