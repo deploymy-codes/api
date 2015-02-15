@@ -3,11 +3,6 @@ require_relative 'environments/repositories/environment_repository/in_memory'
 require_relative 'environments/repositories/environment_repository/perpetuity'
 
 module Environments
-
-  STRATEGIES       = %w( heroku )
-  DEFAULT_STRATEGY = :heroku
-  DEFAULT_NAME     = :default
-
   EnvironmentRepository.register :in_memory,  EnvironmentRepository::InMemory.new
   EnvironmentRepository.register :perpetuity, EnvironmentRepository::Perpetuity.new
 end

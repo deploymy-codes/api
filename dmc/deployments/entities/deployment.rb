@@ -1,5 +1,7 @@
 module Deployments
   class Deployment < Entity
+    STATE         = [:pending, :in_progress, :success, :failed]
+    DEFAULT_STATE = :pending
 
     attribute :commit, String
     attribute :environment_id, String

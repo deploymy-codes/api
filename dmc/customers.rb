@@ -30,8 +30,6 @@ require_relative 'customers/use_cases/list_remote_project'
 require_relative 'customers/use_cases/get_remote_project'
 
 module Customers
-  PROVIDERS = [:github]
-
   UserRepository.register :in_memory,  UserRepository::InMemory.new
   UserRepository.register :perpetuity, UserRepository::Perpetuity.new
 

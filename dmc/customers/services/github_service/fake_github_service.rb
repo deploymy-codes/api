@@ -4,10 +4,10 @@ module Customers
 
     def initialize
       @counter = 0
-      reset_tokens ''
+      reset_tokens
     end
 
-    def reset_tokens(_)
+    def reset_tokens(_ = nil)
       @tokens = {}
     end
 

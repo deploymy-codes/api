@@ -14,9 +14,6 @@ require_relative 'deployments/use_cases/create'
 require_relative 'deployments/use_cases/list'
 
 module Deployments
-  STATE         = [:pending, :in_progress, :success, :failed]
-  DEFAULT_STATE = :pending
-
   DeploymentRepository.register :in_memory,  DeploymentRepository::InMemory.new
   DeploymentRepository.register :perpetuity, DeploymentRepository::Perpetuity.new
 end
