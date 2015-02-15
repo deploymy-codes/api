@@ -1,6 +1,14 @@
 require 'pry'
 
-Customer::UserRepository.use :in_memory
-Deploy::ProjectRepository.use :in_memory
+Customers::UserRepository.use :perpetuity
+Customers::AccountRepository.use :perpetuity
 
-Customer::GithubService.use :fake
+Projects::ProjectRepository.use :perpetuity
+
+Environments::EnvironmentRepository.use :perpetuity
+
+Deployments::DeploymentRepository.use :perpetuity
+
+Customers::GithubService.use :octokit
+
+JobRunner.use :sync

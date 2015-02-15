@@ -4,7 +4,8 @@ module Environments
     attribute :name, String
     attribute :strategy, String
 
-    validates :name, presence: true
+    validates :name, :strategy, presence: true
+    validates :strategy, inclusion: { in: Environment::STRATEGIES }
 
   end
 end

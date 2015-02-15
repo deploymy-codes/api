@@ -32,11 +32,24 @@ module Endpoint
       json serialize(environment)
     end
 
-    get '/:project_name/environments/:environment_name' do |project_name, environment_name|
-      use_case    = Environments::Find.new environment_name, current_project
-      environment = use_case.run!
+    get '/:project_name/environments/:environment_name' do |_, _|
+      json serialize(current_environment)
+    end
 
-      json serialize(environment)
+    get '/:project_name/environments/:environment_name/deployments' do |_, environment_name|
+      use_case     = Deployments::List.new current_environment
+      deployments  = use_case.run!
+
+      json serialize(deployments)
+    end
+
+    post '/:project_name/environments/:environment_name/deployments' do |project_name, environment_name|
+      form     = Deployments::CreateForm.new extract!(:deployment)
+      use_case = Deployments::Create.new current_environment, form
+
+      deployment = use_case.run!
+
+      json serialize(deployment)
     end
 
     error Environments::EnvironmentRepository::UnknownNameError do

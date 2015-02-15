@@ -12,7 +12,7 @@ describe 'Self' do
   let!(:user) { create_user }
 
   it 'returns it' do
-    get '/self', {}, { 'API_KEY' => user.api_key }
+    get '/self', {}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
     expect(last_response.status).to be_eql 200
     json = JSON.parse(last_response.body)

@@ -1,24 +1,24 @@
 root = File.dirname __FILE__
 
-require "#{root}/../dmc/dmc"
+require "#{root}/../dmc"
 require "#{root}/lib/web"
 
 map '/auth' do
   require "#{root}/endpoints/auth"
-  run Auth
+  run Endpoint::Auth
 end
 
 map '/users' do
   require "#{root}/endpoints/users"
-  run Users
+  run Endpoint::Users
 end
 
 map '/projects' do
   require "#{root}/endpoints/projects"
-  run Projects
+  run Endpoint::Projects
 end
 
 map '/streams' do
   require "#{root}/endpoints/streams"
-  run Streams
+  run Endpoint::Streams
 end

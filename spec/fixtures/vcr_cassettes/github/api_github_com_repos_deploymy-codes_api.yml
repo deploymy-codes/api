@@ -1,0 +1,84 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/deploymy-codes/api
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.7.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - token cfcb74e01f475a8727d466f0ecbb171e38a1dee8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Fri, 13 Feb 2015 15:31:38 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4999'
+      X-Ratelimit-Reset:
+      - '1423845098'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Last-Modified:
+      - Wed, 11 Feb 2015 20:49:44 GMT
+      Etag:
+      - W/"373b95a0fb242733e0b8b70f875b7579"
+      X-Oauth-Scopes:
+      - repo, user:email
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Oauth-Client-Id:
+      - GITHUB_CLIENT_ID
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - C33C1B1B:2027:D384398:54DE18D9
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - 318e55760cf7cdb40e61175a4d36cd32
+    body:
+      encoding: UTF-8
+      string: '{"id":25465783,"name":"api","full_name":"deploymy-codes/api","owner":{"login":"deploymy-codes","id":9341835,"avatar_url":"https://avatars.githubusercontent.com/u/9341835?v=3","gravatar_id":"","url":"https://api.github.com/users/deploymy-codes","html_url":"https://github.com/deploymy-codes","followers_url":"https://api.github.com/users/deploymy-codes/followers","following_url":"https://api.github.com/users/deploymy-codes/following{/other_user}","gists_url":"https://api.github.com/users/deploymy-codes/gists{/gist_id}","starred_url":"https://api.github.com/users/deploymy-codes/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/deploymy-codes/subscriptions","organizations_url":"https://api.github.com/users/deploymy-codes/orgs","repos_url":"https://api.github.com/users/deploymy-codes/repos","events_url":"https://api.github.com/users/deploymy-codes/events{/privacy}","received_events_url":"https://api.github.com/users/deploymy-codes/received_events","type":"Organization","site_admin":false},"private":false,"html_url":"https://github.com/deploymy-codes/api","description":"","fork":false,"url":"https://api.github.com/repos/deploymy-codes/api","forks_url":"https://api.github.com/repos/deploymy-codes/api/forks","keys_url":"https://api.github.com/repos/deploymy-codes/api/keys{/key_id}","collaborators_url":"https://api.github.com/repos/deploymy-codes/api/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/deploymy-codes/api/teams","hooks_url":"https://api.github.com/repos/deploymy-codes/api/hooks","issue_events_url":"https://api.github.com/repos/deploymy-codes/api/issues/events{/number}","events_url":"https://api.github.com/repos/deploymy-codes/api/events","assignees_url":"https://api.github.com/repos/deploymy-codes/api/assignees{/user}","branches_url":"https://api.github.com/repos/deploymy-codes/api/branches{/branch}","tags_url":"https://api.github.com/repos/deploymy-codes/api/tags","blobs_url":"https://api.github.com/repos/deploymy-codes/api/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/deploymy-codes/api/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/deploymy-codes/api/git/refs{/sha}","trees_url":"https://api.github.com/repos/deploymy-codes/api/git/trees{/sha}","statuses_url":"https://api.github.com/repos/deploymy-codes/api/statuses/{sha}","languages_url":"https://api.github.com/repos/deploymy-codes/api/languages","stargazers_url":"https://api.github.com/repos/deploymy-codes/api/stargazers","contributors_url":"https://api.github.com/repos/deploymy-codes/api/contributors","subscribers_url":"https://api.github.com/repos/deploymy-codes/api/subscribers","subscription_url":"https://api.github.com/repos/deploymy-codes/api/subscription","commits_url":"https://api.github.com/repos/deploymy-codes/api/commits{/sha}","git_commits_url":"https://api.github.com/repos/deploymy-codes/api/git/commits{/sha}","comments_url":"https://api.github.com/repos/deploymy-codes/api/comments{/number}","issue_comment_url":"https://api.github.com/repos/deploymy-codes/api/issues/comments/{number}","contents_url":"https://api.github.com/repos/deploymy-codes/api/contents/{+path}","compare_url":"https://api.github.com/repos/deploymy-codes/api/compare/{base}...{head}","merges_url":"https://api.github.com/repos/deploymy-codes/api/merges","archive_url":"https://api.github.com/repos/deploymy-codes/api/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/deploymy-codes/api/downloads","issues_url":"https://api.github.com/repos/deploymy-codes/api/issues{/number}","pulls_url":"https://api.github.com/repos/deploymy-codes/api/pulls{/number}","milestones_url":"https://api.github.com/repos/deploymy-codes/api/milestones{/number}","notifications_url":"https://api.github.com/repos/deploymy-codes/api/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/deploymy-codes/api/labels{/name}","releases_url":"https://api.github.com/repos/deploymy-codes/api/releases{/id}","created_at":"2014-10-20T12:41:26Z","updated_at":"2015-02-11T20:49:44Z","pushed_at":"2015-02-11T21:19:43Z","git_url":"git://github.com/deploymy-codes/api.git","ssh_url":"git@github.com:deploymy-codes/api.git","clone_url":"https://github.com/deploymy-codes/api.git","svn_url":"https://github.com/deploymy-codes/api","homepage":null,"size":802,"stargazers_count":0,"watchers_count":0,"language":"Ruby","has_issues":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":0,"mirror_url":null,"open_issues_count":11,"forks":0,"open_issues":11,"watchers":0,"default_branch":"develop","permissions":{"admin":false,"push":false,"pull":true},"organization":{"login":"deploymy-codes","id":9341835,"avatar_url":"https://avatars.githubusercontent.com/u/9341835?v=3","gravatar_id":"","url":"https://api.github.com/users/deploymy-codes","html_url":"https://github.com/deploymy-codes","followers_url":"https://api.github.com/users/deploymy-codes/followers","following_url":"https://api.github.com/users/deploymy-codes/following{/other_user}","gists_url":"https://api.github.com/users/deploymy-codes/gists{/gist_id}","starred_url":"https://api.github.com/users/deploymy-codes/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/deploymy-codes/subscriptions","organizations_url":"https://api.github.com/users/deploymy-codes/orgs","repos_url":"https://api.github.com/users/deploymy-codes/repos","events_url":"https://api.github.com/users/deploymy-codes/events{/privacy}","received_events_url":"https://api.github.com/users/deploymy-codes/received_events","type":"Organization","site_admin":false},"network_count":0,"subscribers_count":2}'
+    http_version: 
+  recorded_at: Fri, 13 Feb 2015 15:31:38 GMT
+recorded_with: VCR 2.9.3

@@ -14,7 +14,7 @@ module Customers
     private
 
     def authorize!
-      unless PROVIDERS.include? provider.to_sym
+      unless Account::PROVIDERS.include? provider.to_sym
         raise PermissionDeniedError, "Provider #{provider} is not allowed"
       end
     end

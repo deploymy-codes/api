@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/user/orgs
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.7.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - token 467b5f4a493560c986f5a9da344734ce6fb8a218
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Fri, 13 Feb 2015 11:39:59 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4997'
+      X-Ratelimit-Reset:
+      - '1423831198'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Etag:
+      - W/"a9ca0a3ee2104c34cd238a67c54efe1e"
+      X-Oauth-Scopes:
+      - repo, user:email
+      X-Accepted-Oauth-Scopes:
+      - admin:org, read:org, repo, user, write:org
+      X-Oauth-Client-Id:
+      - da3c2c42130e5391041f
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - C33C1B1B:72C9:27565285:54DDE28F
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - 4c8b2d4732c413f4b9aefe394bd65569
+    body:
+      encoding: UTF-8
+      string: '[{"login":"deploymy-codes","id":9341835,"url":"https://api.github.com/orgs/deploymy-codes","repos_url":"https://api.github.com/orgs/deploymy-codes/repos","events_url":"https://api.github.com/orgs/deploymy-codes/events","members_url":"https://api.github.com/orgs/deploymy-codes/members{/member}","public_members_url":"https://api.github.com/orgs/deploymy-codes/public_members{/member}","avatar_url":"https://avatars.githubusercontent.com/u/9341835?v=3","description":"Deployment
+        has never been so easy"}]'
+    http_version: 
+  recorded_at: Fri, 13 Feb 2015 11:39:59 GMT
+recorded_with: VCR 2.9.3

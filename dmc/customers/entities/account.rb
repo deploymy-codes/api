@@ -1,6 +1,8 @@
 module Customers
   class Account < Entity
 
+    PROVIDERS = [:github]
+
     attribute :oauth_token, String
     attribute :provider, String
     attribute :user_id, String

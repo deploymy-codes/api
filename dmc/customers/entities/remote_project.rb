@@ -3,6 +3,8 @@ module Customers
 
     attribute :name, String
     attribute :url, String
+    attribute :id, Integer
+    attribute :imported, Boolean, default: false
 
   end
 end

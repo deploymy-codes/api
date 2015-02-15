@@ -11,10 +11,10 @@ describe 'Create environment' do
   let(:project) { create_project name: 'rails', user: user }
 
   it_behaves_like 'Authenticated', '/rails'
-  it_behaves_like 'HasCurrentProject', '/rails'
+  it_behaves_like 'HasCurrentProject'
 
   it 'returns the new environment' do
-    post "/#{project.name}/environments", { environment: { name: 'master' , strategy: 'heroku'}}, { 'API_KEY' => user.api_key }
+    post "/#{project.name}/environments", { environment: { name: 'master' , strategy: 'heroku'}}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
     expect(last_response.status).to be_eql 200
     json = JSON.parse(last_response.body)
@@ -25,9 +25,9 @@ describe 'Create environment' do
 
   context 'When environment name is already taken' do
     it 'returns a 403 errors' do
-      post "/#{project.name}/environments", { environment: { name: 'master' , strategy: 'heroku'}}, { 'API_KEY' => user.api_key }
+      post "/#{project.name}/environments", { environment: { name: 'master' , strategy: 'heroku'}}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
-      post "/#{project.name}/environments", { environment: { name: 'master' , strategy: 'heroku'}}, { 'API_KEY' => user.api_key }
+      post "/#{project.name}/environments", { environment: { name: 'master' , strategy: 'heroku'}}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
       expect(last_response.status).to be_eql 403
       json = JSON.parse(last_response.body)

@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/json'
+require 'sinatra/cross_origin'
 
 require_relative './parameter_missing_error'
 require_relative './api_key_header_missing_error'
@@ -9,6 +10,11 @@ class Web < Sinatra::Base
   helpers Sinatra::JSON
 
   register Sinatra::Reloader
+  register Sinatra::CrossOrigin
+
+  configure do
+    enable :cross_origin
+  end
 
   set :server, :thin
 
@@ -50,7 +56,7 @@ class Web < Sinatra::Base
   end
 
   before do
-    headers 'Access-Control-Allow-Origin' => '*', 'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST']
+    halt 200 if request.request_method == 'OPTIONS'
   end
 
   before do
@@ -76,4 +82,5 @@ class Web < Sinatra::Base
   error Customers::UserRepository::UnknownApiKeyError do
     halt_json_error 403
   end
+
 end

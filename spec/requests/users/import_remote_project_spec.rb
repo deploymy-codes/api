@@ -3,7 +3,7 @@ require_relative "./../../../web/lib/web"
 require_relative "./../../../web/endpoints/users"
 
 describe 'Import remote projects' do
-  it_behaves_like 'Authenticated', '/remote_projects/rails/import', 'post'
+  it_behaves_like 'Authenticated', '/remote_projects/deploymy-codes/api/import', 'post'
 
   def app
     Endpoint::Users
@@ -12,23 +12,23 @@ describe 'Import remote projects' do
   let!(:user) { create_user }
 
   it 'return the project' do
-    post '/remote_projects/rails/import', {}, { 'API_KEY' => user.api_key }
+    post '/remote_projects/deploymy-codes/api/import', {}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
     expect(last_response.status).to be_eql 201
     json = JSON.parse(last_response.body)
     expect(json).to be_instance_of Hash
-    expect(json['remote_name']).to be_eql 'rails'
-    expect(json['name']).to be_eql 'rails'
+    expect(json['remote_id']).to be_eql 25465783
+    expect(json['name']).to be_eql 'deploymy-codes/api'
   end
 
   context 'when the project has already been imported' do
     it 'returns a 403 errors' do
-      post '/remote_projects/rails/import', {}, { 'API_KEY' => user.api_key }
-      post '/remote_projects/rails/import', {}, { 'API_KEY' => user.api_key }
+      post '/remote_projects/deploymy-codes/api/import', {}, { 'HTTP_AUTHORIZATION' => user.api_key }
+      post '/remote_projects/deploymy-codes/api/import', {}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
       expect(last_response.status).to be_eql 403
       json = JSON.parse(last_response.body)
-      expect(json['error']['message']).to be_eql 'Project name rails is already taken'
+      expect(json['error']['message']).to be_eql 'Project name deploymy-codes/api is already taken'
     end
   end
 end
