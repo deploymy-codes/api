@@ -22,6 +22,11 @@ RSpec.configure do |config|
     Environments::EnvironmentRepository.clear
     Deployments::DeploymentRepository.clear
   end
+
+  config.after(:each) do
+    dirs = Dir.glob "#{DMC.root}/../tmp/*"
+    FileUtils.rm_rf dirs
+  end
 end
 
 VCR.configure do |c|

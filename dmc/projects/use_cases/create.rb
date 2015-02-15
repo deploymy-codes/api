@@ -18,6 +18,7 @@ module Projects
 
       ProjectRepository.save project
       add_environment! project
+      JobRunner.perform CloneJob, project.id
 
       project
     end

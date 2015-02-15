@@ -12,6 +12,8 @@ if mode == 'ci'
   Deployments::DeploymentRepository.use :perpetuity
 
   Customers::GithubService.use :octokit
+
+  Projects::GitService.use :rugged
 else
   Customers::UserRepository.use :in_memory
   Customers::AccountRepository.use :in_memory
@@ -23,6 +25,8 @@ else
   Deployments::DeploymentRepository.use :in_memory
 
   Customers::GithubService.use :fake
+
+  Projects::GitService.use :fake
 end
 
 JobRunner.use :sync
