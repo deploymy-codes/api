@@ -1,5 +1,5 @@
 module Projects
   class GitService
-    extend Interchange.new(*[:clone])
+    extend Interchange.new(*[:clone, :branches])
   end
 end
