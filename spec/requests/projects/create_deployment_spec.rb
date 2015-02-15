@@ -18,7 +18,7 @@ describe 'Create deployment' do
   it 'returns it' do
     post "/#{project.name}/environments/#{environment.name}/deployments", { deployment: { commit: '1hdsajk'}}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
-    expect(last_response.status).to be_eql 200
+    expect(last_response.status).to be_eql 201
     json = JSON.parse(last_response.body)
     expect(json).to be_instance_of Hash
     expect(json['commit']).to be_eql '1hdsajk'
