@@ -16,7 +16,7 @@ describe 'Create environment' do
   it 'returns the new environment' do
     post "/#{project.name}/environments", { environment: { name: 'master' , strategy: 'heroku'}}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
-    expect(last_response.status).to be_eql 200
+    expect(last_response.status).to be_eql 201
     json = JSON.parse(last_response.body)
     expect(json).to be_instance_of Hash
     expect(json['name']).to be_eql 'master'

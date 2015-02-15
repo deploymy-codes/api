@@ -8,6 +8,7 @@ module Endpoint
           use_case     = Environments::Create.new current_project, form
           environment  = use_case.run!
 
+          status 201
           json serialize(environment)
         end
 
