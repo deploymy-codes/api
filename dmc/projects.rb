@@ -4,10 +4,12 @@ require 'rugged'
 require_relative 'projects/entities/project'
 require_relative 'projects/entities/branch'
 require_relative 'projects/entities/tag'
+require_relative 'projects/entities/commit'
 
 require_relative 'projects/serializers/project_serializer'
 require_relative 'projects/serializers/branch_serializer'
 require_relative 'projects/serializers/tag_serializer'
+require_relative 'projects/serializers/commit_serializer'
 
 require_relative 'projects/repositories/project_repository'
 require_relative 'projects/repositories/project_repository/in_memory'
@@ -25,6 +27,7 @@ require_relative 'projects/use_cases/find'
 require_relative 'projects/use_cases/clone'
 require_relative 'projects/use_cases/list_branch'
 require_relative 'projects/use_cases/list_tag'
+require_relative 'projects/use_cases/list_commit'
 
 module Projects
   ProjectRepository.register :in_memory,  ProjectRepository::InMemory.new

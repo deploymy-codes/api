@@ -3,6 +3,7 @@ module Projects
 
     GitBranch = Struct.new(:name)
     GitTag    = Struct.new(:name)
+    GitCommit = Struct.new(:oid)
 
     def clone(dir, _)
       unless File.directory?(dir)
@@ -10,12 +11,16 @@ module Projects
       end
     end
 
-    def branches(dir)
+    def branches(_)
       [GitBranch.new('develop')]
     end
 
-    def tags(dir)
+    def tags(_)
       [GitTag.new('v-0.0.0')]
+    end
+
+    def commits(_)
+      [GitCommit.new('a8955f57f76d1b77d1e7a61911f1da369863817e')]
     end
   end
 end

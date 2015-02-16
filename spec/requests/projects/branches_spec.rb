@@ -13,7 +13,7 @@ describe 'List branch' do
   it_behaves_like 'Authenticated', '/rails/rails/branches'
   it_behaves_like 'HasCurrentProject'
 
-  it 'returns the list of environment of the project' do
+  it 'returns the list of branch of the project' do
     get "/#{project.name}/branches", {}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
     expect(last_response.status).to be_eql 200
