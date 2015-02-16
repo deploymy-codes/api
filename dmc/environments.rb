@@ -11,6 +11,7 @@ require_relative 'environments/serializers/environment_serializer'
 require_relative 'environments/use_cases/list'
 require_relative 'environments/use_cases/create'
 require_relative 'environments/use_cases/find'
+require_relative 'environments/use_cases/find_by_name'
 
 module Environments
   EnvironmentRepository.register :in_memory,  EnvironmentRepository::InMemory.new

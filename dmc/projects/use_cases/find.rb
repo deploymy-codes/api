@@ -1,14 +1,9 @@
 module Projects
-  class Find < Struct.new(:owner, :repo, :user)
+  class Find < Struct.new(:id)
 
     def run!
-      ProjectRepository.find_by_name_and_user_id!(project_name, user.id)
+      ProjectRepository.find(Project, id)
     end
 
-    private
-
-    def project_name
-      @project_name ||= [owner, repo] * '/'
-    end
   end
 end

@@ -23,6 +23,7 @@ require_relative 'projects/jobs/clone_job'
 
 require_relative 'projects/use_cases/create'
 require_relative 'projects/use_cases/list'
+require_relative 'projects/use_cases/find_by_name'
 require_relative 'projects/use_cases/find'
 require_relative 'projects/use_cases/clone'
 require_relative 'projects/use_cases/list_branch'
