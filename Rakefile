@@ -15,7 +15,7 @@ end
 
 task :environment do
   root = File.dirname __FILE__
-  require "#{root}/dmc/dmc"
+  require "#{root}/dmc"
 end
 
 namespace :sidekiq do
@@ -30,7 +30,10 @@ end
 namespace :repository do
   desc "Empty all Repositories"
   task clear: :environment do
-    Customer::UserRepository.clear
-    Deploy::ProjectRepository.clear
+    Customers::UserRepository.clear
+    Customers::AccountRepository.clear
+    Projects::ProjectRepository.clear
+    Environments::EnvironmentRepository.clear
+    Deployments::DeploymentRepository.clear
   end
 end
