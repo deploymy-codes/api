@@ -14,4 +14,6 @@ Customers::GithubService.use :octokit
 
 Projects::GitService.use :rugged
 
+DeploymentRepository::HerokuService.use :api
+
 JobRunner.use :async

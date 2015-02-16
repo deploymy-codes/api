@@ -14,6 +14,8 @@ if mode == 'ci'
   Customers::GithubService.use :octokit
 
   Projects::GitService.use :rugged
+
+  Deployments::HerokuService.use :api
 else
   Customers::UserRepository.use :in_memory
   Customers::AccountRepository.use :in_memory
@@ -27,6 +29,8 @@ else
   Customers::GithubService.use :fake
 
   Projects::GitService.use :fake
+
+  Deployments::HerokuService.use :fake
 end
 
 JobRunner.use :sync
