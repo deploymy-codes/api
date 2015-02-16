@@ -1,4 +1,4 @@
-class Pager
+class Cursor
 
   def initialize(offset = nil, limit = nil)
     @offset = offset

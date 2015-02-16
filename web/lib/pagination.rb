@@ -1,7 +1,7 @@
 module Pagination
 
-  def pager
-    Pager.new params[:offset], params[:limit]
+  def cursor
+    Cursor.new params[:offset], params[:limit]
   end
 
 end

@@ -1,5 +1,5 @@
 module Customers
-  class ListRemoteProject < Struct.new(:user, :pager)
+  class ListRemoteProject < Struct.new(:user, :cursor)
 
     def run!
       remote_projects.each do |remote_project|
@@ -11,7 +11,7 @@ module Customers
     private
 
     def projects
-      @projects ||= Projects::ProjectRepository.paginate(Projects::Project, *pager.options)
+      @projects ||= Projects::ProjectRepository.paginate(Projects::Project, *cursor.options)
     end
 
     def remote_projects
