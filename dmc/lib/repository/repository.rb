@@ -7,9 +7,9 @@ require_relative './adapter/sequel'
 
 class Repository
   extend Interchange.new(*[
-    :all, :find, :create, :update, :delete,
-    :first, :last, :query, :sample, :empty?,
-    :count, :clear,
+    :all, :paginate, :find, :create, :update,
+    :delete, :first, :last, :query, :sample,
+    :empty?, :count, :clear,
   ])
 
   class << self

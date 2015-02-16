@@ -1,5 +1,6 @@
 require_relative 'form/form'
 require_relative 'entity/entity'
+require_relative 'pager/pager'
 require_relative 'repository/repository'
 require_relative 'serializer/serializer'
 require_relative 'job_runner/job_runner'

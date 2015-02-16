@@ -9,7 +9,7 @@ module Endpoint
     end
 
     get '/remote_projects' do
-      use_case     = Customers::ListRemoteProject.new current_user
+      use_case = Customers::ListRemoteProject.new current_user, pager
       remote_projects = use_case.run!
 
       json serialize(remote_projects)
