@@ -9,6 +9,10 @@ require_relative './projects/get_environment'
 require_relative './projects/list_deployment'
 require_relative './projects/create_deployment'
 
+require_relative './projects/list_branch'
+require_relative './projects/list_tag'
+require_relative './projects/list_commit'
+
 module Endpoint
   class Projects < Web
     helpers UserHelper
@@ -22,5 +26,8 @@ module Endpoint
     register ListDeployment
     register CreateDeployment
 
+    register ListBranch
+    register ListTag
+    register ListCommit
   end
 end
