@@ -1,15 +1,13 @@
-require 'perpetuity'
-
 class Repository
   module Adapter
-    class Perpetuity
+    class Sequel
 
       def first(klass)
-        mapper_for(klass).first
+        build_entity klass, mapper_for(klass).first
       end
 
       def all(klass)
-        mapper_for(klass).all.to_a
+        build_entity klass, mapper_for(klass).all
       end
 
       def count(klass)
@@ -17,7 +15,7 @@ class Repository
       end
 
       def find(klass, id)
-        entity = mapper_for(klass).find id
+        entity = build_entity klass, mapper_for(klass).first(id: id)
 
         raise EntityNotFoundError.new(klass, id) unless entity
 
@@ -25,11 +23,12 @@ class Repository
       end
 
       def create(entity)
-        mapper_for(entity.class).insert entity
+        id = mapper_for(entity.class).insert entity.attributes
+        entity.id = id
       end
 
       def update(entity)
-        mapper_for(entity.class).save entity
+        mapper_for(entity.class).update entity.attributes
       end
 
       def delete(entity)
@@ -38,13 +37,22 @@ class Repository
 
       def query(klass, selector)
         if query_implemented? klass, selector
-          send query_method(klass, selector), klass, selector
+          result = send query_method(klass, selector), klass, selector
+          build_entity klass, result
         else
           raise QueryNotImplementedError, selector
         end
       end
 
       private
+
+      def build_entity(klass, dataset)
+        if dataset.is_a? Array
+          dataset.map { |record| klass.new record }
+        elsif dataset.is_a? Hash
+          klass.new dataset
+        end
+      end
 
       def query_method(klass, selector)
         "query_#{selector.class.name.demodulize.underscore}"
@@ -55,7 +63,7 @@ class Repository
       end
 
       def mapper_for(klass)
-        ::Perpetuity[klass]
+        DB[klass.name.demodulize.tableize.to_sym]
       end
 
     end

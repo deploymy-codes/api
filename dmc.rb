@@ -1,7 +1,5 @@
 require 'bundler/setup'
 
-require 'dotenv'
-Dotenv.load
 
 module DMC
   class << self
@@ -21,6 +19,9 @@ module DMC
   end
 end
 
+require 'dotenv'
+Dotenv.load(".env.#{DMC.env}")
+
 require_relative 'dmc/lib/framework'
 JobRunner.register :async, JobRunner::Async.new
 JobRunner.register :sync,  JobRunner::Sync.new
@@ -30,7 +31,7 @@ require_relative 'dmc/projects'
 require_relative 'dmc/environments'
 require_relative 'dmc/deployments'
 
-require_relative 'dmc/orm/perpetuity'
+require_relative 'dmc/orm/sequel'
 
 config_file = "#{DMC.root}/config/#{DMC.env}.rb"
 require config_file

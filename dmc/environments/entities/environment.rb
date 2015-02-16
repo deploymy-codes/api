@@ -7,7 +7,7 @@ module Environments
 
     attribute :name, String
     attribute :strategy, String
-    attribute :project_id, String
+    attribute :project_id, Integer
 
   end
 end

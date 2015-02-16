@@ -4,7 +4,7 @@ module Projects
     attribute :name, String
     attribute :remote_id, Integer
     attribute :url, String
-    attribute :user_id, String
+    attribute :user_id, Integer
 
     def self.build_from(user: nil, remote_project: nil)
       new.tap do |project|

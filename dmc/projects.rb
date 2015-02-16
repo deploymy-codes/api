@@ -13,7 +13,7 @@ require_relative 'projects/serializers/commit_serializer'
 
 require_relative 'projects/repositories/project_repository'
 require_relative 'projects/repositories/project_repository/in_memory'
-require_relative 'projects/repositories/project_repository/perpetuity'
+require_relative 'projects/repositories/project_repository/sequel'
 
 require_relative 'projects/services/git_service'
 require_relative 'projects/services/git_service/rugged_git_service'
@@ -31,7 +31,7 @@ require_relative 'projects/use_cases/list_commit'
 
 module Projects
   ProjectRepository.register :in_memory,  ProjectRepository::InMemory.new
-  ProjectRepository.register :perpetuity, ProjectRepository::Perpetuity.new
+  ProjectRepository.register :sequel, ProjectRepository::Sequel.new
 
   GitService.register :fake, FakeGitService.new
   GitService.register :rugged, RuggedGitService.new

@@ -1,1 +1,7 @@
-.env
+#Environment variables
+.env.development
+.env.test
+.env.production
+
+# Sqlite db
+*.db
