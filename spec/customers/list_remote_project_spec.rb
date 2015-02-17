@@ -7,7 +7,7 @@ module Customers
     let!(:project) { create_project user: user }
 
     it 'returns the list' do
-      remote_projects = ListRemoteProject.new(user, Pager.new).run!
+      remote_projects = ListRemoteProject.new(user, Cursor.new).run!
 
       expect(remote_projects.length).to be_eql 3
 

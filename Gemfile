@@ -17,7 +17,6 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'sinatra-cross_origin'
 gem 'sqlite3'
-gem 'virtus'
 gem 'thin'
 gem 'virtus'
 
