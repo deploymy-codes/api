@@ -6,12 +6,17 @@ module Customers
         next unless projects.find { |project| project.remote_id == remote_project.id }
         remote_project.imported = true
       end
+
+      cursor.data        = remote_projects
+      cursor.total_count = remote_projects.length
+
+      cursor
     end
 
     private
 
     def projects
-      @projects ||= Projects::ProjectRepository.paginate(Projects::Project, *cursor.options)
+      @projects ||= Projects::ProjectRepository.all(Projects::Project)
     end
 
     def remote_projects

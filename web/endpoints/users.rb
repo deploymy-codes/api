@@ -10,9 +10,9 @@ module Endpoint
 
     get '/remote_projects' do
       use_case = Customers::ListRemoteProject.new current_user, cursor
-      remote_projects = use_case.run!
+      use_case.run!
 
-      json serialize(remote_projects)
+      pagination
     end
 
     post '/remote_projects/:owner/:repo/import' do |owner, repo|
