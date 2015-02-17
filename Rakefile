@@ -9,7 +9,7 @@ namespace :spec do
   task ci: ['ci_env', 'all']
 
   task :ci_env do
-    ENV['CI'] = 'true'
+    ENV['MODE'] = 'ci'
   end
 end
 
