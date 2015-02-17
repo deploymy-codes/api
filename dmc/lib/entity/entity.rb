@@ -3,7 +3,7 @@ require 'virtus'
 class Entity
   include Virtus.model
 
-  attr_reader :id
+  attribute :id, Integer
 
   def persisted?
     id.present?

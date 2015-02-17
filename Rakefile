@@ -37,3 +37,17 @@ namespace :repository do
     Deployments::DeploymentRepository.clear
   end
 end
+
+namespace :db do
+  desc "Run migrations"
+  task migrate: :environment do |_, args|
+    Sequel.extension :migration
+    if args[:version]
+      puts "Migrating to version #{args[:version]}"
+      Sequel::Migrator.run(DB, "dmc/orm/migrations", target: args[:version].to_i)
+    else
+      puts "Migrating to latest"
+      Sequel::Migrator.run(DB, "dmc/orm/migrations")
+    end
+  end
+end

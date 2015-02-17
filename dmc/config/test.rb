@@ -2,14 +2,14 @@ require 'pry'
 
 mode = ENV.fetch 'MODE', 'fast'
 if mode == 'ci'
-  Customers::UserRepository.use :perpetuity
-  Customers::AccountRepository.use :perpetuity
+  Customers::UserRepository.use :sequel
+  Customers::AccountRepository.use :sequel
 
-  Projects::ProjectRepository.use :perpetuity
+  Projects::ProjectRepository.use :sequel
 
-  Environments::EnvironmentRepository.use :perpetuity
+  Environments::EnvironmentRepository.use :sequel
 
-  Deployments::DeploymentRepository.use :perpetuity
+  Deployments::DeploymentRepository.use :sequel
 
   Customers::GithubService.use :octokit
 

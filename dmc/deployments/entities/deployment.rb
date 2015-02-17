@@ -4,7 +4,7 @@ module Deployments
     DEFAULT_STATE = :pending
 
     attribute :commit, String
-    attribute :environment_id, String
+    attribute :environment_id, Integer
     attribute :log, String
     attribute :state, String
 
