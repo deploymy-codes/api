@@ -11,7 +11,7 @@ class Repository
       end
 
       def paginate(klass, offset, limit)
-        mapper_for(klass).page(offset).per_page(limit)
+        build_entity klass, mapper_for(klass).limit(limit).offset(offset).all
       end
 
       def count(klass)
