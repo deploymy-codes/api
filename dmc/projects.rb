@@ -22,7 +22,6 @@ require_relative 'projects/services/git_service/fake_git_service'
 require_relative 'projects/jobs/clone_job'
 
 require_relative 'projects/use_cases/create'
-require_relative 'projects/use_cases/list'
 require_relative 'projects/use_cases/list_for_user'
 require_relative 'projects/use_cases/paginate_for_user'
 require_relative 'projects/use_cases/find_by_name'

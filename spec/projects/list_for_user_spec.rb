@@ -9,7 +9,7 @@ module Projects
       remote_project = Customers::RemoteProject.new(name:'deploymy-codes/api', url: 'https://github.com/deploymy-codes/api.git', id: 25465783)
       project = Create.new(user, remote_project).run!
 
-      projects = List.new(user).run!
+      projects = ListForUser.new(user).run!
 
       expect(projects.first.id).to be_eql project.id
       expect(projects.first.name).to be_eql project.name
