@@ -55,6 +55,8 @@ class Repository
           dataset.map { |record| klass.new record }
         elsif dataset.is_a? Hash
           klass.new dataset
+        else
+          dataset
         end
       end
 

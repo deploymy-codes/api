@@ -1,22 +1,17 @@
 module Customers
-  class ListRemoteProject < Struct.new(:user, :cursor)
+  class ListRemoteProject < Struct.new(:user)
 
     def run!
       remote_projects.each do |remote_project|
         next unless projects.find { |project| project.remote_id == remote_project.id }
         remote_project.imported = true
       end
-
-      cursor.data        = remote_projects
-      cursor.total_count = remote_projects.length
-
-      cursor
     end
 
     private
 
     def projects
-      @projects ||= Projects::ProjectRepository.all(Projects::Project)
+      @projects ||= Projects::ListForUser.new(user).run!
     end
 
     def remote_projects

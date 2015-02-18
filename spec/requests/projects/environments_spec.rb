@@ -21,5 +21,7 @@ describe 'List environment' do
     expect(json).to be_instance_of Array
     expect(json.first['name']).to be_eql 'default'
     expect(json.first['strategy']).to be_eql 'heroku'
+
+    expect(last_response).to be_paginated
   end
 end

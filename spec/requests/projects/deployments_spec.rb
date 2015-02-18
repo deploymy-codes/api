@@ -24,5 +24,7 @@ describe 'List deployment' do
     expect(json).to be_instance_of Array
     expect(json.first['commit']).to be_eql 'idf'
     expect(json.first['state']).to be_eql 'pending'
+
+    expect(last_response).to be_paginated
   end
 end

@@ -12,6 +12,14 @@ module Projects
         end
       end
 
+      def query_paginate_project_with_user_id(klass, selector)
+        query_project_with_user_id(klass, selector).slice(selector.offset, selector.limit)
+      end
+
+      def query_count_project_with_user_id(klass, selector)
+        query_project_with_user_id(klass, selector).length
+      end
+
     end
   end
 end

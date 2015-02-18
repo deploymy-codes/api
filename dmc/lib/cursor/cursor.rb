@@ -1,27 +1,18 @@
 class Cursor
 
   MAX_LIMIT = 100
+  MIN_LINIT = 1
 
-  attr_accessor :data, :total_count
+  attr_reader :offset
 
   def initialize(offset = nil, limit = nil)
-    @offset = offset
-    @limit  = limit
-    @data   = []
-    @total_count  = 0
-  end
-
-  def offset
-    @offset || 0
+    @offset = offset.to_i
+    @limit  = limit.to_i
   end
 
   def limit
-    return MAX_LIMIT if @limit.blank? || @limit > MAX_LIMIT
+    return MAX_LIMIT unless (MIN_LINIT..MAX_LIMIT).include?(@limit)
 
     @limit
-  end
-
-  def options
-    [offset, limit]
   end
 end

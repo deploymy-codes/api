@@ -26,5 +26,7 @@ describe 'Root' do
     expect(json.first['name']).to be_eql 'deploymy-codes/api'
     expect(json.first['remote_id']).to be_eql 25465783
     expect(json.first['url']).to be_eql 'https://github.com/deploymy-codes/api.git'
+
+    expect(last_response).to be_paginated
   end
 end

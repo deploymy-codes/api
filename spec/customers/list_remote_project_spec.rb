@@ -7,11 +7,11 @@ module Customers
     let!(:project) { create_project user: user }
 
     it 'returns the list' do
-      cursor = ListRemoteProject.new(user, Cursor.new).run!
+      remote_projects = ListRemoteProject.new(user).run!
 
-      expect(cursor.total_count).to be_eql 3
+      expect(remote_projects.length).to be_eql 3
 
-      remote_project = cursor.data.first
+      remote_project = remote_projects.first
       expect(remote_project.name).to be_eql 'deploymy-codes/api'
       expect(remote_project.url).to be_eql 'https://github.com/deploymy-codes/api.git'
       expect(remote_project.imported).to be true

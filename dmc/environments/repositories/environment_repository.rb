@@ -22,9 +22,19 @@ module Environments
 
         environment
       end
+
+      def paginate_for_project!(project_id, cursor)
+        query Environment, PaginateEnvironmentWithProjectId.new(project_id, cursor.limit, cursor.offset)
+      end
+
+      def count_for_project!(project_id)
+        query Environment, CountEnvironmentWithProjectId.new(project_id)
+      end
     end
   end
 
-  EnvironmentWithNameAndProjectId = Struct.new :name, :project_id
-  EnvironmentWithProjectId = Struct.new :project_id
+  EnvironmentWithNameAndProjectId  = Struct.new :name, :project_id
+  EnvironmentWithProjectId         = Struct.new :project_id
+  PaginateEnvironmentWithProjectId = Struct.new :project_id, :limit, :offset
+  CountEnvironmentWithProjectId    = Struct.new :project_id
 end
