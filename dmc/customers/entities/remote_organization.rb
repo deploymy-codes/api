@@ -1,5 +1,5 @@
 module Customers
-  class RemoteOrg < Entity
+  class RemoteOrganization < Entity
 
     attribute :name, String
     attribute :avatar_url, String

@@ -10,9 +10,9 @@ module Customers
       client(oauth_token).user
     end
 
-    def orgs(oauth_token)
+    def organizations(oauth_token)
       client(oauth_token).orgs.map do |attributes|
-        GithubService::Org.new attributes[:login], attributes[:avatar_url]
+        GithubService::Organization.new attributes[:login], attributes[:avatar_url]
       end
     end
 

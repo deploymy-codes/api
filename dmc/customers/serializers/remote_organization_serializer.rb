@@ -1,5 +1,5 @@
 module Customers
-  class RemoteOrgSerializer < Serializer
+  class RemoteOrganizationSerializer < Serializer
     attributes :name, :avatar_url
   end
 end

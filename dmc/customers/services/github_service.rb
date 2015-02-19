@@ -1,17 +1,19 @@
 module Customers
+  module Hashify
+    def to_hash
+      Hash[members.zip values]
+    end
+  end
+
   class GithubService
-    extend Interchange.new(*[:fetch_token, :user, :reset_tokens, :orgs, :repositories, :repository])
+    extend Interchange.new(*[:fetch_token, :user, :reset_tokens, :organizations, :repositories, :repository])
 
     Repository = Struct.new(:name, :url, :id) do
-      def to_hash
-        Hash[members.zip values]
-      end
+      include Hashify
     end
 
-    Org = Struct.new(:name, :avatar_url) do
-      def to_hash
-        Hash[members.zip values]
-      end
+    Organization = Struct.new(:name, :avatar_url) do
+      include Hashify
     end
 
   end

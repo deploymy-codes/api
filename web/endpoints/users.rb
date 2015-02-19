@@ -9,7 +9,7 @@ module Endpoint
     end
 
     get '/orgs' do
-      use_case    = Customers::ListRemoteOrg.new current_user
+      use_case    = Customers::ListRemoteOrganization.new current_user
       remote_orgs = use_case.run!
 
       json serialize(remote_orgs)

@@ -2,7 +2,7 @@ require 'spec_helper'
 require_relative "./../../../web/lib/web"
 require_relative "./../../../web/endpoints/users"
 
-describe 'Remote projects' do
+describe 'Organizations' do
   it_behaves_like 'Authenticated', '/orgs'
 
   def app
@@ -19,6 +19,6 @@ describe 'Remote projects' do
     expect(json).to be_instance_of Array
 
     expect(json.first['name']).to be_eql 'deploymy-codes'
-    expect(json.first['avatar_url']).to include 'avatars'
+    expect(json.first['avatar_url']).to be_eql 'https://avatars.githubusercontent.com/u/9341835?v=3'
   end
 end

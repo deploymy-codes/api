@@ -19,8 +19,8 @@ module Customers
       FakeUser.new('Robots', 'coders@deploymy.codes', 'https://avatars.githubusercontent.com/u/10991964?v=3')
     end
 
-    def orgs(oauth_token)
-      [GithubService::Org.new('deploymy-codes', 'avatars.jpg')]
+    def organizations(oauth_token)
+      [GithubService::Organization.new('deploymy-codes', 'https://avatars.githubusercontent.com/u/9341835?v=3')]
     end
 
     def repository(oauth_token, owner, repo)
