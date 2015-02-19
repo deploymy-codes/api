@@ -27,7 +27,7 @@ class Envelope < Struct.new(:data, :total_count, :cursor)
   end
 
   def last?
-    last_offset < 0
+    last_offset == offset
   end
 
 end

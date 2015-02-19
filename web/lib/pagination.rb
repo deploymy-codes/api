@@ -33,7 +33,7 @@ module Pagination
       links << %(<#{request_url}?offset=0&limit=#{envelope.limit}>; rel="first")
     end
 
-    if !envelope.last?
+    if !envelope.last? && envelope.previous_offset?
       links << %(<#{request_url}?offset=#{envelope.last_offset}&limit=#{envelope.limit}>; rel="last")
     end
 

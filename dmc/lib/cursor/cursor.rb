@@ -1,7 +1,7 @@
 class Cursor
 
   MAX_LIMIT = 100
-  MIN_LINIT = 1
+  MIN_LIMIT = 1
 
   attr_reader :offset
 
@@ -11,7 +11,7 @@ class Cursor
   end
 
   def limit
-    return MAX_LIMIT unless (MIN_LINIT..MAX_LIMIT).include?(@limit)
+    return MAX_LIMIT unless (MIN_LIMIT..MAX_LIMIT).include?(@limit)
 
     @limit
   end
