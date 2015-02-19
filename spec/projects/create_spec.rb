@@ -4,7 +4,7 @@ module Projects
   describe 'Create project' do
     before do
       @user            = create_user
-      @remote_projects = Customers::ListRemoteProject.new(@user).run!
+      @remote_projects = Customers::ListRemoteProject.new(@user, 'deploymy-codes').run!
       @project         = Create.new(@user, @remote_projects.first).run!
     end
 
