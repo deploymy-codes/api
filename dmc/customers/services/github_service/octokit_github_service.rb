@@ -1,18 +1,19 @@
 module Customers
-  class OctokitGithubService
-
-    def initialize(client_id, client_secret)
-      @client_id     = client_id
-      @client_secret = client_secret
-    end
+  class OctokitGithubService < Struct.new(:client_id, :client_secret)
 
     def fetch_token(code)
-      data = Octokit.exchange_code_for_token(code, @client_id, @client_secret)
+      data = Octokit.exchange_code_for_token(code, client_id, client_secret)
       data[:access_token]
     end
 
     def user(oauth_token)
       client(oauth_token).user
+    end
+
+    def orgs(oauth_token)
+      client(oauth_token).orgs.map do |attributes|
+        GithubService::Org.new attributes[:login], attributes[:avatar_url]
+      end
     end
 
     def repositories(oauth_token)
@@ -27,7 +28,7 @@ module Customers
     end
 
     def reset_tokens(oauth_token)
-      client = Octokit::Client.new(client_id: @client_id, client_secret: @client_secret)
+      client = Octokit::Client.new(client_id: client_id, client_secret: client_secret)
       client.reset_application_authorization(oauth_token)
     end
 
