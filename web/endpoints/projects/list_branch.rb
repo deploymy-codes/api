@@ -4,10 +4,10 @@ module Endpoint
 
       def self.registered(app)
         app.get '/:owner/:repo/branches' do
-          use_case = ::Projects::ListBranch.new current_project
-          branches = use_case.run!
+          use_case = ::Projects::ListBranch.new current_project, cursor
+          envelope = use_case.run!
 
-          json serialize(branches)
+          paginate envelope
         end
       end
 

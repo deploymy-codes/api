@@ -1,10 +1,20 @@
 module Projects
-  class ListTag < Struct.new(:project)
+  class ListTag < Struct.new(:project, :cursor)
 
     def run!
-      git_tags = GitService.tags project.dir
+      total_count = git_tags.count
 
-      git_tags.map { |git_tag| Tag.new name: git_tag.name }
+      tags        = git_tags.to_a.slice(cursor.offset, cursor.limit).map do |git_tag|
+        Tag.new name: git_tag.name
+      end
+
+      Envelope.new tags, total_count, cursor
+    end
+
+    private
+
+    def git_tags
+      @git_tags ||= GitService.tags project.dir
     end
 
   end
