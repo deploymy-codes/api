@@ -7,7 +7,7 @@ module Customers
     let!(:project) { create_project user: user }
 
     it 'returns the list' do
-      remote_projects = ListRemoteProject.new(user).run!
+      remote_projects = ListRemoteProject.new(user, 'deploymy-codes').run!
 
       expect(remote_projects.length).to be_eql 3
 

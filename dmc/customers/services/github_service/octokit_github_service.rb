@@ -16,9 +16,10 @@ module Customers
       end
     end
 
-    def repositories(oauth_token)
-      client = client(oauth_token)
-      user_repositories(client) + organization_repositories(client)
+    def repositories(oauth_token, owner)
+      client(oauth_token).org_repos(owner).map do |attributes|
+        build_repository attributes
+      end
     end
 
     def repository(oauth_token, owner, repo)
@@ -36,20 +37,6 @@ module Customers
 
     def client(oauth_token)
       Octokit::Client.new(access_token: oauth_token, auto_paginate: true)
-    end
-
-    def user_repositories(client)
-      client.repositories.map do |attributes|
-        build_repository attributes
-      end
-    end
-
-    def organization_repositories(client)
-      client.organizations.flat_map do |organization|
-        client.org_repos(organization.login).map do |attributes|
-          build_repository attributes
-        end
-      end
     end
 
     def build_repository(attributes)

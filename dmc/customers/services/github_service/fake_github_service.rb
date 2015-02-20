@@ -24,12 +24,12 @@ module Customers
     end
 
     def repository(oauth_token, owner, repo)
-      repositories(oauth_token).find do |repository|
+      repositories(oauth_token, owner).find do |repository|
         repository.name == [owner, repo].join('/')
       end
     end
 
-    def repositories(oauth_token)
+    def repositories(oauth_token, owner)
       [
         GithubService::Repository.new('deploymy-codes/api', 'https://github.com/deploymy-codes/api.git', 25465783),
         GithubService::Repository.new('deploymy-codes/frontend', 'https://github.com/deploymy-codes/frontend.git', 25839116),

@@ -1,10 +1,20 @@
 module Projects
-  class ListBranch < Struct.new(:project)
+  class ListBranch < Struct.new(:project, :cursor)
 
     def run!
-      git_branches = GitService.branches project.dir
+      total_count = git_branches.count
 
-      git_branches.map { |git_branch| Branch.new name: git_branch.name }
+      branches    = git_branches.to_a.slice(cursor.offset, cursor.limit).map do |git_branch|
+        Branch.new name: git_branch.name
+      end
+
+      Envelope.new branches, total_count, cursor
+    end
+
+    private
+
+    def git_branches
+      @git_branches ||= GitService.branches project.dir
     end
 
   end
