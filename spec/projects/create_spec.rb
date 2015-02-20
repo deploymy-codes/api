@@ -4,7 +4,7 @@ module Projects
   describe 'Create project' do
     before do
       @user            = create_user
-      @remote_projects = Customers::ListRemoteProject.new(@user).run!
+      @remote_projects = Customers::ListRemoteProject.new(@user, 'deploymy-codes').run!
       @project         = Create.new(@user, @remote_projects.first).run!
     end
 
@@ -19,7 +19,7 @@ module Projects
     end
 
     it 'create a default environment' do
-      environments = Environments::List.new(@project).run!
+      environments = Environments::ListForProject.new(@project).run!
       expect(environments.length).to be 1
     end
 

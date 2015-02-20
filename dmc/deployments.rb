@@ -17,7 +17,7 @@ require_relative 'deployments/services/heroku_service/fake_heroku_service'
 require_relative 'deployments/jobs/deploy_job'
 
 require_relative 'deployments/use_cases/create'
-require_relative 'deployments/use_cases/list'
+require_relative 'deployments/use_cases/paginate_for_environment'
 require_relative 'deployments/use_cases/deploy'
 require_relative 'deployments/use_cases/find'
 

@@ -26,7 +26,7 @@ module Environments
     private
 
     def validate_environment_uniqueness!
-      if List.new(project).run!.map(&:name).include? form.name
+      if ListForProject.new(project).run!.map(&:name).include? form.name
         raise NameTakenError, form.name
       end
     end

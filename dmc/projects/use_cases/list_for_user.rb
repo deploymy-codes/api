@@ -1,5 +1,5 @@
 module Projects
-  class List < Struct.new(:user)
+  class ListForUser < Struct.new(:user)
 
     def run!
       ProjectRepository.all_for_user!(user.id)

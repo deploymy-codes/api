@@ -2,12 +2,17 @@ module Deployments
   class DeploymentRepository < Repository
 
     class << self
-      def all_for_environment!(environment_id)
-        query Deployment, DeploymentWithEnvironmentId.new(environment_id)
+      def paginate_for_environment!(environment_id, cursor)
+        query Deployment, PaginateDeploymentWithEnvironmentId.new(environment_id, cursor.limit, cursor.offset)
+      end
+
+      def count_for_environment!(environment_id)
+        query Deployment, CountDeploymentWithEnvironmentId.new(environment_id)
       end
     end
 
   end
 
-  DeploymentWithEnvironmentId = Struct.new :environment_id
+  CountDeploymentWithEnvironmentId    = Struct.new :environment_id
+  PaginateDeploymentWithEnvironmentId = Struct.new :environment_id, :limit, :offset
 end

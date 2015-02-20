@@ -10,6 +10,10 @@ class Repository
         build_entity klass, mapper_for(klass).all
       end
 
+      def paginate(klass, offset, limit)
+        build_entity klass, mapper_for(klass).limit(limit).offset(offset).all
+      end
+
       def count(klass)
         mapper_for(klass).count
       end
@@ -51,6 +55,8 @@ class Repository
           dataset.map { |record| klass.new record }
         elsif dataset.is_a? Hash
           klass.new dataset
+        else
+          dataset
         end
       end
 

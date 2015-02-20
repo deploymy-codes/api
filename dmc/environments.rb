@@ -8,7 +8,8 @@ require_relative 'environments/forms/create_form'
 
 require_relative 'environments/serializers/environment_serializer'
 
-require_relative 'environments/use_cases/list'
+require_relative 'environments/use_cases/list_for_project'
+require_relative 'environments/use_cases/paginate_for_project'
 require_relative 'environments/use_cases/create'
 require_relative 'environments/use_cases/find'
 require_relative 'environments/use_cases/find_by_name'

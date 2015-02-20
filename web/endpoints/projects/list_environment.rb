@@ -4,10 +4,10 @@ module Endpoint
 
       def self.registered(app)
         app.get '/:owner/:repo/environments' do
-          use_case     = Environments::List.new current_project
-          environments = use_case.run!
+          use_case = Environments::PaginateForProject.new current_project, cursor
+          envelope = use_case.run!
 
-          json serialize(environments)
+          paginate envelope
         end
       end
 

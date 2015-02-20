@@ -14,6 +14,10 @@ class Repository
         map_for_class(klass).values
       end
 
+      def paginate(klass, offset, limit)
+        all(klass).slice(offset, limit)
+      end
+
       def count(klass)
         map_for_class(klass).count
       end

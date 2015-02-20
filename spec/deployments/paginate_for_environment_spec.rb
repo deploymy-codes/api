@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module Deployments
-  describe 'List deployment' do
+  describe 'Paginate deployment for environment' do
 
     it 'list deployment which belongs to the environment' do
       user        = create_user
@@ -9,11 +9,11 @@ module Deployments
       environment = create_environment project: project
       deployment  = create_deployment commit: 'yaha', environment: environment
 
-      deployments = List.new(environment).run!
+      envelope = PaginateForEnvironment.new(environment, Cursor.new).run!
 
-      expect(deployments.length).to be 1
-      expect(deployments.last.commit).to be_eql deployment.commit
-      expect(deployments.last.environment_id).to be_eql deployment.environment_id
+      expect(envelope.total_count).to be 1
+      expect(envelope.data.last.commit).to be_eql deployment.commit
+      expect(envelope.data.last.environment_id).to be_eql deployment.environment_id
     end
   end
 end

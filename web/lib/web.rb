@@ -5,12 +5,14 @@ require 'sinatra/cross_origin'
 
 require_relative './parameter_missing_error'
 require_relative './api_key_header_missing_error'
+require_relative './pagination'
 
 class Web < Sinatra::Base
-  helpers Sinatra::JSON
-
   register Sinatra::Reloader
   register Sinatra::CrossOrigin
+
+  helpers Sinatra::JSON
+  helpers Pagination
 
   configure do
     enable :cross_origin

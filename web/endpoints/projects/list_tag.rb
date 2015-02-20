@@ -4,10 +4,10 @@ module Endpoint
 
       def self.registered(app)
         app.get '/:owner/:repo/tags' do
-          use_case = ::Projects::ListTag.new current_project
-          tags = use_case.run!
+          use_case = ::Projects::ListTag.new current_project, cursor
+          envelope = use_case.run!
 
-          json serialize(tags)
+          paginate envelope
         end
       end
 

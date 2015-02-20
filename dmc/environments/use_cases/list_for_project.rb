@@ -1,5 +1,5 @@
 module Environments
-  class List < Struct.new(:project)
+  class ListForProject < Struct.new(:project)
 
     def run!
       EnvironmentRepository.all_for_project!(project.id)

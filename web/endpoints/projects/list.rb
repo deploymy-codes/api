@@ -4,10 +4,10 @@ module Endpoint
 
       def self.registered(app)
         app.get '/' do
-          use_case = ::Projects::List.new current_user
-          projects = use_case.run!
+          use_case = ::Projects::PaginateForUser.new current_user, cursor
+          envelope = use_case.run!
 
-          json serialize(projects)
+          paginate envelope
         end
       end
 

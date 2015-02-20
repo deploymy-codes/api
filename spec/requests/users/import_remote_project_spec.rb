@@ -3,7 +3,7 @@ require_relative "./../../../web/lib/web"
 require_relative "./../../../web/endpoints/users"
 
 describe 'Import remote projects' do
-  it_behaves_like 'Authenticated', '/remote_projects/deploymy-codes/api/import', 'post'
+  it_behaves_like 'Authenticated', '/orgs/deploymy-codes/remote_projects/api', 'post'
 
   def app
     Endpoint::Users
@@ -12,7 +12,7 @@ describe 'Import remote projects' do
   let!(:user) { create_user }
 
   it 'return the project' do
-    post '/remote_projects/deploymy-codes/api/import', {}, { 'HTTP_AUTHORIZATION' => user.api_key }
+    post '/orgs/deploymy-codes/remote_projects/api', {}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
     expect(last_response.status).to be_eql 201
     json = JSON.parse(last_response.body)
@@ -23,8 +23,8 @@ describe 'Import remote projects' do
 
   context 'when the project has already been imported' do
     it 'returns a 403 errors' do
-      post '/remote_projects/deploymy-codes/api/import', {}, { 'HTTP_AUTHORIZATION' => user.api_key }
-      post '/remote_projects/deploymy-codes/api/import', {}, { 'HTTP_AUTHORIZATION' => user.api_key }
+      post '/orgs/deploymy-codes/remote_projects/api', {}, { 'HTTP_AUTHORIZATION' => user.api_key }
+      post '/orgs/deploymy-codes/remote_projects/api', {}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
       expect(last_response.status).to be_eql 403
       json = JSON.parse(last_response.body)

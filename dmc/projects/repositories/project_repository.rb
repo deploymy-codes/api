@@ -22,10 +22,20 @@ module Projects
 
         project
       end
+
+      def paginate_for_user!(user_id, cursor)
+        query Project, PaginateProjectWithUserId.new(user_id, cursor.limit, cursor.offset)
+      end
+
+      def count_for_user!(user_id)
+        query Project, CountProjectWithUserId.new(user_id)
+      end
     end
 
   end
 
-  ProjectWithUserId        = Struct.new :user_id
-  ProjectWithNameAndUserId = Struct.new :name, :user_id
+  ProjectWithUserId          = Struct.new :user_id
+  CountProjectWithUserId     = Struct.new :user_id
+  PaginateProjectWithUserId  = Struct.new :user_id, :limit, :offset
+  ProjectWithNameAndUserId   = Struct.new :name, :user_id
 end

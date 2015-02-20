@@ -9,9 +9,9 @@ module Projects
       remote_project = Customers::RemoteProject.new(name:'deploymy-codes/api', url: 'https://github.com/deploymy-codes/api.git', id: 25465783)
       project = Create.new(user, remote_project).run!
 
-      tags = ListTag.new(project).run!
+      envelope = ListTag.new(project, Cursor.new).run!
 
-      expect(tags.first.name).to be_eql 'v-0.0.0'
+      expect(envelope.data.first.name).to be_eql 'v-0.0.0'
     end
   end
 end
