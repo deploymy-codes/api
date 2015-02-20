@@ -2,9 +2,9 @@ module Projects
   class ListTag < Struct.new(:project, :cursor)
 
     def run!
-      total_count = git_tags.length
+      total_count = git_tags.count
 
-      tags        = git_tags.slice(cursor.offset, cursor.limit).map do |git_tag|
+      tags        = git_tags.to_a.slice(cursor.offset, cursor.limit).map do |git_tag|
         Tag.new name: git_tag.name
       end
 
