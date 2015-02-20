@@ -2,9 +2,10 @@ module Projects
   class ListBranch < Struct.new(:project, :cursor)
 
     def run!
+
       total_count = git_branches.count
 
-      branches    = git_branches.to_a.slice(cursor.offset, cursor.limit).map do |git_branch|
+      branches    = git_branches.drop(cursor.offset).take(cursor.limit).map do |git_branch|
         Branch.new name: git_branch.name
       end
 
