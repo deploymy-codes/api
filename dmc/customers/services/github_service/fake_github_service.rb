@@ -19,13 +19,17 @@ module Customers
       FakeUser.new('Robots', 'coders@deploymy.codes', 'https://avatars.githubusercontent.com/u/10991964?v=3')
     end
 
+    def organizations(oauth_token)
+      [GithubService::Organization.new('deploymy-codes', 'https://avatars.githubusercontent.com/u/9341835?v=3')]
+    end
+
     def repository(oauth_token, owner, repo)
-      repositories(oauth_token).find do |repository|
+      repositories(oauth_token, owner).find do |repository|
         repository.name == [owner, repo].join('/')
       end
     end
 
-    def repositories(oauth_token)
+    def repositories(oauth_token, owner)
       [
         GithubService::Repository.new('deploymy-codes/api', 'https://github.com/deploymy-codes/api.git', 25465783),
         GithubService::Repository.new('deploymy-codes/frontend', 'https://github.com/deploymy-codes/frontend.git', 25839116),
