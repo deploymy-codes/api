@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://GITHUB_CLIENT_ID:GITHUB_SECRET_ID@api.github.com/applications/GITHUB_CLIENT_ID/tokens/467b5f4a493560c986f5a9da344734ce6fb8a218
+    uri: https://GITHUB_CLIENT_ID:GITHUB_SECRET_ID@api.github.com/applications/GITHUB_CLIENT_ID/tokens/GITHUB_OAUTH_TOKEN
     body:
       encoding: UTF-8
       string: "{}"

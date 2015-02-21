@@ -6,7 +6,7 @@ module Customers
   end
 
   class GithubService
-    extend Interchange.new(*[:fetch_token, :user, :reset_tokens, :organizations, :repositories, :repository])
+    extend Interchange.new(*[:fetch_token, :user, :reset_tokens, :organizations, :organization_repositories, :repositories, :repository])
 
     Repository = Struct.new(:name, :url, :id) do
       include Hashify

@@ -32,8 +32,10 @@ end
 VCR.configure do |c|
   c.hook_into :webmock
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+
   c.filter_sensitive_data('GITHUB_CLIENT_SECRET') { ENV['OCTOKIT_CLIENT_SECRET'] }
-  c.filter_sensitive_data('GITHUB_CLIENT_ID') { ENV['OCTOKIT_CLIENT_ID'] }
+  c.filter_sensitive_data('GITHUB_CLIENT_ID')     { ENV['OCTOKIT_CLIENT_ID'] }
+  c.filter_sensitive_data('GITHUB_OAUTH_TOKEN')   { ENV['GITHUB_OAUTH_TOKEN'] }
 
   c.around_http_request do |request|
     VCR.use_cassette(get_cassette_path(request), match_requests_on: [:method, :body], &request)

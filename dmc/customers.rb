@@ -29,6 +29,7 @@ require_relative 'customers/use_cases/find_or_create'
 require_relative 'customers/use_cases/update_or_create_account'
 require_relative 'customers/use_cases/find'
 require_relative 'customers/use_cases/list_remote_organization'
+require_relative 'customers/use_cases/list_remote_organization_project'
 require_relative 'customers/use_cases/list_remote_project'
 require_relative 'customers/use_cases/get_remote_project'
 

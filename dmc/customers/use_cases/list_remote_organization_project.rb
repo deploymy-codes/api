@@ -1,5 +1,5 @@
 module Customers
-  class ListRemoteProject < Struct.new(:user)
+  class ListRemoteOrganizationProject < Struct.new(:user, :owner)
 
     def run!
       remote_projects.each do |remote_project|
@@ -24,7 +24,7 @@ module Customers
     end
 
     def repositories
-      @repositories ||= GithubService.repositories account.oauth_token
+      @repositories ||= GithubService.organization_repositories account.oauth_token, owner
     end
 
   end
