@@ -16,7 +16,7 @@ module Customers
       end
     end
 
-    def repositories(oauth_token, owner)
+    def organization_repositories(oauth_token, owner)
       client(oauth_token).org_repos(owner).map do |attributes|
         build_repository attributes
       end
