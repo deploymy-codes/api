@@ -1,6 +1,6 @@
 module Customers
   class FakeGithubService
-    FakeUser = Struct.new(:name, :email, :avatar_url)
+    FakeUser = Struct.new(:name, :login, :email, :avatar_url)
 
     def initialize
       @counter = 0
@@ -16,7 +16,7 @@ module Customers
     end
 
     def user(oauth_token)
-      FakeUser.new('Robots', 'coders@deploymy.codes', 'https://avatars.githubusercontent.com/u/10991964?v=3')
+      FakeUser.new('Robots', 'deploymycodes', 'coders@deploymy.codes', 'https://avatars.githubusercontent.com/u/10991964?v=3')
     end
 
     def organizations(oauth_token)
