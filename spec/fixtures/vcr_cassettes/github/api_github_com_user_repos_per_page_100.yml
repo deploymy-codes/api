@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.github.com/user/orgs
+    uri: https://api.github.com/user/repos?per_page=100
     body:
       encoding: US-ASCII
       string: ''
@@ -25,27 +25,27 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Sat, 21 Feb 2015 13:02:07 GMT
+      - Sat, 21 Feb 2015 13:02:28 GMT
       Content-Type:
       - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '2'
       Status:
       - 200 OK
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4998'
+      - '4996'
       X-Ratelimit-Reset:
       - '1424527299'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Etag:
-      - W/"9ad133761e88ae5028fd0f6eed796183"
+      - '"5752ff165693685864aeb13a9995f762"'
       X-Oauth-Scopes:
       - repo, user:email
       X-Accepted-Oauth-Scopes:
-      - admin:org, read:org, repo, user, write:org
+      - ''
       X-Oauth-Client-Id:
       - GITHUB_CLIENT_ID
       Vary:
@@ -67,17 +67,16 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 5163CB70:12AC:1D3E1437:54E881CF
+      - 5163CB70:12A9:CEBA7AF:54E881E4
       Strict-Transport-Security:
       - max-age=31536000; includeSubdomains; preload
       X-Content-Type-Options:
       - nosniff
       X-Served-By:
-      - dc1ce2bfb41810a06c705e83b388572d
+      - 474556b853193c38f1b14328ce2d1b7d
     body:
       encoding: UTF-8
-      string: '[{"login":"deploymy-codes","id":9341835,"url":"https://api.github.com/orgs/deploymy-codes","repos_url":"https://api.github.com/orgs/deploymy-codes/repos","events_url":"https://api.github.com/orgs/deploymy-codes/events","members_url":"https://api.github.com/orgs/deploymy-codes/members{/member}","public_members_url":"https://api.github.com/orgs/deploymy-codes/public_members{/member}","avatar_url":"https://avatars.githubusercontent.com/u/9341835?v=3","description":"Deployment
-        has never been so easy"}]'
+      string: "[]"
     http_version: 
-  recorded_at: Sat, 21 Feb 2015 13:02:07 GMT
+  recorded_at: Sat, 21 Feb 2015 13:02:28 GMT
 recorded_with: VCR 2.9.3

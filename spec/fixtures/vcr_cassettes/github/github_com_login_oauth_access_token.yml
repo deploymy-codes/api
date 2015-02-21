@@ -71,7 +71,7 @@ http_interactions:
       - 4580e595d77515caa5593194518fa90f
     body:
       encoding: UTF-8
-      string: '{"access_token":"cfcb74e01f475a8727d466f0ecbb171e38a1dee8","token_type":"bearer","scope":"repo,user:email"}'
+      string: '{"access_token":"GITHUB_OAUTH_TOKEN","token_type":"bearer","scope":"repo,user:email"}'
     http_version: 
   recorded_at: Fri, 13 Feb 2015 10:54:10 GMT
 - request:

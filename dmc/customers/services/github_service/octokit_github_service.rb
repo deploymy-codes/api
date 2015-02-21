@@ -22,6 +22,12 @@ module Customers
       end
     end
 
+    def repositories(oauth_token)
+      client(oauth_token).repositories.map do |attributes|
+        build_repository attributes
+      end
+    end
+
     def repository(oauth_token, owner, repo)
       attributes = client(oauth_token).repo [owner, repo].join('/')
 
