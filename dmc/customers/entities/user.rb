@@ -1,7 +1,7 @@
 module Customers
   class User < Entity
 
-    attribute :name, String
+    attribute :full_name, String
     attribute :username, String
     attribute :email, String
     attribute :api_key, String
@@ -9,7 +9,7 @@ module Customers
 
     def self.build_from_provider_user(provider_user)
       new.tap do |user|
-        user.name       = provider_user.name
+        user.full_name  = provider_user.name
         user.username   = provider_user.login
         user.email      = provider_user.email
         user.avatar_url = provider_user.avatar_url

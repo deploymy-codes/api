@@ -19,5 +19,6 @@ describe 'Self' do
     expect(json).to be_instance_of Hash
     expect(json['api_key']).to be_eql user.api_key
     expect(json['username']).to be_eql user.username
+    expect(json['full_name']).to be_eql user.full_name
   end
 end
