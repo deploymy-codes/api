@@ -2,7 +2,8 @@ Sequel.migration do
   up do
     create_table(:users) do
       primary_key :id
-      String :name
+      String :full_name
+      String :username
       String :email
       String :avatar_url
       String :api_key
