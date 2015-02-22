@@ -20,7 +20,7 @@ module Customers
 
 
     def account
-      @account ||= AccountRepository.find_by_provider_and_user_id! 'github', user.id
+      @account ||= GetAccount.new('github', user.id).run!
     end
 
     def repositories

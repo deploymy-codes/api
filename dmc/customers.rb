@@ -32,6 +32,7 @@ require_relative 'customers/use_cases/list_remote_organization'
 require_relative 'customers/use_cases/list_remote_organization_project'
 require_relative 'customers/use_cases/list_remote_project'
 require_relative 'customers/use_cases/get_remote_project'
+require_relative 'customers/use_cases/get_account'
 
 module Customers
   UserRepository.register :in_memory,  UserRepository::InMemory.new
