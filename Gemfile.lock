@@ -23,6 +23,7 @@ GEM
       slop (~> 3.6)
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    charlock_holmes (0.6.9.4)
     coderay (1.1.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -38,10 +39,26 @@ GEM
     dotenv (1.0.2)
     equalizer (0.0.9)
     erubis (2.7.0)
+    escape_utils (0.2.4)
     eventmachine (1.0.6)
     excon (0.44.2)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    gitlab-grit (2.7.3)
+      charlock_holmes (~> 0.6)
+      diff-lcs (~> 1.1)
+      mime-types (~> 1.15)
+      posix-spawn (~> 0.3)
+    gitlab-linguist (3.0.0)
+      charlock_holmes (~> 0.6.6)
+      escape_utils (~> 0.2.4)
+      mime-types (~> 1.19)
+    gitlab_git (6.3.0)
+      activesupport (~> 4.0)
+      charlock_holmes (~> 0.6)
+      gitlab-grit (~> 2.6)
+      gitlab-linguist (~> 3.0)
+      rugged (~> 0.21.0)
     heroics (0.0.12)
       erubis (~> 2.7.0)
       excon
@@ -54,6 +71,7 @@ GEM
     interchange (0.1.0)
     json (1.8.2)
     method_source (0.8.2)
+    mime-types (1.25.1)
     minitest (5.5.1)
     moneta (0.8.0)
     multi_json (1.10.1)
@@ -63,6 +81,7 @@ GEM
       sawyer (~> 0.6.0, >= 0.5.3)
     platform-api (0.2.0)
       heroics (~> 0.0.10)
+    posix-spawn (0.3.10)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -147,6 +166,7 @@ DEPENDENCIES
   activemodel
   activesupport
   dotenv
+  gitlab_git
   interchange
   octokit
   platform-api

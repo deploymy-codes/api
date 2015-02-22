@@ -19,6 +19,8 @@ describe 'List commit' do
     expect(last_response.status).to be_eql 200
     json = JSON.parse(last_response.body)
     expect(json).to be_instance_of Array
-    expect(json.first['oid']).to be_eql 'a8955f57f76d1b77d1e7a61911f1da369863817e'
+    expect(json.first['id']).to_not be_empty
+
+    expect(last_response).to be_paginated
   end
 end

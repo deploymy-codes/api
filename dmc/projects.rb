@@ -1,5 +1,6 @@
 require 'interchange'
 require 'rugged'
+require 'gitlab_git'
 
 require_relative 'projects/entities/project'
 require_relative 'projects/entities/branch'
@@ -16,7 +17,7 @@ require_relative 'projects/repositories/project_repository/in_memory'
 require_relative 'projects/repositories/project_repository/sequel'
 
 require_relative 'projects/services/git_service'
-require_relative 'projects/services/git_service/rugged_git_service'
+require_relative 'projects/services/git_service/gitlab_git_service'
 require_relative 'projects/services/git_service/fake_git_service'
 
 require_relative 'projects/jobs/clone_job'
@@ -32,9 +33,9 @@ require_relative 'projects/use_cases/list_tag'
 require_relative 'projects/use_cases/list_commit'
 
 module Projects
-  ProjectRepository.register :in_memory,  ProjectRepository::InMemory.new
-  ProjectRepository.register :sequel, ProjectRepository::Sequel.new
+  ProjectRepository.register :in_memory, ProjectRepository::InMemory.new
+  ProjectRepository.register :sequel,    ProjectRepository::Sequel.new
 
-  GitService.register :fake, FakeGitService.new
-  GitService.register :rugged, RuggedGitService.new
+  GitService.register :fake,   FakeGitService.new
+  GitService.register :gitlab, GitlabGitService.new
 end

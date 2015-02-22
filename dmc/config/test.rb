@@ -13,7 +13,7 @@ if mode == 'ci'
 
   Customers::GithubService.use :octokit
 
-  Projects::GitService.use :rugged
+  Projects::GitService.use :gitlab
 
   Deployments::HerokuService.use :api
 else

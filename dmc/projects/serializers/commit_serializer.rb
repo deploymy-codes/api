@@ -1,5 +1,5 @@
 module Projects
   class CommitSerializer < Serializer
-    attributes :oid
+    attributes :id
   end
 end

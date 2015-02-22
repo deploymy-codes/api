@@ -35,6 +35,7 @@ module Endpoint
 
       use_case = ::Projects::Create.new current_user, remote_project
       project = use_case.run!
+
       status 201
       json serialize(project)
     end
