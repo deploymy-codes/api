@@ -35,8 +35,8 @@ module Projects
     end
 
     def validate_project_uniqueness!
-      if ListForUser.new(user).run!.map(&:name).include? remote_project.name
-        raise NameTakenError, remote_project.name
+      if ListForUser.new(user).run!.map(&:name).include? remote_project.full_name
+        raise NameTakenError, remote_project.full_name
       end
     end
   end

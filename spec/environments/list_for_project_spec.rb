@@ -5,7 +5,7 @@ module Environments
 
     it 'list environment which belongs to the project' do
       user        = create_user
-      project     = create_project name: 'rails', user: user
+      project     = create_project full_name: 'rails', user: user
       environment = create_environment project: project
 
       environments = ListForProject.new(project).run!

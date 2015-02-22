@@ -30,7 +30,6 @@ module Customers
 
     def repository(oauth_token, owner, repo)
       attributes = client(oauth_token).repo [owner, repo].join('/')
-
       build_repository attributes
     end
 
@@ -46,7 +45,13 @@ module Customers
     end
 
     def build_repository(attributes)
-      GithubService::Repository.new attributes[:full_name], attributes[:clone_url], attributes[:id]
+      GithubService::Repository.new(
+        attributes[:full_name],
+        attributes[:name],
+        attributes[:owner][:login],
+        attributes[:clone_url],
+        attributes[:id]
+      )
     end
 
   end

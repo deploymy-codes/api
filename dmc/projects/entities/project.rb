@@ -8,7 +8,7 @@ module Projects
 
     def self.build_from(user: nil, remote_project: nil)
       new.tap do |project|
-        project.name      = remote_project.name
+        project.name      = remote_project.full_name
         project.remote_id = remote_project.id
         project.url       = remote_project.url
         project.user_id   = user.id
