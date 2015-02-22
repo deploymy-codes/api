@@ -4,7 +4,7 @@ module Environments
   describe 'Create environment' do
     before do
       user         = create_user
-      @project     = create_project name: 'rails', user: user
+      @project     = create_project full_name: 'rails', user: user
 
       @form        = CreateForm.new name: 'foo', strategy: 'heroku'
       @environment = Create.new(@project, @form).run!

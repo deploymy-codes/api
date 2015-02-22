@@ -3,7 +3,7 @@ require 'spec_helper'
 module Environments
   describe 'Find Environment by name' do
     let(:user) { create_user }
-    let(:project) { create_project name: 'rails', user: user}
+    let(:project) { create_project full_name: 'rails', user: user}
 
     context 'When environment is not found' do
       it 'raise a record not found error' do

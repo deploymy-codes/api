@@ -27,22 +27,47 @@ module Customers
       all_repositories = repositories(oauth_token) + organization_repositories(oauth_token, owner)
 
       all_repositories.find do |repository|
-        repository.name == [owner, repo].join('/')
+        repository.full_name == [owner, repo].join('/')
       end
     end
 
     def organization_repositories(oauth_token, owner)
       [
-        GithubService::Repository.new('deploymy-codes/api', 'https://github.com/deploymy-codes/api.git', 25465783),
-        GithubService::Repository.new('deploymy-codes/frontend', 'https://github.com/deploymy-codes/frontend.git', 25839116),
-        GithubService::Repository.new('deploymy-codes/native', 'https://github.com/deploymy-codes/native.git', 30321370),
+        GithubService::Repository.new(
+          'deploymy-codes/api',
+          'api',
+          'deploymy-codes',
+          'https://github.com/deploymy-codes/api.git',
+          25465783),
+        GithubService::Repository.new(
+          'deploymy-codes/frontend',
+          'frontend',
+          'deploymy-codes',
+          'https://github.com/deploymy-codes/frontend.git',
+          25839116),
+        GithubService::Repository.new(
+          'deploymy-codes/native',
+          'native',
+          'deploymy-codes',
+          'https://github.com/deploymy-codes/native.git',
+          30321370),
       ]
     end
 
     def repositories(oauth_token)
       [
-        GithubService::Repository.new('deploymycodes/awesome-test-project', 'https://github.com/deploymycodes/awesome-test-project.git', 31125946),
-        GithubService::Repository.new('deploymycodes/lets-chat', 'https://github.com/deploymy-codes/lets-chat.git', 31125961),
+        GithubService::Repository.new(
+          'deploymycodes/awesome-test-project',
+          'awesome-test-project',
+          'deploymycodes',
+          'https://github.com/deploymycodes/awesome-test-project.git',
+          31125946),
+        GithubService::Repository.new(
+          'deploymycodes/lets-chat',
+          'lets-chat',
+          'deploymycodes',
+          'https://github.com/deploymy-codes/lets-chat.git',
+          31125961),
       ]
     end
 
