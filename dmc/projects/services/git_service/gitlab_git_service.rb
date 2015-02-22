@@ -1,8 +1,8 @@
 module Projects
   class GitlabGitService
 
-    def clone(dir, url)
-      Rugged::Repository.clone_at url, dir
+    def clone(dir, url, oauth_token)
+      Rugged::Repository.clone_at url, dir, credentials: credentials(oauth_token)
     end
 
     def branches(dir)
@@ -29,6 +29,10 @@ module Projects
 
     def repo(dir)
       Gitlab::Git::Repository.new(dir)
+    end
+
+    def credentials(oauth_token)
+       Rugged::Credentials::UserPassword.new(username: oauth_token, password: 'x-oauth-basic')
     end
 
   end

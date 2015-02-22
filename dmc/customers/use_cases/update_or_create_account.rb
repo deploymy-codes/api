@@ -7,7 +7,7 @@ module Customers
 
 
     def retrieve_or_build_account
-      account = AccountRepository.find_by_provider_and_user_id!(provider, user.id)
+      account = GetAccount.new('github', user.id).run!
       account.oauth_token = oauth_token
 
       account

@@ -5,7 +5,7 @@ module Projects
     GitTag    = Struct.new(:name)
     GitCommit = Struct.new(:id)
 
-    def clone(dir, _)
+    def clone(dir, _, _)
       unless File.directory?(dir)
         FileUtils.mkdir_p(dir)
       end

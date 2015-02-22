@@ -11,7 +11,7 @@ module Customers
   class GetRemoteProject < Struct.new(:user, :owner, :repo)
 
     def run!
-      account        = AccountRepository.find_by_provider_and_user_id! 'github', user.id
+      account        = GetAccount.new('github', user.id).run!
       remote_project = GithubService.repository(account.oauth_token, owner, repo)
 
       raise RemoteProjectNotFound, repo unless remote_project
