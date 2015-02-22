@@ -2,7 +2,7 @@ Sequel.migration do
   up do
     create_table(:deployments) do
       primary_key :id
-      String :commit
+      String :sha
       Integer :environment_id
       String :log
       String :state

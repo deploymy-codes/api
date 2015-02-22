@@ -25,6 +25,10 @@ module Projects
       repo(dir).commit_count repo(dir).root_ref
     end
 
+    def commit(dir, sha)
+      Gitlab::Git::Commit.find(repo(dir), sha)
+    end
+
     private
 
     def repo(dir)

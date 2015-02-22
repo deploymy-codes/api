@@ -9,13 +9,21 @@ module Deployments
     subject { Create.new(environment, form).run! }
 
     context 'when form is valid' do
-      let(:form) { CreateForm.new commit: 'a1wn' }
+      let(:form) { CreateForm.new sha: '3b23ae0' }
 
       it 'create a deployment' do
-        expect(subject.commit).to be_eql form.commit
+        expect(subject.sha).to be_eql form.sha
         expect(subject.id).to_not be_nil
         expect(subject.environment_id).to be_eql environment.id
         expect(subject.state).to be_eql 'pending'
+      end
+    end
+
+    context 'when commit does not exist' do
+      let(:form) { CreateForm.new sha: 'bad_sha' }
+
+      it 'raise a commit not found error' do
+        expect { subject }.to raise_error CommitDoNotExistError
       end
     end
 

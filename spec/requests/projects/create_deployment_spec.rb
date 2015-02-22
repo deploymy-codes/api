@@ -15,13 +15,26 @@ describe 'Create deployment' do
   it_behaves_like 'HasCurrentProject'
   it_behaves_like 'HasCurrentEnvironment'
 
-  it 'returns it' do
-    post "/#{project.name}/environments/#{environment.name}/deployments", { deployment: { commit: '1hdsajk'}}, { 'HTTP_AUTHORIZATION' => user.api_key }
+  context 'when commit exists' do
+    it 'returns it' do
+      post "/#{project.name}/environments/#{environment.name}/deployments", { deployment: { sha: '3b23ae0' }}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
-    expect(last_response.status).to be_eql 201
-    json = JSON.parse(last_response.body)
-    expect(json).to be_instance_of Hash
-    expect(json['commit']).to be_eql '1hdsajk'
-    expect(json['state']).to be_eql 'pending'
+      expect(last_response.status).to be_eql 201
+      json = JSON.parse(last_response.body)
+      expect(json).to be_instance_of Hash
+      expect(json['sha']).to be_eql '3b23ae0'
+      expect(json['state']).to be_eql 'pending'
+    end
   end
+
+  context 'when commit does not exist' do
+    it 'returns it returns a 403 error' do
+      post "/#{project.name}/environments/#{environment.name}/deployments", { deployment: { sha: 'bad_sha' }}, { 'HTTP_AUTHORIZATION' => user.api_key }
+
+      expect(last_response.status).to be_eql 403
+      json = JSON.parse(last_response.body)
+      expect(json['error']['message']).to be_eql 'Commit bad_sha does not exist'
+    end
+  end
+
 end

@@ -24,7 +24,16 @@ module Projects
     end
 
     def commits(_, _)
-      [GitCommit.new('a8955f57f76d1b77d1e7a61911f1da369863817e')]
+      [GitCommit.new('3b23ae0')]
     end
+
+    def commit(_, sha)
+      if sha == '3b23ae0'
+        GitCommit.new('3b23ae0')
+      else
+        nil
+      end
+    end
+
   end
 end
