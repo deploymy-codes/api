@@ -4,10 +4,10 @@ module Endpoint
 
       def self.registered(app)
         app.get '/:owner/:repo/commits' do
-          use_case = ::Projects::ListCommit.new current_project
-          commits = use_case.run!
+          use_case = ::Projects::ListCommit.new current_project, cursor
+          envelope = use_case.run!
 
-          json serialize(commits)
+          paginate envelope
         end
       end
 

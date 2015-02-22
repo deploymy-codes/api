@@ -7,10 +7,10 @@ describe 'List deployment' do
     Endpoint::Projects
   end
 
-  let(:user)         { create_user }
-  let(:project)      { create_project user: user }
-  let(:environment)  { create_environment name: 'master', project: project }
-  let!(:deployment)   { create_deployment commit: 'idf', environment: environment }
+  let(:user)        { create_user }
+  let(:project)     { create_project user: user }
+  let(:environment) { create_environment name: 'master', project: project }
+  let!(:deployment) { create_deployment commit: 'idf', environment: environment }
 
   it_behaves_like 'Authenticated', '/rails/rails'
   it_behaves_like 'HasCurrentProject'

@@ -1,10 +1,22 @@
 module Projects
-  class ListCommit < Struct.new(:project)
+  class ListCommit < Struct.new(:project, :cursor)
 
     def run!
-      git_commits = GitService.commits project.dir
+      Envelope.new commits, total_commit, cursor
+    end
 
-      git_commits.map { |git_commit| Commit.new oid: git_commit.oid }
+    private
+
+    def total_commit
+      GitService.total_commit project.dir
+    end
+
+    def commits
+      @commits ||= git_commits.map { |git_commit| Commit.new id: git_commit.id }
+    end
+
+    def git_commits
+      @git_commits ||= GitService.commits project.dir, cursor
     end
 
   end
