@@ -1,9 +1,9 @@
 module Deployments
   class CreateForm < Form
 
-    attribute :commit, String
+    attribute :sha, String
 
-    validates :commit, presence: true
+    validates :sha, presence: true
 
   end
 end

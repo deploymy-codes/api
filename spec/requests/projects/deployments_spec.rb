@@ -10,7 +10,7 @@ describe 'List deployment' do
   let(:user)        { create_user }
   let(:project)     { create_project user: user }
   let(:environment) { create_environment name: 'master', project: project }
-  let!(:deployment) { create_deployment commit: 'idf', environment: environment }
+  let!(:deployment) { create_deployment environment: environment }
 
   it_behaves_like 'Authenticated', '/rails/rails'
   it_behaves_like 'HasCurrentProject'
@@ -22,7 +22,7 @@ describe 'List deployment' do
     expect(last_response.status).to be_eql 200
     json = JSON.parse(last_response.body)
     expect(json).to be_instance_of Array
-    expect(json.first['commit']).to be_eql 'idf'
+    expect(json.first['sha']).to be_eql '3b23ae0'
     expect(json.first['state']).to be_eql 'pending'
 
     expect(last_response).to be_paginated

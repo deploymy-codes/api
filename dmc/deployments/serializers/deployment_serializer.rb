@@ -1,5 +1,5 @@
 module Deployments
   class DeploymentSerializer < Serializer
-    attributes :commit, :log, :state
+    attributes :sha, :log, :state
   end
 end

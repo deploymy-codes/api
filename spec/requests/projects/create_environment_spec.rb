@@ -24,7 +24,7 @@ describe 'Create environment' do
   end
 
   context 'When environment name is already taken' do
-    it 'returns a 403 errors' do
+    it 'returns a 403 error' do
       post "/#{project.name}/environments", { environment: { name: 'master' , strategy: 'heroku'}}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
       post "/#{project.name}/environments", { environment: { name: 'master' , strategy: 'heroku'}}, { 'HTTP_AUTHORIZATION' => user.api_key }
