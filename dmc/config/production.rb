@@ -12,7 +12,7 @@ Deployments::DeploymentRepository.use :perpetuity
 
 Customers::GithubService.use :octokit
 
-Projects::GitService.use :rugged
+Projects::GitService.use :gitlab
 
 DeploymentRepository::HerokuService.use :api
 
