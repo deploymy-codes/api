@@ -16,6 +16,7 @@ if mode == 'ci'
   Projects::GitService.use :gitlab
 
   Deployments::HerokuService.use :api
+  Deployments::GithubService.use :octokit
 else
   Customers::UserRepository.use :in_memory
   Customers::AccountRepository.use :in_memory
@@ -31,6 +32,7 @@ else
   Projects::GitService.use :fake
 
   Deployments::HerokuService.use :fake
+  Deployments::GithubService.use :fake
 end
 
 JobRunner.use :sync

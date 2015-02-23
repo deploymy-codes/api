@@ -8,6 +8,7 @@ module Environments
     attribute :name, String
     attribute :strategy, String
     attribute :project_id, Integer
+    attribute :api_key, String
 
   end
 end

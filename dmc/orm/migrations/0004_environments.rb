@@ -5,6 +5,8 @@ Sequel.migration do
       String :name
       Integer :project_id
       String :strategy
+      String :heroku_api_key
+      String :heroku_app_name
     end
   end
 
