@@ -2,8 +2,8 @@ module Deployments
   class ApiHerokuService
     include CommandRunner
 
-    def deploy(_, environment, deployment)
-      run(deployment) do |runner|
+    def deploy(project, environment, deployment)
+      run(project, environment, deployment) do |runner|
         runner.execute "Check access on Heroku app: #{environment.heroku_app_name}", &check_access
         runner.execute "Deploy on #{environment.heroku_app_name}", &push
       end

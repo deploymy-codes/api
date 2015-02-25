@@ -51,6 +51,9 @@ def get_cassette_path(request)
   elsif request.uri =~ /github\.com/
     path = request.uri.gsub('https://', '').gsub('/', '_')
     "github/#{path}"
+  elsif request.uri =~ /heroku\.com/
+    path = request.uri.gsub('https://', '').gsub('/', '_')
+    "heroku/#{path}"
   else
     raise "Unknown external url:#{request.uri}, please fix method get_cassette_path"
   end

@@ -2,6 +2,7 @@ module Deployments
   class OctokitGithubService
 
     def create_release(oauth_token, name, release_name, sha)
+      binding.pry
       client(oauth_token).create_release(name, release_name, {
         target_commitish: sha,
         name:             release_name,
