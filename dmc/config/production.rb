@@ -9,6 +9,7 @@ Projects::ProjectRepository.use :sequel
 Environments::EnvironmentRepository.use :sequel
 
 Deployments::DeploymentRepository.use :sequel
+Deployments::LogRepository.use :sequel
 
 Customers::GithubService.use :octokit
 

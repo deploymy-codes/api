@@ -8,6 +8,7 @@ module Customers
       "Remote project #{@name} not found"
     end
   end
+
   class GetRemoteProject < Struct.new(:user, :owner, :repo)
 
     def run!

@@ -15,7 +15,6 @@ module Deployments
         expect(subject.sha).to be_eql form.sha
         expect(subject.id).to_not be_nil
         expect(subject.environment_id).to be_eql environment.id
-        expect(subject.state).to be_eql 'pending'
       end
     end
 

@@ -1,10 +1,11 @@
 module Deployments
-  class Log < Entity
+  class LogForm < Form
 
-    attribute :deployment_id, Integer
     attribute :name, String
     attribute :stdout, String
     attribute :duration, Integer
+
+    validates :name, presence: true
 
   end
 end

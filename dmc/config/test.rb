@@ -10,6 +10,7 @@ if mode == 'ci'
   Environments::EnvironmentRepository.use :sequel
 
   Deployments::DeploymentRepository.use :sequel
+  Deployments::LogRepository.use :sequel
 
   Customers::GithubService.use :octokit
 
@@ -26,6 +27,7 @@ else
   Environments::EnvironmentRepository.use :in_memory
 
   Deployments::DeploymentRepository.use :in_memory
+  Deployments::LogRepository.use :in_memory
 
   Customers::GithubService.use :fake
 

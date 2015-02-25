@@ -23,7 +23,6 @@ describe 'List deployment' do
     json = JSON.parse(last_response.body)
     expect(json).to be_instance_of Array
     expect(json.first['sha']).to be_eql '3b23ae0'
-    expect(json.first['state']).to be_eql 'pending'
 
     expect(last_response).to be_paginated
   end

@@ -23,7 +23,6 @@ describe 'Create deployment' do
       json = JSON.parse(last_response.body)
       expect(json).to be_instance_of Hash
       expect(json['sha']).to be_eql '3b23ae0'
-      expect(json['state']).to be_eql 'pending'
     end
   end
 

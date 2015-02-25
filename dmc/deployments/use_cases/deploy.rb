@@ -5,18 +5,18 @@ module Deployments
       deployment.state = :in_progress
       DeploymentRepository.save deployment
 
-      CreateRelease.new(project, deployment).run!
+      CreateRelease.new(project, environment, deployment).run!
 
-      result = strategy.deploy project, environment, deployment
+      runner = strategy.deploy project, environment, deployment
 
-      deployment.state = result
+      deployment.state = runner.result
       DeploymentRepository.save deployment
     end
 
     private
 
     def project
-      @project ||= Projects::Find.new(environment_id.project_id).run!
+      @project ||= Projects::Find.new(environment.project_id).run!
     end
 
     def environment
