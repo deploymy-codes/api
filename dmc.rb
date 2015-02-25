@@ -20,7 +20,7 @@ module DMC
 end
 
 require 'dotenv'
-Dotenv.load(".env.#{DMC.env}")
+Dotenv.load("#{DMC.root}/.env.#{DMC.env}")
 
 require_relative 'dmc/lib/framework'
 JobRunner.register :async, JobRunner::Async.new
