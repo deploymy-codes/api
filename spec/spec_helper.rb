@@ -2,6 +2,7 @@ ENV['RACK_ENV'] = 'test'
 require_relative './../dmc'
 require 'rack/test'
 require 'vcr'
+require 'timecop'
 
 Dir["./spec/support/**/*.rb"].sort.each { |f| require f}
 
@@ -21,11 +22,16 @@ RSpec.configure do |config|
     Projects::ProjectRepository.clear
     Environments::EnvironmentRepository.clear
     Deployments::DeploymentRepository.clear
+
+    new_time = Time.local(2014, 10, 16, 12, 0, 0)
+    Timecop.freeze(new_time)
   end
 
   config.after(:each) do
     dirs = Dir.glob "#{DMC.root}/../tmp/*"
     FileUtils.rm_rf dirs
+
+    Timecop.return
   end
 end
 

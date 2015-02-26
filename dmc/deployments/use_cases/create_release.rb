@@ -4,7 +4,7 @@ module Deployments
     def run!
       release = GithubService.create_release account.oauth_token, project.name, release_name, deployment.sha
 
-      deployment.release = release
+      deployment.release = release.tarball_url
       DeploymentRepository.save deployment
 
       release

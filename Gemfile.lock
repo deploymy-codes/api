@@ -145,6 +145,7 @@ GEM
       rack (~> 1.0)
     thread_safe (0.3.4)
     tilt (1.4.1)
+    timecop (0.7.1)
     timers (4.0.1)
       hitimes
     tzinfo (1.2.2)
@@ -183,6 +184,7 @@ DEPENDENCIES
   sinatra-cross_origin
   sqlite3
   thin
+  timecop
   vcr
   virtus
   webmock

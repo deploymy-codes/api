@@ -9,7 +9,7 @@ module Deployments
     subject { Create.new(environment, form).run! }
 
     context 'when form is valid' do
-      let(:form) { CreateForm.new sha: '3b23ae0' }
+      let(:form) { CreateForm.new sha: ENV['GIT_COMMIT_ID'] }
 
       it 'create a deployment' do
         expect(subject.sha).to be_eql form.sha
