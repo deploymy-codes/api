@@ -15,6 +15,7 @@ module Deployments
         expect(subject.sha).to be_eql form.sha
         expect(subject.id).to_not be_nil
         expect(subject.environment_id).to be_eql environment.id
+        expect(LogRepository.count(Log)).to be_eql 2
       end
     end
 

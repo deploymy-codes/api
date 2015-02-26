@@ -35,6 +35,7 @@ namespace :repository do
     Projects::ProjectRepository.clear
     Environments::EnvironmentRepository.clear
     Deployments::DeploymentRepository.clear
+    Deployments::LogRepository.clear
   end
 end
 

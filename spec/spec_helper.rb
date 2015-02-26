@@ -22,6 +22,7 @@ RSpec.configure do |config|
     Projects::ProjectRepository.clear
     Environments::EnvironmentRepository.clear
     Deployments::DeploymentRepository.clear
+    Deployments::LogRepository.clear
 
     new_time = Time.local(2014, 10, 16, 12, 0, 0)
     Timecop.freeze(new_time)
