@@ -24,12 +24,12 @@ module Projects
     end
 
     def commits(_, _)
-      [GitCommit.new('3b23ae0')]
+      [GitCommit.new(ENV['GIT_COMMIT_ID'])]
     end
 
     def commit(_, sha)
-      if sha == '3b23ae0'
-        GitCommit.new('3b23ae0')
+      if sha == ENV['GIT_COMMIT_ID']
+        GitCommit.new(ENV['GIT_COMMIT_ID'])
       else
         nil
       end

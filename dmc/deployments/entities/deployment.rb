@@ -1,12 +1,12 @@
 module Deployments
   class Deployment < Entity
-    STATE         = [:pending, :in_progress, :success, :failed]
+    STATE         = [:pending, :in_progress, :succeeded, :failed]
     DEFAULT_STATE = :pending
 
     attribute :sha, String
     attribute :environment_id, Integer
-    attribute :log, String
     attribute :state, String
+    attribute :release, String
 
     def self.build(sha, environment_id)
       new.tap do |deployment|

@@ -9,7 +9,7 @@ describe 'Create deployment' do
 
   let(:user)        { create_user }
   let(:project)     { create_project  user: user }
-  let(:environment) { create_environment name: 'base', project: project }
+  let(:environment) { create_environment name: 'master', project: project }
 
   it_behaves_like 'Authenticated', '/rails/rails'
   it_behaves_like 'HasCurrentProject'
@@ -17,13 +17,12 @@ describe 'Create deployment' do
 
   context 'when commit exists' do
     it 'returns it' do
-      post "/#{project.name}/environments/#{environment.name}/deployments", { deployment: { sha: '3b23ae0' }}, { 'HTTP_AUTHORIZATION' => user.api_key }
+      post "/#{project.name}/environments/#{environment.name}/deployments", { deployment: { sha: ENV['GIT_COMMIT_ID'] }}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
       expect(last_response.status).to be_eql 201
       json = JSON.parse(last_response.body)
       expect(json).to be_instance_of Hash
-      expect(json['sha']).to be_eql '3b23ae0'
-      expect(json['state']).to be_eql 'pending'
+      expect(json['sha']).to be_eql ENV['GIT_COMMIT_ID']
     end
   end
 

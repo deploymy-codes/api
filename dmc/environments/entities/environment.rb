@@ -8,6 +8,8 @@ module Environments
     attribute :name, String
     attribute :strategy, String
     attribute :project_id, Integer
+    attribute :heroku_api_key, String
+    attribute :heroku_app_name, String
 
   end
 end

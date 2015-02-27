@@ -1,4 +1,4 @@
-def create_deployment(sha: '3b23ae0', environment: nil)
+def create_deployment(sha: ENV['GIT_COMMIT_ID'], environment: nil)
   form = Deployments::CreateForm.new sha: sha
   Deployments::Create.new(environment, form).run!
 end

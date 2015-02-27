@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://user:HEROKU_API_KEY@api.heroku.com/apps/HEROKU_APP_NAME
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - excon/0.44.2
+      Authorization:
+      - Basic dXNlcjpkZTBjMzY0Zi00M2E3LTRmZTctYmYxNy1lYzM1NzQ4NjRkZjc=
+      Accept:
+      - application/vnd.heroku+json; version=3
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 26 Feb 2015 20:20:45 GMT
+      Etag:
+      - '"90c45d74bb13215abfe01cbb612da287"'
+      Last-Modified:
+      - Wed, 25 Feb 2015 17:45:49 GMT
+      Oauth-Scope:
+      - global
+      Oauth-Scope-Accepted:
+      - global read read-protected write write-protected
+      Ratelimit-Remaining:
+      - '2399'
+      Request-Id:
+      - 5184e704-86f2-44b2-aef2-677d2363a060
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Status:
+      - 200 OK
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Runtime:
+      - '0.066279973'
+      Content-Length:
+      - '700'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"archived_at":null,"buildpack_provided_description":null,"build_stack":{"id":"f9f9cbd7-2970-41ef-8db5-3df7123b041f","name":"cedar-14"},"created_at":"2015-02-25T17:45:48Z","id":"1525924d-d1a0-4f09-92e9-25c8d73a3493","git_url":"git@heroku.com:HEROKU_APP_NAME.git","maintenance":false,"name":"HEROKU_APP_NAME","owner":{"email":"coders@deploymy.codes","id":"dc53b1a7-f87e-4019-85cb-c73419392d56"},"region":{"id":"ed30241c-ed8c-4bb6-9714-61953675d0b4","name":"eu"},"released_at":"2015-02-25T17:45:49Z","repo_size":null,"slug_size":null,"stack":{"id":"f9f9cbd7-2970-41ef-8db5-3df7123b041f","name":"cedar-14"},"updated_at":"2015-02-25T17:45:49Z","web_url":"https://HEROKU_APP_NAME.herokuapp.com/"}'
+    http_version: 
+  recorded_at: Thu, 16 Oct 2014 11:00:00 GMT
+recorded_with: VCR 2.9.3

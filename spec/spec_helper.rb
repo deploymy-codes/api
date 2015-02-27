@@ -2,6 +2,7 @@ ENV['RACK_ENV'] = 'test'
 require_relative './../dmc'
 require 'rack/test'
 require 'vcr'
+require 'timecop'
 
 Dir["./spec/support/**/*.rb"].sort.each { |f| require f}
 
@@ -21,11 +22,17 @@ RSpec.configure do |config|
     Projects::ProjectRepository.clear
     Environments::EnvironmentRepository.clear
     Deployments::DeploymentRepository.clear
+    Deployments::LogRepository.clear
+
+    new_time = Time.local(2014, 10, 16, 12, 0, 0)
+    Timecop.freeze(new_time)
   end
 
   config.after(:each) do
     dirs = Dir.glob "#{DMC.root}/../tmp/*"
     FileUtils.rm_rf dirs
+
+    Timecop.return
   end
 end
 
@@ -36,6 +43,10 @@ VCR.configure do |c|
   c.filter_sensitive_data('GITHUB_CLIENT_SECRET') { ENV['OCTOKIT_CLIENT_SECRET'] }
   c.filter_sensitive_data('GITHUB_CLIENT_ID')     { ENV['OCTOKIT_CLIENT_ID'] }
   c.filter_sensitive_data('GITHUB_OAUTH_TOKEN')   { ENV['GITHUB_OAUTH_TOKEN'] }
+
+  c.filter_sensitive_data('HEROKU_API_KEY')  { ENV['HEROKU_API_KEY'] }
+  c.filter_sensitive_data('HEROKU_APP_NAME') { ENV['HEROKU_APP_NAME'] }
+  c.filter_sensitive_data('GIT_COMMIT_ID')   { ENV['GIT_COMMIT_ID'] }
 
   c.around_http_request do |request|
     VCR.use_cassette(get_cassette_path(request), match_requests_on: [:method, :body], &request)
@@ -48,6 +59,9 @@ def get_cassette_path(request)
   elsif request.uri =~ /github\.com/
     path = request.uri.gsub('https://', '').gsub('/', '_')
     "github/#{path}"
+  elsif request.uri =~ /heroku\.com/
+    path = request.uri.gsub('https://', '').gsub('/', '_')
+    "heroku/#{path}"
   else
     raise "Unknown external url:#{request.uri}, please fix method get_cassette_path"
   end
