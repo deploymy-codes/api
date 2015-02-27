@@ -1,27 +1,27 @@
 module Deployments
   class ApiHerokuService
-    include CommandRunner
 
-    def deploy(project, environment, deployment)
-      run(project, environment, deployment) do |runner|
-        runner.execute "Check access on Heroku app: #{environment.heroku_app_name}", &check_access
-        runner.execute "Deploy on #{environment.heroku_app_name}", &push
-      end
+    def deploy(_, environment, deployment)
+      Deployer.new(environment, deployment).deploy
     end
 
-    private
+    class Deployer < Struct.new(:environment, :deployment)
+      include CommandRunner
 
-    def check_access
-      Proc.new do |log|
-        client     = client(environment.heroku_api_key)
+      def deploy
+        run(deployment) do |runner|
+          runner.execute "Check access on Heroku app: #{environment.heroku_app_name}", &method(:check_access)
+          runner.execute "Deploy on #{environment.heroku_app_name}", &method(:push)
+        end
+      end
+
+      private
+
+      def check_access(log)
         log.stdout = client.app.info(environment.heroku_app_name)
       end
-    end
 
-    def push
-      Proc.new do |log|
-        client = client(environment.heroku_api_key)
-
+      def push(log)
         build_info  = client.build.create(
           environment.heroku_app_name,
           source_blob: {
@@ -38,12 +38,12 @@ module Deployments
 
         log.stdout = build_info
 
-        build_info['status'] == 'failed' ? false : true
+        build_info['status'] == 'succeeded'
       end
-    end
 
-    def client(api_key)
-      PlatformAPI.connect(api_key)
+      def client
+        @client ||= PlatformAPI.connect(environment.heroku_api_key)
+      end
     end
 
   end

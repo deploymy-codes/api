@@ -3,8 +3,7 @@ require 'benchmark'
 module Deployments
   module CommandRunner
 
-    def run(project, environment, deployment, &block)
-      define_getter(project, environment, deployment)
+    def run(deployment, &block)
       runner = Runner.new(deployment)
 
       block.call runner
@@ -13,12 +12,6 @@ module Deployments
     end
 
     private
-
-    def define_getter(project, environment, deployment)
-      define_singleton_method :project,     -> { project  }
-      define_singleton_method :environment, -> { environment  }
-      define_singleton_method :deployment,  -> { deployment  }
-    end
 
     class Runner < Struct.new(:deployment)
 

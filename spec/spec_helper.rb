@@ -46,6 +46,7 @@ VCR.configure do |c|
 
   c.filter_sensitive_data('HEROKU_API_KEY')  { ENV['HEROKU_API_KEY'] }
   c.filter_sensitive_data('HEROKU_APP_NAME') { ENV['HEROKU_APP_NAME'] }
+  c.filter_sensitive_data('GIT_COMMIT_ID')   { ENV['GIT_COMMIT_ID'] }
 
   c.around_http_request do |request|
     VCR.use_cassette(get_cassette_path(request), match_requests_on: [:method, :body], &request)
