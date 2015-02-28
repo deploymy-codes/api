@@ -1,7 +1,8 @@
 module Deployments
   class Deployment < Entity
-    STATE         = [:pending, :in_progress, :succeeded, :failed]
-    DEFAULT_STATE = :pending
+    STATE          = [:pending, :in_progress, :succeeded, :failed]
+    DEFAULT_STATE  = :pending
+    UNFINISH_STATE = [:pending, :in_progress]
 
     attribute :sha, String
     attribute :environment_id, Integer

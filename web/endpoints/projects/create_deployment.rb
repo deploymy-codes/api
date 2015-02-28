@@ -16,6 +16,10 @@ module Endpoint
         app.error Deployments::CommitDoNotExistError do
           halt_json_error 403
         end
+
+        app.error Deployments::DeploymentUnfinishedError do
+          halt_json_error 409
+        end
       end
 
     end

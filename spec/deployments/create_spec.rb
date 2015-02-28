@@ -27,6 +27,19 @@ module Deployments
       end
     end
 
+    context 'when there is unfinished deployment' do
+      let(:form) { CreateForm.new sha: ENV['GIT_COMMIT_ID'] }
+
+      it 'raise a deployment unfinshed error' do
+        deployment = Create.new(environment, form).run!
+        deployment.state = 'pending'
+        DeploymentRepository.save deployment
+
+        expect { subject }.to raise_error DeploymentUnfinishedError
+      end
+
+    end
+
     context 'when form is not valid' do
       let(:form) { CreateForm.new }
 
