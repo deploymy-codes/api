@@ -26,4 +26,5 @@ describe 'List deployment' do
 
     expect(last_response).to be_paginated
   end
+
 end
