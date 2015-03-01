@@ -36,7 +36,7 @@ module Deployments
     private
 
     def validate_no_deployment_unfinished!
-      deployments = DeploymentRepository.all_for_environment_and_states!(environment.id, Deployment::UNFINISH_STATE)
+      deployments = DeploymentRepository.all_for_environment_and_states!(environment.id, Deployment::UNFINISHED_STATE)
 
       raise DeploymentUnfinishedError, environment.name if deployments.any?
     end
