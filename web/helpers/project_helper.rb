@@ -6,4 +6,8 @@ module ProjectHelper
   def current_environment
     @current_environment ||= Environments::FindByName.new(params[:environment_name], current_project).run!
   end
+
+  def current_deployment
+    Deployments::FindByIdAndEnvironment.new(params[:deployment_id], current_environment).run!
+  end
 end

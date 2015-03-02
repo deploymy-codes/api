@@ -23,7 +23,7 @@ class Repository
       end
 
       def find(klass, id)
-        entity = map_for_class(klass)[id]
+        entity = map_for_class(klass)[id.to_i]
 
         raise EntityNotFoundError.new(klass, id) unless entity
 

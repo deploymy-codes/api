@@ -17,5 +17,9 @@ module Deployments
       end
     end
 
+    def unfinished?
+      UNFINISHED_STATE.include?(state.to_sym)
+    end
+
   end
 end

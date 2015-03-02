@@ -8,6 +8,7 @@ require_relative 'deployments/entities/deployment'
 require_relative 'deployments/entities/log'
 
 require_relative 'deployments/serializers/deployment_serializer'
+require_relative 'deployments/serializers/log_serializer'
 
 require_relative 'deployments/forms/create_form'
 require_relative 'deployments/forms/log_form'
@@ -35,8 +36,10 @@ require_relative 'deployments/use_cases/create_release'
 require_relative 'deployments/use_cases/paginate_for_environment'
 require_relative 'deployments/use_cases/deploy'
 require_relative 'deployments/use_cases/find'
+require_relative 'deployments/use_cases/find_by_id_and_environment'
 require_relative 'deployments/use_cases/create_log'
 require_relative 'deployments/use_cases/update_log'
+require_relative 'deployments/use_cases/list_log'
 
 module Deployments
   DeploymentRepository.register :in_memory, DeploymentRepository::InMemory.new
