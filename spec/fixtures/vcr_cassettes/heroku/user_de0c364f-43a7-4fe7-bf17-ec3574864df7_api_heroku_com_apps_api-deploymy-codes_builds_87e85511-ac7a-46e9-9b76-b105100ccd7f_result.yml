@@ -1,0 +1,617 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://user:HEROKU_API_KEY@api.heroku.com/apps/HEROKU_APP_NAME/builds/87e85511-ac7a-46e9-9b76-b105100ccd7f/result
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - excon/0.44.3
+      Authorization:
+      - Basic dXNlcjpkZTBjMzY0Zi00M2E3LTRmZTctYmYxNy1lYzM1NzQ4NjRkZjc=
+      Accept:
+      - application/vnd.heroku+json; version=3
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 02 Mar 2015 20:29:49 GMT
+      Oauth-Scope:
+      - global
+      Oauth-Scope-Accepted:
+      - global read read-protected write write-protected
+      Ratelimit-Remaining:
+      - '2399'
+      Request-Id:
+      - 3d2c20b2-1053-4fac-9bd3-6be1c97f7753
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Status:
+      - 200 OK
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Runtime:
+      - '0.371603476'
+      Content-Length:
+      - '14191'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "build": {
+            "id": "87e85511-ac7a-46e9-9b76-b105100ccd7f",
+            "status": "failed"
+          },
+          "exit_code": 1,
+          "lines": [
+            {
+              "stream": "STDOUT",
+              "line": "\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "-----> Ruby app detected\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "-----> Compiling Ruby/Rack\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "-----> Using Ruby version: ruby-2.1.2\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "-----> Installing dependencies using 1.7.12\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Running: bundle install --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Fetching gem metadata from https://rubygems.org/.........\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Fetching additional metadata from https://rubygems.org/..\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing rake 10.4.2\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing i18n 0.7.0\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing minitest 5.5.1\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing builder 3.2.2\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing addressable 2.3.7\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing ice_nine 0.11.1\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing backports 3.6.4\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing json 1.8.2\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing thread_safe 0.3.4\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing hitimes 1.2.2\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing connection_pool 2.1.1\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing daemons 1.1.9\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing diff-lcs 1.2.5\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing equalizer 0.0.9\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing dotenv 1.0.2\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing erubis 2.7.0\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Gem::Ext::BuildError: ERROR: Failed to build gem native extension.\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       /tmp/build_5f2ba6010ef1c5461596737bdee843c4/deploymy-codes-api-c186435/vendor/ruby-2.1.2/bin/ruby extconf.rb\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       checking for main() in -licui18n... no\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       checking for main() in -licui18n... no\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       ***************************************************************************************\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       *********** icu required (brew install icu4c or apt-get install libicu-dev) ***********\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       ***************************************************************************************\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       *** extconf.rb failed ***\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Could not create Makefile due to some reason, probably lack of necessary\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       libraries and/or headers.  Check the mkmf.log file for more details.  You may\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       need configuration options.\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Provided configuration options:\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-opt-dir\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-opt-dir\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-opt-include\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-opt-include=${opt-dir}/include\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-opt-lib\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-opt-lib=${opt-dir}/lib\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-make-prog\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-make-prog\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --srcdir=.\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --curdir\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --ruby=/tmp/build_5f2ba6010ef1c5461596737bdee843c4/deploymy-codes-api-c186435/vendor/ruby-2.1.2/bin/ruby\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-icu-dir\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-icu-dir\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-icu-include\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-icu-include=${icu-dir}/include\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-icu-lib\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-icu-lib=${icu-dir}/lib\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-icui18nlib\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-icui18nlib\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-icui18nlib\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-icui18nlib\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       extconf failed, exit code 1\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Gem files will remain installed in /tmp/build_5f2ba6010ef1c5461596737bdee843c4/deploymy-codes-api-c186435/vendor/bundle/ruby/2.1.0/gems/charlock_holmes-0.6.9.4 for inspection.\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Results logged to /tmp/build_5f2ba6010ef1c5461596737bdee843c4/deploymy-codes-api-c186435/vendor/bundle/ruby/2.1.0/extensions/x86_64-linux/2.1.0-static/charlock_holmes-0.6.9.4/gem_make.out\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing escape_utils 0.2.4\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing eventmachine 1.0.6\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       An error occurred while installing charlock_holmes (0.6.9.4), and Bundler cannot\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       continue.\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Make sure that `gem install charlock_holmes -v '0.6.9.4'` succeeds before\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       bundling.\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Bundler Output: Fetching gem metadata from https://rubygems.org/.........\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Fetching additional metadata from https://rubygems.org/..\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing rake 10.4.2\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing i18n 0.7.0\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing minitest 5.5.1\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing builder 3.2.2\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing addressable 2.3.7\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing ice_nine 0.11.1\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing backports 3.6.4\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing json 1.8.2\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing thread_safe 0.3.4\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing hitimes 1.2.2\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing connection_pool 2.1.1\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing daemons 1.1.9\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing diff-lcs 1.2.5\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing equalizer 0.0.9\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing dotenv 1.0.2\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing erubis 2.7.0\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       \n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Gem::Ext::BuildError: ERROR: Failed to build gem native extension.\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       \n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       /tmp/build_5f2ba6010ef1c5461596737bdee843c4/deploymy-codes-api-c186435/vendor/ruby-2.1.2/bin/ruby extconf.rb\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       checking for main() in -licui18n... no\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       checking for main() in -licui18n... no\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       \n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       \n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       ***************************************************************************************\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       *********** icu required (brew install icu4c or apt-get install libicu-dev) ***********\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       ***************************************************************************************\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       *** extconf.rb failed ***\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Could not create Makefile due to some reason, probably lack of necessary\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       libraries and/or headers.  Check the mkmf.log file for more details.  You may\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       need configuration options.\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       \n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Provided configuration options:\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-opt-dir\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-opt-dir\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-opt-include\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-opt-include=${opt-dir}/include\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-opt-lib\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-opt-lib=${opt-dir}/lib\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-make-prog\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-make-prog\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --srcdir=.\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --curdir\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --ruby=/tmp/build_5f2ba6010ef1c5461596737bdee843c4/deploymy-codes-api-c186435/vendor/ruby-2.1.2/bin/ruby\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-icu-dir\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-icu-dir\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-icu-include\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-icu-include=${icu-dir}/include\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-icu-lib\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-icu-lib=${icu-dir}/lib\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-icui18nlib\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-icui18nlib\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --with-icui18nlib\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       --without-icui18nlib\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       \n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       extconf failed, exit code 1\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       \n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Gem files will remain installed in /tmp/build_5f2ba6010ef1c5461596737bdee843c4/deploymy-codes-api-c186435/vendor/bundle/ruby/2.1.0/gems/charlock_holmes-0.6.9.4 for inspection.\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Results logged to /tmp/build_5f2ba6010ef1c5461596737bdee843c4/deploymy-codes-api-c186435/vendor/bundle/ruby/2.1.0/extensions/x86_64-linux/2.1.0-static/charlock_holmes-0.6.9.4/gem_make.out\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing escape_utils 0.2.4\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Installing eventmachine 1.0.6\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       An error occurred while installing charlock_holmes (0.6.9.4), and Bundler cannot\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       continue.\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       Make sure that `gem install charlock_holmes -v '0.6.9.4'` succeeds before\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "       bundling.\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": " !\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": " !     Failed to install gems via Bundler.\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": " !\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": " !     Push rejected, failed to compile Ruby app\n"
+            },
+            {
+              "stream": "STDOUT",
+              "line": "\n"
+            }
+          ]
+        }
+    http_version: 
+  recorded_at: Thu, 16 Oct 2014 11:00:00 GMT
+recorded_with: VCR 2.9.3
