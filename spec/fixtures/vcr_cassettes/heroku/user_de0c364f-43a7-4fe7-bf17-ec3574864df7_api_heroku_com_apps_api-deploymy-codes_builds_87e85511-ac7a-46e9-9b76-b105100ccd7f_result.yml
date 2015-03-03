@@ -50,7 +50,7 @@ http_interactions:
         {
           "build": {
             "id": "87e85511-ac7a-46e9-9b76-b105100ccd7f",
-            "status": "failed"
+            "status": "succeeded"
           },
           "exit_code": 1,
           "lines": [

@@ -18,7 +18,7 @@ module Deployments
       private
 
       def check_access(log)
-        client.app.info('asd'+environment.heroku_app_name)
+        client.app.info(environment.heroku_app_name)
         log.stdout = 'ok'
       rescue
         log.stdout = 'No ok'

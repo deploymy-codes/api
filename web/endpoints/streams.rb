@@ -12,14 +12,14 @@ module Endpoint
     get '/:owner/:repo/environments/:environment_name/deployments/:deployment_id' do
       stream do |out|
         out.puts '{ "logs": ['
-        out.puts json_logs
+        logs = json_logs
+        out.puts logs
 
-        first_round = true
         while current_deployment.unfinished? do
-          out.puts ',' if first_round
-          first_round = false
+          out.puts ',' if logs.present?
 
-          out.puts json_logs
+          logs = json_logs
+          out.puts logs
 
           sleep 5
         end
