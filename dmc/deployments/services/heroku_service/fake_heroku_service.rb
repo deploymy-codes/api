@@ -11,13 +11,13 @@ module Deployments
 
     private
 
-    def check_access(log)
-      log.stdout = 'done'
+    def check_access(command)
+      command.update_log stdout: 'done'
       true
     end
 
-    def push(log)
-      log.stdout = 'done'
+    def push(command)
+      command.update_log stdout: 'done'
       true
     end
   end

@@ -17,15 +17,15 @@ module Deployments
 
       private
 
-      def check_access(log)
+      def check_access(command)
         client.app.info(environment.heroku_app_name)
-        log.stdout = 'ok'
+        command.update_log stdout: 'ok'
       rescue
-        log.stdout = 'No ok'
+        command.update_log stdout: 'No ok'
         false
       end
 
-      def push(log)
+      def push(command)
         build  = client.build.create(
           environment.heroku_app_name,
           source_blob: {
@@ -36,11 +36,12 @@ module Deployments
         status = build['status']
         while !%w(failed succeeded).include?(status)
           sleep 5
+
           build  = client.build_result.info(environment.heroku_app_name, build['id'])
+          command.update_log stdout: build['lines'].map { |line| line['line'] }.join
+
           status = build['build']['status']
         end
-
-        log.stdout =  build['lines'].map { |line| line['line'] }.join
 
         status == 'succeeded'
       end
