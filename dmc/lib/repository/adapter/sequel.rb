@@ -32,7 +32,7 @@ class Repository
       end
 
       def update(entity)
-        mapper_for(entity.class).update entity.attributes.except(:id)
+        mapper_for(entity.class).where(id: entity.id).update entity.attributes.except(:id)
       end
 
       def delete(entity)

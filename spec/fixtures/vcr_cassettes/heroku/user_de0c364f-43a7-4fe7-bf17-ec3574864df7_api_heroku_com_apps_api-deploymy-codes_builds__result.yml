@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://user:HEROKU_API_KEY@api.heroku.com/apps/HEROKU_APP_NAME/builds//result
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - excon/0.44.3
+      Authorization:
+      - Basic dXNlcjpkZTBjMzY0Zi00M2E3LTRmZTctYmYxNy1lYzM1NzQ4NjRkZjc=
+      Accept:
+      - application/vnd.heroku+json; version=3
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 02 Mar 2015 20:30:13 GMT
+      Request-Id:
+      - 3d4d15e2-4248-4490-b104-cfa4ac153168
+      Server:
+      - nginx/1.4.6 (Ubuntu)
+      Status:
+      - 404 Not Found
+      Vary:
+      - Accept-Encoding
+      X-Cascade:
+      - pass
+      X-Content-Type-Options:
+      - nosniff
+      X-Runtime:
+      - '0.003661283'
+      Content-Length:
+      - '199'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"id":"not_found","message":"The requested API endpoint was not found.
+        Are you using the right HTTP verb (i.e. `GET` vs. `POST`), and did you specify
+        your intended version with the `Accept` header?"}'
+    http_version: 
+  recorded_at: Thu, 16 Oct 2014 11:00:00 GMT
+recorded_with: VCR 2.9.3
