@@ -5,8 +5,8 @@ module Pagination
   end
 
   def paginate(envelope)
-    headers['X-LIMIT']       = cursor.limit
-    headers['X-TOTAL-COUNT'] = envelope.total_count
+    headers['X-LIMIT']       = cursor.limit.to_s
+    headers['X-TOTAL-COUNT'] = envelope.total_count.to_s
     headers['Link']          = link_headers(envelope)
 
     json serialize(envelope.data)
