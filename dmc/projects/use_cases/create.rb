@@ -26,9 +26,11 @@ module Projects
     private
 
     def add_environment!(project)
-      form = Environments::CreateForm.new({
+      form = Environments::EnvironmentForm.new({
         name:     Environments::Environment::DEFAULT_NAME,
-        strategy: Environments::Environment::DEFAULT_STRATEGY
+        strategy: Environments::Environment::DEFAULT_STRATEGY,
+        heroku_api_key: 'Replace by your api key',
+        heroku_app_name: 'Replace by your app name',
       })
 
       Environments::Create.new(project, form).run!

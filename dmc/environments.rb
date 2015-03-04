@@ -4,7 +4,7 @@ require_relative 'environments/repositories/environment_repository/sequel'
 
 require_relative 'environments/entities/environment'
 
-require_relative 'environments/forms/create_form'
+require_relative 'environments/forms/environment_form'
 
 require_relative 'environments/serializers/environment_serializer'
 

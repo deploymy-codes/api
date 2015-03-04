@@ -14,7 +14,12 @@ describe 'Create environment' do
   it_behaves_like 'HasCurrentProject'
 
   it 'returns the new environment' do
-    post "/#{project.name}/environments", { environment: { name: 'master' , strategy: 'heroku'}}, { 'HTTP_AUTHORIZATION' => user.api_key }
+    post "/#{project.name}/environments", { environment: {
+      name: 'master',
+        strategy: 'heroku',
+        heroku_api_key: 'heroku_api_key',
+        heroku_app_name: 'heroku_app_name'
+    }}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
     expect(last_response.status).to be_eql 201
     json = JSON.parse(last_response.body)
@@ -25,9 +30,19 @@ describe 'Create environment' do
 
   context 'When environment name is already taken' do
     it 'returns a 403 error' do
-      post "/#{project.name}/environments", { environment: { name: 'master' , strategy: 'heroku'}}, { 'HTTP_AUTHORIZATION' => user.api_key }
+      post "/#{project.name}/environments", { environment: {
+        name: 'master',
+          strategy: 'heroku',
+          heroku_api_key: 'heroku_api_key',
+          heroku_app_name: 'heroku_app_name'
+      }}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
-      post "/#{project.name}/environments", { environment: { name: 'master' , strategy: 'heroku'}}, { 'HTTP_AUTHORIZATION' => user.api_key }
+      post "/#{project.name}/environments", { environment: {
+        name: 'master',
+          strategy: 'heroku',
+          heroku_api_key: 'heroku_api_key',
+          heroku_app_name: 'heroku_app_name'
+      }}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
       expect(last_response.status).to be_eql 403
       json = JSON.parse(last_response.body)
