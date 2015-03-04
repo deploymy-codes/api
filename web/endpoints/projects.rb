@@ -5,6 +5,7 @@ require_relative './projects/list'
 require_relative './projects/get'
 require_relative './projects/list_environment'
 require_relative './projects/create_environment'
+require_relative './projects/update_environment'
 require_relative './projects/get_environment'
 require_relative './projects/list_deployment'
 require_relative './projects/create_deployment'
@@ -22,6 +23,7 @@ module Endpoint
     register Get
     register ListEnvironment
     register CreateEnvironment
+    register UpdateEnvironment
     register GetEnvironment
     register ListDeployment
     register CreateDeployment

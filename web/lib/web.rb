@@ -65,6 +65,10 @@ class Web < Sinatra::Base
     params.merge! json_body_params
   end
 
+  error ValidationError do
+    halt_json_error 403
+  end
+
   error ParameterMissingError do
     halt_json_error 400
   end
