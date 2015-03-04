@@ -28,8 +28,8 @@ module Projects
     end
 
     def commit(_, sha)
-      if sha == ENV['GIT_COMMIT_ID']
-        GitCommit.new(ENV['GIT_COMMIT_ID'])
+      if [ENV['GIT_COMMIT_ID'], ENV['GIT_GEM_COMMIT_ID']].include? sha
+        GitCommit.new(sha)
       else
         nil
       end

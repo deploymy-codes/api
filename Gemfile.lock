@@ -44,6 +44,7 @@ GEM
     excon (0.44.3)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    gems (0.8.3)
     gitlab-grit (2.7.3)
       charlock_holmes (~> 0.6)
       diff-lcs (~> 1.1)
@@ -167,6 +168,7 @@ DEPENDENCIES
   activemodel
   activesupport
   dotenv
+  gems
   gitlab_git
   interchange
   octokit

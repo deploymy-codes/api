@@ -44,12 +44,22 @@ VCR.configure do |c|
   c.filter_sensitive_data('GITHUB_CLIENT_ID')     { ENV['OCTOKIT_CLIENT_ID'] }
   c.filter_sensitive_data('GITHUB_OAUTH_TOKEN')   { ENV['GITHUB_OAUTH_TOKEN'] }
 
-  c.filter_sensitive_data('HEROKU_API_KEY')  { ENV['HEROKU_API_KEY'] }
-  c.filter_sensitive_data('HEROKU_APP_NAME') { ENV['HEROKU_APP_NAME'] }
-  c.filter_sensitive_data('GIT_COMMIT_ID')   { ENV['GIT_COMMIT_ID'] }
+  c.filter_sensitive_data('RUBYGEM_API_KEY')   { ENV['RUBYGEM_API_KEY'] }
+  c.filter_sensitive_data('HEROKU_API_KEY')    { ENV['HEROKU_API_KEY'] }
+  c.filter_sensitive_data('HEROKU_APP_NAME')   { ENV['HEROKU_APP_NAME'] }
+  c.filter_sensitive_data('GIT_COMMIT_ID')     { ENV['GIT_COMMIT_ID'] }
+  c.filter_sensitive_data('GIT_GEM_COMMIT_ID') { ENV['GIT_GEM_COMMIT_ID'] }
 
   c.around_http_request do |request|
-    VCR.use_cassette(get_cassette_path(request), match_requests_on: [:method, :body], &request)
+    VCR.use_cassette(get_cassette_path(request), match_requests_on: get_match_requests_on(request), &request)
+  end
+end
+
+def get_match_requests_on(request)
+  if request.uri =~ /rubygems\.org/
+    [:method, :uri]
+  else
+    [:method, :body]
   end
 end
 
@@ -62,6 +72,9 @@ def get_cassette_path(request)
   elsif request.uri =~ /heroku\.com/
     path = request.uri.gsub('https://', '').gsub('/', '_')
     "heroku/#{path}"
+  elsif request.uri =~ /rubygems\.org/
+    path = request.uri.gsub('https://', '').gsub('/', '_')
+    "rubygems/#{path}"
   else
     raise "Unknown external url:#{request.uri}, please fix method get_cassette_path"
   end

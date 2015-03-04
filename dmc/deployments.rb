@@ -1,6 +1,7 @@
 require 'interchange'
 require 'octokit'
 require 'platform-api'
+require 'gems'
 
 require_relative 'deployments/lib/command_runner'
 
@@ -29,6 +30,10 @@ require_relative 'deployments/services/heroku_service'
 require_relative 'deployments/services/heroku_service/api_heroku_service'
 require_relative 'deployments/services/heroku_service/fake_heroku_service'
 
+require_relative 'deployments/services/rubygem_service'
+require_relative 'deployments/services/rubygem_service/api_rubygem_service'
+require_relative 'deployments/services/rubygem_service/fake_rubygem_service'
+
 require_relative 'deployments/jobs/deploy_job'
 
 require_relative 'deployments/use_cases/create'
@@ -53,4 +58,7 @@ module Deployments
 
   GithubService.register :fake,    FakeGithubService.new
   GithubService.register :octokit, OctokitGithubService.new
+
+  RubygemService.register :fake, FakeRubygemService.new
+  RubygemService.register :api, ApiRubygemService.new
 end

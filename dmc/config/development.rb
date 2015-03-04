@@ -15,6 +15,7 @@ Customers::GithubService.use :octokit
 Projects::GitService.use :gitlab
 
 Deployments::HerokuService.use :api
+Deployments::RubygemService.use :api
 Deployments::GithubService.use :octokit
 
 JobRunner.use :sync

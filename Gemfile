@@ -1,10 +1,11 @@
-ruby '2.2.0'
+ruby '2.1.2'
 
 source 'https://rubygems.org'
 
 gem 'activemodel'
 gem 'activesupport'
 gem 'dotenv'
+gem 'gems'
 gem 'interchange'
 gem 'octokit'
 gem 'platform-api'

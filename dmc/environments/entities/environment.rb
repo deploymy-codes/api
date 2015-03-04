@@ -1,7 +1,7 @@
 module Environments
   class Environment < Entity
 
-    STRATEGIES       = %w( heroku )
+    STRATEGIES       = %w( heroku rubygem )
     DEFAULT_STRATEGY = :heroku
     DEFAULT_NAME     = :default
 
@@ -10,6 +10,7 @@ module Environments
     attribute :project_id, Integer
     attribute :heroku_api_key, String
     attribute :heroku_app_name, String
+    attribute :rubygem_api_key, String
 
   end
 end
