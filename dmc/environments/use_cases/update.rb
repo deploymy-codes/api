@@ -18,8 +18,8 @@ module Environments
     end
 
     def environment_names
-      @environment_names ||= ListForProject.new(project).run!.select do |e|
-        e.id != environment.id
+      @environment_names ||= ListForProject.new(project).run!.select do |project_environment|
+        project_environment.id != environment.id
       end.map(&:name)
     end
 
