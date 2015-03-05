@@ -6,13 +6,15 @@ module Environments
       user         = create_user
       @project     = create_project full_name: 'rails', user: user
 
-      @form        = CreateForm.new name: 'foo', strategy: 'heroku'
+      @form        = EnvironmentForm.new name: 'foo', strategy: 'heroku', heroku_api_key: 'api_key', heroku_app_name: 'app_name'
       @environment = Create.new(@project, @form).run!
     end
 
     it 'create an environment' do
       expect(@environment.name).to be_eql 'foo'
       expect(@environment.strategy).to be_eql 'heroku'
+      expect(@environment.heroku_api_key).to be_eql 'api_key'
+      expect(@environment.heroku_app_name).to be_eql 'app_name'
     end
 
     context 'When environment name is taken' do

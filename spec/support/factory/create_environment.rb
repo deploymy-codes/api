@@ -1,5 +1,5 @@
 def create_environment(project: nil, name: 'master', strategy: 'heroku')
-  environment_form = Environments::CreateForm.new(
+  environment_form = Environments::EnvironmentForm.new(
     name: name,
     strategy: strategy,
     heroku_api_key: ENV['HEROKU_API_KEY'],

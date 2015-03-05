@@ -1,14 +1,14 @@
 module Endpoint
   class Projects < Web
-    module CreateEnvironment
+    module UpdateEnvironment
 
       def self.registered(app)
-        app.post '/:owner/:repo/environments' do
+        app.put '/:owner/:repo/environments/:environment_name' do
           form         = Environments::EnvironmentForm.new extract!(:environment)
-          use_case     = Environments::Create.new current_project, form
+          use_case     = Environments::Update.new current_environment, form
           environment  = use_case.run!
 
-          status 201
+          status 200
           json serialize(environment)
         end
 
