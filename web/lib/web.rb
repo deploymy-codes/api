@@ -35,7 +35,7 @@ class Web < Sinatra::Base
     end
 
     def extract!(key)
-      params.fetch(key.to_s) do
+      params.fetch(key) do
         raise ParameterMissingError, key
       end
     end
@@ -62,7 +62,8 @@ class Web < Sinatra::Base
   end
 
   before do
-    params.merge! json_body_params
+    all_params = params.merge json_body_params
+    self.params = ActiveSupport::HashWithIndifferentAccess.new(all_params)
   end
 
   error ValidationError do
