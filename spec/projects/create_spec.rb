@@ -18,11 +18,6 @@ module Projects
       expect(File.directory?(@project.dir)).to be true
     end
 
-    it 'create a default environment' do
-      environments = Environments::ListForProject.new(@project).run!
-      expect(environments.length).to be 1
-    end
-
     context 'When project name is taken' do
       it 'raise a project name taken error' do
         expect { Create.new(@user, @remote_projects.first).run! }.to raise_error NameTakenError

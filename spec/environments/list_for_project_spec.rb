@@ -5,12 +5,12 @@ module Environments
 
     it 'list environment which belongs to the project' do
       user        = create_user
-      project     = create_project full_name: 'rails', user: user
+      project     = create_project user: user
       environment = create_environment project: project
 
       environments = ListForProject.new(project).run!
 
-      expect(environments.length).to be 2
+      expect(environments.length).to be 1
       expect(environments.last.name).to be_eql environment.name
     end
   end
