@@ -54,11 +54,11 @@ module Deployments
   LogRepository.register :sequel, LogRepository::Sequel.new
 
   HerokuService.register :fake, FakeHerokuService.new
-  HerokuService.register :api, ApiHerokuService.new
+  HerokuService.register :api, APIHerokuService.new
 
   GithubService.register :fake,    FakeGithubService.new
   GithubService.register :octokit, OctokitGithubService.new
 
   RubygemService.register :fake, FakeRubygemService.new
-  RubygemService.register :api, ApiRubygemService.new
+  RubygemService.register :api, APIRubygemService.new
 end

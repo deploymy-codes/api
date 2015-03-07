@@ -1,5 +1,5 @@
 module Deployments
-  class ApiHerokuService
+  class APIHerokuService
 
     def deploy(_, environment, deployment)
       Deployer.new(environment, deployment).deploy

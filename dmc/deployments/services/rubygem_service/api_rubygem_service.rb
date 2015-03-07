@@ -1,5 +1,5 @@
 module Deployments
-  class ApiRubygemService
+  class APIRubygemService
 
     def deploy(project, environment, deployment)
       Deployer.new(project, environment, deployment).deploy
