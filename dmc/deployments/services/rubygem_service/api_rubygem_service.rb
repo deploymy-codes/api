@@ -18,36 +18,41 @@ module Deployments
       end
 
       def checkout(command)
-        Dir.chdir project.dir
-        `git checkout #{deployment.sha}`
+        Dir.chdir(project.dir) do
+          `git checkout #{deployment.sha}`
+        end
+
         command.update_log stdout: "Commit successfully checkout"
       end
 
       def build(command)
-        Dir.chdir project.dir
-        gemspec = Dir.entries('.').find { |file| file.end_with? '.gemspec' }
-        result = `gem build #{gemspec}`
+        result = Dir.chdir(project.dir) do
+          gemspec = Dir.entries('.').find { |file| file.end_with? '.gemspec' }
+          `gem build #{gemspec}`
+        end
 
         command.update_log stdout: result
         result.include? 'Successfully'
       end
 
       def push(command)
-        Dir.chdir project.dir
-        gem = Dir.entries('.').find { |file| file.end_with? '.gem' }
-
         configure_gems
-        result = Gems.push File.new gem
+
+        result = Dir.chdir(project.dir) do
+          gem = Dir.entries('.').find { |file| file.end_with? '.gem' }
+
+          Gems.push File.new gem
+        end
 
         command.update_log stdout: result
         result.include? 'Successfully'
       end
 
       def cleaning(command)
-        Dir.chdir project.dir
-
-        gem = Dir.entries('.').find { |file| file.end_with? '.gem' }
-        File.delete gem
+        Dir.chdir(project.dir) do
+          gem = Dir.entries('.').find { |file| file.end_with? '.gem' }
+          File.delete gem
+        end
 
         command.update_log stdout: 'Remove gem file'
         true
