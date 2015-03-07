@@ -10,15 +10,21 @@ module Deployments
 
       def deploy
         run(deployment) do |runner|
+          runner.execute "Checkout commit", &method(:checkout)
           runner.execute "Build gem", &method(:build)
           runner.execute "Push gem", &method(:push)
           runner.execute "Cleaning", &method(:cleaning)
         end
       end
 
-      def build(command)
+      def checkout(command)
         Dir.chdir project.dir
         `git checkout #{deployment.sha}`
+        command.update_log stdout: "Commit successfully checkout"
+      end
+
+      def build(command)
+        Dir.chdir project.dir
         gemspec = Dir.entries('.').find { |file| file.end_with? '.gemspec' }
         result = `gem build #{gemspec}`
 

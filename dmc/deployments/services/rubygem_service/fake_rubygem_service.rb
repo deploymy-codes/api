@@ -4,10 +4,16 @@ module Deployments
 
     def deploy(_, _, deployment)
       run(deployment) do |runner|
+        runner.execute "Checkout commit", &method(:checkout)
         runner.execute "Build gem", &method(:build)
         runner.execute "Push gem", &method(:push)
         runner.execute "Cleaning", &method(:cleaning)
       end
+    end
+
+    def checkout(command)
+      command.update_log stdout: "Commit successfully checkout"
+      true
     end
 
     def build(command)
