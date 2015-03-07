@@ -1,8 +1,8 @@
 require 'spec_helper'
-require_relative "./../../../web/lib/web"
-require_relative "./../../../web/endpoints/projects"
+require_relative "./../../../../web/lib/web"
+require_relative "./../../../../web/endpoints/projects"
 
-describe 'Create deployment' do
+describe 'Create heroku deployment' do
   def app
     Endpoint::Projects
   end

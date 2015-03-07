@@ -86,7 +86,7 @@ class Web < Sinatra::Base
     halt_json_error 412
   end
 
-  error Customers::UserRepository::UnknownApiKeyError do
+  error Customers::UserRepository::UnknownAPIKeyError do
     halt_json_error 403
   end
 

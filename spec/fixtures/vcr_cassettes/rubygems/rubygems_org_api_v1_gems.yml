@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://rubygems.org/api/v1/gems
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Gems 0.8.3
+      - Ruby
+      Authorization:
+      - RUBYGEM_API_KEY
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+      Content-Type:
+      - application/octet-stream
+      Content-Length:
+      - '6041'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 07 Mar 2015 16:03:03 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - remember_token=40d246f6ac362aafe95524d7dd292fd92ea6e0fa; path=/; expires=Mon,
+        07 Mar 2016 16:03:03 -0000; secure
+      X-Request-Id:
+      - 4010cdfb-48e1-4df8-bcf5-c3cd74b49618
+      X-Runtime:
+      - '3.967424'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+    body:
+      encoding: ASCII-8BIT
+      string: 'Successfully registered gem: deploymycodes (0.0.2)'
+    http_version: 
+  recorded_at: Thu, 16 Oct 2014 11:00:00 GMT
+recorded_with: VCR 2.9.3

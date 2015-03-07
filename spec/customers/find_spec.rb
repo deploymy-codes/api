@@ -9,7 +9,7 @@ module Customers
 
         expect {
           Find.new(form).run!
-        }.to raise_error UserRepository::UnknownApiKeyError
+        }.to raise_error UserRepository::UnknownAPIKeyError
       end
     end
 

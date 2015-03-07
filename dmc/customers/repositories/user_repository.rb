@@ -21,7 +21,7 @@ module Customers
       end
     end
 
-    class UnknownApiKeyError < StandardError
+    class UnknownAPIKeyError < StandardError
       def initialize(api_key)
         @api_key = api_key
       end
@@ -49,9 +49,9 @@ module Customers
       end
 
       def find_by_api_key!(api_key)
-        user = query User, UserWithApiKey.new(api_key)
+        user = query User, UserWithAPIKey.new(api_key)
 
-        raise UnknownApiKeyError, api_key if user.nil?
+        raise UnknownAPIKeyError, api_key if user.nil?
 
         user
       end
@@ -59,7 +59,7 @@ module Customers
 
   end
 
-  UserWithApiKey     = Struct.new :api_key
+  UserWithAPIKey     = Struct.new :api_key
   UserWithOauthToken = Struct.new :oauth_token
   UserWithEmail      = Struct.new :email
 end

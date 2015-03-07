@@ -4,7 +4,7 @@ module Endpoint
 
       def self.registered(app)
         app.post '/:owner/:repo/environments' do
-          form         = Environments::EnvironmentForm.new extract!(:environment)
+          form         = Environments::FactoryForm.build extract!(:environment)
           use_case     = Environments::Create.new current_project, form
           environment  = use_case.run!
 
