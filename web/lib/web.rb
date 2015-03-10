@@ -19,6 +19,7 @@ class Web < Sinatra::Base
   end
 
   set :server, :thin
+  set :show_exceptions, false
 
   helpers do
     def serialize(object)
