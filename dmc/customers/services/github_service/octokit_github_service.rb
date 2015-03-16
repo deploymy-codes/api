@@ -38,6 +38,13 @@ module Customers
       client.reset_application_authorization(oauth_token)
     end
 
+    def create_webhook(oauth_token, full_name)
+      client(oauth_token).create_hook(full_name, 'web', {
+        url: 'http://api.deploymy.codes/webhook/github',
+        content_type: 'json'
+      })
+    end
+
     private
 
     def client(oauth_token)
