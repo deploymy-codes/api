@@ -3,6 +3,9 @@ require_relative 'environments/repositories/environment_repository/in_memory'
 require_relative 'environments/repositories/environment_repository/sequel'
 
 require_relative 'environments/entities/environment'
+require_relative 'environments/entities/strategy'
+require_relative 'environments/entities/heroku_strategy'
+require_relative 'environments/entities/rubygem_strategy'
 
 require_relative 'environments/forms/environment_form'
 require_relative 'environments/forms/heroku_form'
