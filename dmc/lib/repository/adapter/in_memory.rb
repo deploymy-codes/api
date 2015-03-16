@@ -68,11 +68,19 @@ class Repository
       end
 
       def map_for_class(klass)
-        @map[klass.to_s.to_sym] ||= {}
+        @map[key(klass)] ||= {}
       end
 
       def map_for(entity)
         map_for_class(entity.class)
+      end
+
+      def key(klass)
+        if klass.superclass != Entity
+          key(klass.superclass)
+        else
+          klass.to_s.to_sym
+        end
       end
 
     end

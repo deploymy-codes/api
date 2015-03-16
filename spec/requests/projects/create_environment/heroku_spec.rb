@@ -17,8 +17,8 @@ describe 'Create heroku environment' do
     post "/#{project.name}/environments", { environment: {
       name: 'master',
       strategy: 'heroku',
-      heroku_api_key: 'heroku_api_key',
-      heroku_app_name: 'heroku_app_name'
+      api_key: 'heroku_api_key',
+      app_name: 'heroku_app_name'
     }}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
     expect(last_response.status).to be_eql 201
@@ -33,15 +33,15 @@ describe 'Create heroku environment' do
       post "/#{project.name}/environments", { environment: {
         name: 'master',
         strategy: 'heroku',
-        heroku_api_key: 'heroku_api_key',
-        heroku_app_name: 'heroku_app_name'
+        api_key: 'heroku_api_key',
+        app_name: 'heroku_app_name'
       }}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
       post "/#{project.name}/environments", { environment: {
         name: 'master',
         strategy: 'heroku',
-        heroku_api_key: 'heroku_api_key',
-        heroku_app_name: 'heroku_app_name'
+        api_key: 'heroku_api_key',
+        app_name: 'heroku_app_name'
       }}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
       expect(last_response.status).to be_eql 403

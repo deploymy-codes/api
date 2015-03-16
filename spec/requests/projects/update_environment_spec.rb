@@ -20,15 +20,15 @@ describe 'Update environment' do
       environment: {
         name: 'master' ,
         strategy: 'heroku',
-        heroku_api_key: 'api_key',
-        heroku_app_name: 'app_name'
+        api_key: 'api_key',
+        app_name: 'app_name'
       }}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
     expect(last_response.status).to be_eql 200
     json = JSON.parse(last_response.body)
     expect(json).to be_instance_of Hash
     expect(json['name']).to be_eql 'master'
-    expect(json['heroku_api_key']).to be_eql 'api_key'
+    expect(json['api_key']).to be_eql 'api_key'
   end
 
   context 'When environment name is already taken' do
@@ -39,8 +39,8 @@ describe 'Update environment' do
         environment: {
           name: 'new_master' ,
           strategy: 'heroku',
-          heroku_api_key: 'api_key',
-          heroku_app_name: 'app_name'
+          api_key: 'api_key',
+          app_name: 'app_name'
         }}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
       expect(last_response.status).to be_eql 403

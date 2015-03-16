@@ -1,8 +1,8 @@
 module Environments
   class HerokuForm < EnvironmentForm
-    attribute :heroku_api_key, String
-    attribute :heroku_app_name, String
+    attribute :api_key, String
+    attribute :app_name, String
 
-    validates :heroku_app_name, :heroku_api_key, presence: true
+    validates :app_name, :api_key, presence: true
   end
 end

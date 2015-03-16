@@ -62,7 +62,7 @@ module Deployments
 
       def configure_gems
         Gems.configure do |config|
-          config.key = environment.rubygem_api_key
+          config.key = environment.api_key
         end
       end
     end

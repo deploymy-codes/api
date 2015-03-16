@@ -4,8 +4,8 @@ module Deployments
 
     def deploy(project, environment, deployment)
       run(deployment) do |runner|
-        runner.execute "Check access on Heroku app: #{environment.heroku_app_name}", &method(:check_access)
-        runner.execute "Deploy on #{environment.heroku_app_name}", &method(:push)
+        runner.execute "Check access on Heroku app: #{environment.app_name}", &method(:check_access)
+        runner.execute "Deploy on #{environment.app_name}", &method(:push)
       end
     end
 

@@ -3,13 +3,16 @@ require_relative 'environments/repositories/environment_repository/in_memory'
 require_relative 'environments/repositories/environment_repository/sequel'
 
 require_relative 'environments/entities/environment'
+require_relative 'environments/entities/heroku_environment'
+require_relative 'environments/entities/rubygem_environment'
 
 require_relative 'environments/forms/environment_form'
 require_relative 'environments/forms/heroku_form'
 require_relative 'environments/forms/rubygem_form'
 require_relative 'environments/forms/factory_form'
 
-require_relative 'environments/serializers/environment_serializer'
+require_relative 'environments/serializers/heroku_environment_serializer'
+require_relative 'environments/serializers/rubygem_environment_serializer'
 
 require_relative 'environments/errors/name_taken_error'
 

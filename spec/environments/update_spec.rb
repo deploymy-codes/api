@@ -5,7 +5,7 @@ module Environments
     let(:user)        { create_user }
     let(:project)     { create_project user: user }
     let(:environment) { create_environment project: project }
-    let(:form)        { HerokuForm.new name: 'new_name', strategy: 'heroku', heroku_api_key: 'api_key', heroku_app_name: 'app_name' }
+    let(:form)        { HerokuForm.new name: 'new_name', strategy: 'heroku', api_key: 'api_key', app_name: 'app_name' }
 
     subject { Update.new(environment, form).run! }
 
