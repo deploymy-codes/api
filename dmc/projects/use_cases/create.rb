@@ -17,6 +17,7 @@ module Projects
       project = Project.build_from user: user, remote_project: remote_project
 
       ProjectRepository.save project
+      Customers::CreateWebhook.new(user, remote_project).run!
       JobRunner.perform CloneJob, project.id
 
       project
