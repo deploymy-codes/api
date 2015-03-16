@@ -6,6 +6,10 @@ module Projects
         mapper_for(klass).where(user_id: selector.user_id).to_a
       end
 
+      def query_project_with_remote_id(klass, selector)
+        mapper_for(klass).first(remote_id: selector.remote_id)
+      end
+
       def query_project_with_name_and_user_id(klass, selector)
         mapper_for(klass).first(user_id: selector.user_id, name: selector.name)
       end

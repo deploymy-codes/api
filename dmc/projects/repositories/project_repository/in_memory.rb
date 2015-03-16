@@ -6,6 +6,10 @@ module Projects
         all(klass).select { |project| project.user_id == selector.user_id }
       end
 
+      def query_project_with_remote_id(klass, selector)
+        all(klass).find { |project| project.remote_id == selector.remote_id }
+      end
+
       def query_project_with_name_and_user_id(klass, selector)
         all(klass).find do |project|
           project.user_id == selector.user_id && project.name == selector.name

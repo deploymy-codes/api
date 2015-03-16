@@ -8,6 +8,11 @@ map '/auth' do
   run Endpoint::Auth
 end
 
+map '/projects' do
+  require "#{root}/endpoints/webhook"
+  run Endpoint::Webhook
+end
+
 map '/users' do
   require "#{root}/endpoints/users"
   run Endpoint::Users

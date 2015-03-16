@@ -7,6 +7,8 @@ require_relative 'projects/entities/branch'
 require_relative 'projects/entities/tag'
 require_relative 'projects/entities/commit'
 
+require_relative 'projects/forms/repository_form'
+
 require_relative 'projects/serializers/project_serializer'
 require_relative 'projects/serializers/branch_serializer'
 require_relative 'projects/serializers/tag_serializer'
@@ -32,6 +34,7 @@ require_relative 'projects/use_cases/clone'
 require_relative 'projects/use_cases/list_branch'
 require_relative 'projects/use_cases/list_tag'
 require_relative 'projects/use_cases/list_commit'
+require_relative 'projects/use_cases/pull'
 
 module Projects
   ProjectRepository.register :in_memory, ProjectRepository::InMemory.new

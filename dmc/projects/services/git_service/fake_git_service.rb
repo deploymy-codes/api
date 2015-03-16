@@ -35,5 +35,8 @@ module Projects
       end
     end
 
+    def pull(_)
+    end
+
   end
 end
