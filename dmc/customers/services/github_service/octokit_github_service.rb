@@ -40,7 +40,7 @@ module Customers
 
     def create_webhook(oauth_token, full_name)
       client(oauth_token).create_hook(full_name, 'web', {
-        url: 'http://api.deploymy.codes/webhook/github',
+        url: "#{ENV.fetch('WEBHOOK_HOST')}webhook/github",
         content_type: 'json'
       })
     end
