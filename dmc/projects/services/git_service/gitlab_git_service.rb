@@ -29,10 +29,8 @@ module Projects
       Gitlab::Git::Commit.find(repo(dir), sha)
     end
 
-    def pull(dir)
-      Dir.chdir(dir) do
-        system 'git pull'
-      end
+    def pull(dir, name)
+      repo(dir).fetch(name)
     end
 
     private
