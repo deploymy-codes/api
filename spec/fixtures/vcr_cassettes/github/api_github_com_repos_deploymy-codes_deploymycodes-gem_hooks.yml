@@ -1,0 +1,82 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.github.com/repos/deploymy-codes/deploymycodes-gem/hooks
+    body:
+      encoding: UTF-8
+      string: '{"name":"web","config":{"url":"http://api.deploymy.codes/webhook/github","content_type":"json"},"events":["push"],"active":true}'
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.8.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - token GITHUB_OAUTH_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Mon, 16 Mar 2015 16:38:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '549'
+      Status:
+      - 201 Created
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4973'
+      X-Ratelimit-Reset:
+      - '1426524276'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Etag:
+      - '"decd492250179e4f0f0d3a6968e6c5f0"'
+      X-Oauth-Scopes:
+      - admin:org_hook, admin:repo_hook, repo, user
+      X-Accepted-Oauth-Scopes:
+      - admin:repo_hook, public_repo, repo, write:repo_hook
+      Location:
+      - https://api.github.com/repos/deploymy-codes/deploymycodes-gem/hooks/4350385
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 5163CB70:51F2:3F7C602:55070712
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - 173530fed4bbeb1e264b2ed22e8b5c20
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.github.com/repos/deploymy-codes/deploymycodes-gem/hooks/4350385","test_url":"https://api.github.com/repos/deploymy-codes/deploymycodes-gem/hooks/4350385/test","ping_url":"https://api.github.com/repos/deploymy-codes/deploymycodes-gem/hooks/4350385/pings","id":4350385,"name":"web","active":true,"events":["push"],"config":{"url":"http://api.deploymy.codes/webhook/github","content_type":"json"},"last_response":{"code":null,"status":"unused","message":null},"updated_at":"2015-03-16T16:38:42Z","created_at":"2015-03-16T16:38:42Z"}'
+    http_version: 
+  recorded_at: Thu, 16 Oct 2014 11:00:00 GMT
+recorded_with: VCR 2.9.3

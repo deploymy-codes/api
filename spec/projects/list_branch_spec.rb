@@ -6,7 +6,7 @@ module Projects
     it 'list branch of the project' do
       user = create_user
 
-      remote_project = Customers::RemoteProject.new(name:'deploymy-codes/api', url: 'https://github.com/deploymy-codes/api.git', id: 25465783)
+      remote_project = Customers::RemoteProject.new(full_name: 'deploymy-codes/api', url: 'https://github.com/deploymy-codes/api.git', id: 25465783)
       project = Create.new(user, remote_project).run!
 
       envelope = ListBranch.new(project, Cursor.new).run!

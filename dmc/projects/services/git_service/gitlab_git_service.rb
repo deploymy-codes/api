@@ -29,6 +29,10 @@ module Projects
       Gitlab::Git::Commit.find(repo(dir), sha)
     end
 
+    def pull(dir)
+      repo(dir).fetch('origin')
+    end
+
     private
 
     def repo(dir)
@@ -36,7 +40,7 @@ module Projects
     end
 
     def credentials(oauth_token)
-       Rugged::Credentials::UserPassword.new(username: oauth_token, password: 'x-oauth-basic')
+      Rugged::Credentials::UserPassword.new(username: oauth_token, password: 'x-oauth-basic')
     end
 
   end

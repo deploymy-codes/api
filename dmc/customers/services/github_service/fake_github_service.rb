@@ -15,11 +15,11 @@ module Customers
       @tokens[code] || add_and_return_token(code)
     end
 
-    def user(oauth_token)
+    def user(_)
       FakeUser.new('Robots', 'deploymycodes', 'coders@deploymy.codes', 'https://avatars.githubusercontent.com/u/10991964?v=3')
     end
 
-    def organizations(oauth_token)
+    def organizations(_)
       [GithubService::Organization.new('deploymy-codes', 'https://avatars.githubusercontent.com/u/9341835?v=3')]
     end
 
@@ -31,7 +31,7 @@ module Customers
       end
     end
 
-    def organization_repositories(oauth_token, owner)
+    def organization_repositories(_, _)
       [
         GithubService::Repository.new(
           'deploymy-codes/api',
@@ -54,7 +54,7 @@ module Customers
       ]
     end
 
-    def repositories(oauth_token)
+    def repositories(_)
       [
         GithubService::Repository.new(
           'deploymycodes/awesome-test-project',
@@ -69,6 +69,9 @@ module Customers
           'https://github.com/deploymy-codes/lets-chat.git',
           31125961),
       ]
+    end
+
+    def create_webhook(_, _)
     end
 
     private
