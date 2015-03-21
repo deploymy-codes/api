@@ -52,12 +52,19 @@ class Repository
 
       def build_entity(klass, dataset)
         if dataset.is_a? Array
-          dataset.map { |record| klass.new record }
+          dataset.map { |record| get_klass(klass, record).new record }
         elsif dataset.is_a? Hash
-          klass.new dataset
+          get_klass(klass, dataset).new dataset
         else
           dataset
         end
+      end
+
+      def get_klass(klass, dataset)
+        return klass unless dataset[:type].present?
+
+        namespace, parent_klass = klass.name.split('::')
+        "#{namespace}::#{dataset[:type].classify}#{parent_klass}".constantize
       end
 
       def query_method(klass, selector)
@@ -69,6 +76,10 @@ class Repository
       end
 
       def mapper_for(klass)
+        if klass.superclass != Entity
+          klass = klass.superclass
+        end
+
         DB[klass.name.demodulize.tableize.to_sym]
       end
 
