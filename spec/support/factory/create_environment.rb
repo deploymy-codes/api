@@ -1,8 +1,8 @@
-def create_environment(project: nil, name: 'master', strategy: 'heroku')
+def create_environment(project: nil, name: 'master', type: 'heroku')
   form = Environments::FactoryForm.build({
     name: name,
-    strategy: strategy,
-  }.merge(self.send(strategy)))
+    type: type,
+  }.merge(self.send(type)))
 
   Environments::Create.new(project, form).run!
 end

@@ -1,5 +1,5 @@
 module Environments
   class RubygemEnvironmentSerializer < Serializer
-    attributes :name, :strategy, :api_key
+    attributes :name, :type, :api_key
   end
 end

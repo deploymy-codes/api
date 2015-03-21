@@ -22,6 +22,6 @@ describe 'Show environment' do
     json = JSON.parse(last_response.body)
     expect(json).to be_instance_of Hash
     expect(json['name']).to be_eql 'master'
-    expect(json['strategy']).to be_eql 'heroku'
+    expect(json['type']).to be_eql 'heroku'
   end
 end

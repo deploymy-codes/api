@@ -1,10 +1,10 @@
 module Environments
   class Environment < Entity
 
-    STRATEGIES = %w(heroku rubygem)
+    TYPES = %w(heroku rubygem)
 
     attribute :name, String
-    attribute :strategy, String
+    attribute :type, String
     attribute :project_id, Integer
 
   end

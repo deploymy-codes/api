@@ -16,7 +16,7 @@ module Environments
     private
 
     def environment_klass
-      "Environments::#{form.strategy.classify}Environment".constantize
+      "Environments::#{form.type.classify}Environment".constantize
     end
 
     def validate_environment_uniqueness!

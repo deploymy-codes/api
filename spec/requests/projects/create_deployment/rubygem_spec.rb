@@ -9,7 +9,7 @@ describe 'Create rubygem deployment' do
 
   let(:user)        { create_user }
   let(:project)     { create_project full_name: 'deploymy-codes/deploymycodes-gem', remote_url: 'https://github.com/deploymy-codes/deploymycodes-gem.git', remote_id: 31734830, user: user }
-  let(:environment) { create_environment strategy: 'rubygem', name: 'master', project: project }
+  let(:environment) { create_environment type: 'rubygem', name: 'master', project: project }
 
   it_behaves_like 'Authenticated', '/rails/rails'
   it_behaves_like 'HasCurrentProject'

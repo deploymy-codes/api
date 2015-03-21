@@ -19,7 +19,7 @@ describe 'Update environment' do
     put "/#{project.name}/environments/#{environment.name}", {
       environment: {
         name: 'master' ,
-        strategy: 'heroku',
+        type: 'heroku',
         api_key: 'api_key',
         app_name: 'app_name'
       }}, { 'HTTP_AUTHORIZATION' => user.api_key }
@@ -38,7 +38,7 @@ describe 'Update environment' do
       put "/#{project.name}/environments/#{environment.name}", {
         environment: {
           name: 'new_master' ,
-          strategy: 'heroku',
+          type: 'heroku',
           api_key: 'api_key',
           app_name: 'app_name'
         }}, { 'HTTP_AUTHORIZATION' => user.api_key }

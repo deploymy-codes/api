@@ -16,7 +16,7 @@ describe 'Create heroku environment' do
   it 'returns the new environment' do
     post "/#{project.name}/environments", { environment: {
       name: 'master',
-      strategy: 'heroku',
+      type: 'heroku',
       api_key: 'heroku_api_key',
       app_name: 'heroku_app_name'
     }}, { 'HTTP_AUTHORIZATION' => user.api_key }
@@ -25,21 +25,21 @@ describe 'Create heroku environment' do
     json = JSON.parse(last_response.body)
     expect(json).to be_instance_of Hash
     expect(json['name']).to be_eql 'master'
-    expect(json['strategy']).to be_eql 'heroku'
+    expect(json['type']).to be_eql 'heroku'
   end
 
   context 'When environment name is already taken' do
     it 'returns a 403 error' do
       post "/#{project.name}/environments", { environment: {
         name: 'master',
-        strategy: 'heroku',
+        type: 'heroku',
         api_key: 'heroku_api_key',
         app_name: 'heroku_app_name'
       }}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
       post "/#{project.name}/environments", { environment: {
         name: 'master',
-        strategy: 'heroku',
+        type: 'heroku',
         api_key: 'heroku_api_key',
         app_name: 'heroku_app_name'
       }}, { 'HTTP_AUTHORIZATION' => user.api_key }

@@ -2,10 +2,10 @@ module Environments
   class EnvironmentForm < Form
 
     attribute :name, String
-    attribute :strategy, String
+    attribute :type, String
 
-    validates :name, :strategy, presence: true
-    validates :strategy, inclusion: { in: Environment::STRATEGIES }
+    validates :name, :type, presence: true
+    validates :type, inclusion: { in: Environment::TYPES }
 
   end
 end

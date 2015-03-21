@@ -24,7 +24,7 @@ module Deployments
     end
 
     def strategy
-      "Deployments::#{environment.strategy.classify}Service".constantize
+      "Deployments::#{environment.type.classify}Service".constantize
     end
 
   end

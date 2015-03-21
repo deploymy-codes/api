@@ -16,7 +16,7 @@ describe 'Create rubygems environment' do
   it 'returns the new environment' do
     post "/#{project.name}/environments", { environment: {
       name: 'master',
-      strategy: 'rubygem',
+      type: 'rubygem',
       api_key: 'rubygem_api_key',
     }}, { 'HTTP_AUTHORIZATION' => user.api_key }
 
@@ -24,7 +24,7 @@ describe 'Create rubygems environment' do
     json = JSON.parse(last_response.body)
     expect(json).to be_instance_of Hash
     expect(json['name']).to be_eql 'master'
-    expect(json['strategy']).to be_eql 'rubygem'
+    expect(json['type']).to be_eql 'rubygem'
   end
 
 end
