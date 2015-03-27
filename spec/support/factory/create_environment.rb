@@ -1,20 +1,21 @@
-def create_environment(project: nil, name: 'master', strategy: 'heroku')
+def create_environment(project: nil, name: 'master', type: 'heroku')
   form = Environments::FactoryForm.build({
     name: name,
-    strategy: strategy,
-  }.merge(self.send(strategy)))
+    type: type,
+  }.merge(self.send(type)))
+
   Environments::Create.new(project, form).run!
 end
 
 def heroku
   {
-    heroku_api_key: ENV['HEROKU_API_KEY'],
-    heroku_app_name: ENV['HEROKU_APP_NAME'],
+    api_key: ENV['HEROKU_API_KEY'],
+    app_name: ENV['HEROKU_APP_NAME'],
   }
 end
 
 def rubygem
   {
-    rubygem_api_key: ENV['RUBYGEM_API_KEY']
+    api_key: ENV['RUBYGEM_API_KEY']
   }
 end

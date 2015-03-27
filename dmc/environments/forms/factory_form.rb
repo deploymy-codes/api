@@ -1,10 +1,14 @@
 module Environments
+  class TypeNotPresentError < StandardError
+  end
+
   module FactoryForm
 
     def self.build(hash = {})
-      strategy = hash[:strategy]
+      type = hash[:type]
+      raise TypeNotPresentError unless type.present?
 
-      "Environments::#{strategy.classify}Form".constantize.new hash
+      "Environments::#{type.classify}Form".constantize.new hash
     end
 
   end

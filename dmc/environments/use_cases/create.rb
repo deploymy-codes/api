@@ -5,7 +5,7 @@ module Environments
       form.validate!
       validate_environment_uniqueness!
 
-      environment = Environment.new form.attributes
+      environment = environment_klass.new form.attributes
       environment.project_id = project.id
 
       EnvironmentRepository.save environment
@@ -14,6 +14,10 @@ module Environments
     end
 
     private
+
+    def environment_klass
+      "Environments::#{form.type.classify}Environment".constantize
+    end
 
     def validate_environment_uniqueness!
       if ListForProject.new(project).run!.map(&:name).include? form.name
